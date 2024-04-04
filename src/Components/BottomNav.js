@@ -1,12 +1,13 @@
+import { dividerClasses } from '@mui/material';
 import React from 'react';
 import '../App.css';
-import { SidebarData } from './SidebarData';
+import { BottomNavData } from './BottomNavContact';
 
-function Sidebar() {
-    return (
-        <div className="Sidebar">
-            <ul className="SidebarList">
-                {SidebarData.map((val, key) => {
+function BottomNav() {
+        return (
+        <div className="BottomNav">
+            <ul className="BottomNavContact">
+                {BottomNavData.map((val, key) => {
                     return (
                         <li
                             key={key}
@@ -17,7 +18,10 @@ function Sidebar() {
                             }
                         }
                         >
-                            <div id="title">
+                            <div id="icon">
+                                {val.icon}
+                            </div>
+                            <div id="contactBottom">
                                 {val.title}
                             </div>
                         </li>
@@ -28,4 +32,4 @@ function Sidebar() {
     );
 }
 
-export default Sidebar
+export default BottomNav
