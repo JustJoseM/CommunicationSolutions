@@ -1,7 +1,8 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import Sidebar from './Components/Sidebar';
 
-function App() {
+/*function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -21,5 +22,15 @@ function App() {
     </div>
   );
 }
+*/
+
+function App() {
+    return (
+        <div className="App">
+            <Sidebar />
+        </div>
+    );
+}
+
 
 export default App;
