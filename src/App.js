@@ -2,8 +2,9 @@ import React from "react";
 // import { Routes, Route} from "react-router-dom";
 import './App.css';
 import Sidebar from './Components/Sidebar';
-import BottomNav from './Components/BottomNav';
+// import BottomNav from './Components/BottomNav';
 import Home from './Pages/Home';
+import Footer from "./Components/footer";
 // import ScheduleAppt from "./Pages/ScheduleAppt";
 // import AboutUs from "./Pages/AboutUs";
 // import Testimonial from "./Pages/Testimonial";
@@ -24,7 +25,8 @@ function App() {
             </Routes>
             */}
             <Home />
-            <BottomNav />
+            {/* <BottomNav /> */}
+        <Footer />
         </div>
     )
 }
