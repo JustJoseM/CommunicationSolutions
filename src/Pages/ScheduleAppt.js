@@ -1,4 +1,5 @@
 import React from "react";
+import '../PagesCSS/Schedule.css';
 
 function ScheduleAppt() {
     return (

@@ -6,6 +6,7 @@ import {
     Navigate,
 } from "react-router-dom";
 import './App.css';
+import './footer.css';
 import Sidebar from './Components/Sidebar';
 import Home from './Pages/Home';
 import Footer from "./Components/footer";
@@ -14,23 +15,6 @@ import AboutUs from "./Pages/AboutUs";
 import Testimonial from "./Pages/Testimonial";
 import Contact from "./Pages/Contact";
 
-// function App() {
-//     return (
-//         <div className="App">
-//             <Sidebar />
-//             <Routes>
-//                 <Route path="/" element={ <Home /> } />
-//                 <Route path="schedule" element={<ScheduleAppt /> } />
-//                 <Route path="about" element={<AboutUs />} />
-//                 <Route path="testimonial" element={<Testimonial />} />
-//                 <Route path="contact" element={ <Contact />} />
-//             </Routes>
-
-//             <Home />
-//         <Footer />
-//         </div>
-//     )
-// }
 function App() {
     return (
         <div className="App">

@@ -1,4 +1,5 @@
 import React from "react";
+import '../PagesCSS/Home.css';
 import { Link } from "react-router-dom";
 
 function Home() {

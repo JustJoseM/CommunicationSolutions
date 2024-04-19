@@ -1,4 +1,5 @@
 import React from "react";
+import '../PagesCSS/Testimonial.css';
 
 function Testimonial() {
     return (
