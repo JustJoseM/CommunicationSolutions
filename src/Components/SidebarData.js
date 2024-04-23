@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
 export const SidebarData = [
     {
-        title: "Schedule an Appointment",
-        link: "/schedule"
+        title: "Sign In",
+        link: "/signin"
     },
     {
         title: "Home",

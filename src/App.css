@@ -18,7 +18,7 @@ Sidebar CSS
 */
 .Sidebar {
     position: absolute;
-    height: 67.4%;
+    height: 100%;
     width: 250px;
     right: 0;
     background-color: #303030;
@@ -28,6 +28,7 @@ Sidebar CSS
     height: auto;
     padding: 0;
     width: 100%;
+    
 }
 
     .SidebarList .row {

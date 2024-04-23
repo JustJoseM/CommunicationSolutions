@@ -6,11 +6,12 @@ import {
     Navigate,
 } from "react-router-dom";
 import './App.css';
-import './footer.css';
+import './PagesCSS/Footer.css';
+import Navbar from "./Components/Navbar";
 import Sidebar from './Components/Sidebar';
 import Home from './Pages/Home';
-import Footer from "./Components/footer";
-import ScheduleAppt from "./Pages/ScheduleAppt";
+import Footer from "./Components/Footer";
+import SignIn from "./Pages/SignIn";
 import AboutUs from "./Pages/AboutUs";
 import Testimonial from "./Pages/Testimonial";
 import Contact from "./Pages/Contact";
@@ -18,6 +19,7 @@ import Contact from "./Pages/Contact";
 function App() {
     return (
         <div className="App">
+            <Navbar />
             <Sidebar />
             <Router>
                 <Routes>
@@ -29,8 +31,8 @@ function App() {
                         />
                         {/*This route is for the 'Schedule' component -> path is /schedule*/}
                         <Route
-                            path="/schedule"
-                            element={<ScheduleAppt />}
+                            path="/signin"
+                            element={<SignIn />}
                         />
                         {/*This route is for the 'About' component -> path is /about*/}
                         <Route
