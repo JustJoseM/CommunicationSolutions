@@ -1,0 +1,34 @@
+.Testimonials {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    align-items: left;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.partners {
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.USAPRO,
+.APEX,
+.ClearPROs {
+    flex: 0 0 100%;
+    text-align: center;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.USAPRO-img,
+.APEX-img,
+.ClearPROs-img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    
+}

@@ -1,0 +1,34 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    align-items: left;
+}
+
+.companyName {
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+}
+
+.bodyText-box {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
+    position: relative;
+}
+
+.bodyImg-box {
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.ourClients-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: auto;
+}
