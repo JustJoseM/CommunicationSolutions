@@ -136,6 +136,12 @@ body {
     margin-top: 10rem;
 }
 
+.resend_the_code {
+    color:#4797e7;
+    border: none;
+    font-size: 13px;
+}
+
 /* Forgot password text setting */
 .forgot-password {
     color:#4797e7;

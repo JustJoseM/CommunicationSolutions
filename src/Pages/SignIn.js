@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import '../PagesCSS/SignupLogin.css';
-
+import { Link } from 'react-router-dom'; // Import Link component
 function SignupLogin() {
     // State to track which form to show, true for login and false for create account
     const [showLoginForm, setShowLoginForm] = useState(true);
+    
+    //const name = (state) ? "name 1" : "name 2"
 
     return (
         <div className="login__container">
@@ -23,7 +25,10 @@ function SignupLogin() {
                     </div>
                     <button className="form__button" type="submit">Continue</button>    
                     <p className="form__text__forgot">
-                        <a href="#" className="forgot-password">Forgot password?</a>
+                        
+                        <Link className="forgot-password" to="/forgotpassword">Forgot Password?</Link>
+                        
+                        
                     </p>
                     <p className="form__text__createAcc">
                         <button 

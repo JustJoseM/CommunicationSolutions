@@ -10,11 +10,13 @@ import './PagesCSS/Footer.css';
 import Navbar from "./Components/Navbar";
 import Sidebar from './Components/Sidebar';
 import Home from './Pages/Home';
-import Footer from "./Components/Footer";
+// import Footer from "./Components/Footer";
 import SignIn from "./Pages/SignIn";
 import AboutUs from "./Pages/AboutUs";
 import Testimonial from "./Pages/Testimonial";
 import Contact from "./Pages/Contact";
+import ForgotPassword from "./Pages/ForgotPassword";
+import Verify from "./Pages/Verify";
 
 function App() {
     return (
@@ -34,6 +36,18 @@ function App() {
                             path="/signin"
                             element={<SignIn />}
                         />
+                        {/*This route is for the 'Password' component -> path is /password*/}
+                        <Route
+                            path="/forgotpassword"
+                            element={<ForgotPassword />}
+                        />
+                        
+                         {/*This route is for the 'verify' component -> path is /verify*/}
+                         <Route
+                            path="/verify"
+                            element={<Verify />}
+                        />
+
                         {/*This route is for the 'About' component -> path is /about*/}
                         <Route
                             path="/about"
@@ -54,9 +68,10 @@ function App() {
                             path="*"
                             element={<Navigate to="/" />}
                         />
+                        
                 </Routes>
             </Router>
-        <Footer />
+        {/* <Footer /> */}
         </div>
         
     )
