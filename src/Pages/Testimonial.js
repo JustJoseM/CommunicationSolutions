@@ -1,24 +1,46 @@
 import React from "react";
 import '../PagesCSS/Testimonial.css';
+import USAPRO_logo from '../assets/USAPRO.jpg';
 
 function Testimonial() {
     return (
-        <div className="Testimonials">
-            <h1 className="header">Testimonials</h1>
-            <h2>
-                Our Partners
-            </h2>
-            <div className="content">
-                <div className ="bodyText-box">
-                    <p>
-                        We've worked with:
-                    </p>
+        <div class="Testimonials">
+            <div class="inner">
+                <h1 class ="header">Testimonials</h1>
+                <div class="border">            
                 </div>
-                <div className="partners-box">
-                    <img src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=" alt="Image " />
-            </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="Testimonial">
+                            {/* <img src="{USAPRO_logo}" alt="USAPRO_logo"/> */}
+                            <div class="USAPRO">
+                                USA PRO
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+
+
+        // <div className="Testimonials">
+        //     <h1 className="header">Testimonials</h1>
+        //     <h2>
+        //         Our Partners
+        //     </h2>
+        //     <div className="content">
+        //         <div className ="bodyText-box">
+        //             <p>
+        //                 We've worked with:
+        //             </p>
+        //         </div>
+        //         <div className="partners-box">
+        //             <img src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=" alt="Image " />
+        //     </div>
+        //     </div>
+        // </div>
     );
 }
 {
