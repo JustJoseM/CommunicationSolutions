@@ -24,7 +24,12 @@
 .bodyImg-box {
     flex: 1;
     padding: 20px;
-    overflow: hidden;
+    padding-right: 200px
+}
+
+.bodyImg-box img{
+    width: 800px;
+    height: 400px;
 }
 
 .ourClients-box {

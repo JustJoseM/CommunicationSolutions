@@ -1,6 +1,7 @@
 import React from "react";
 import '../PagesCSS/Home.css';
 import { Link } from "react-router-dom";
+import placeholder from '../assets/hero.jpeg';
 
 function Home() {
     return (
@@ -16,7 +17,7 @@ function Home() {
                     </p>
                 </div>
             <div className="bodyImg-box">
-                <img src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=" alt="Image " />
+                <img src={placeholder} alt="" />
             </div>
             </div>
         </div>
