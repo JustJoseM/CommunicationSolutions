@@ -1,23 +1,51 @@
 import React from "react";
 import '../PagesCSS/Testimonial.css';
 import USAPRO_logo from '../assets/USAPRO.jpg';
+import ClearPRO_logo from '../assets/ClearPRO.png';
+import APEX_logo from '../assets/APEX.jpg';
 
 function Testimonial() {
     return (
-        <div class="Testimonials">
-            <div class="inner">
-                <h1 class ="header">Testimonials</h1>
-                <div class="border">            
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="Testimonial">
-                            {/* <img src="{USAPRO_logo}" alt="USAPRO_logo"/> */}
-                            <div class="USAPRO">
+        <div className="Testimonials">
+            <div className="inner">
+                <h1 className="header">Testimonials</h1>
+                <div className="border"></div>
+                <div className="row">
+                    <div className="col">
+                        <div className="Testimonial">
+                            <img src={USAPRO_logo} alt=""/>
+                            <div className="USAPRO">
                                 USA PRO
                             </div>
+                            <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
                         </div>
+                        
+                    </div>
+                    <div className="col">
+                        <div className="Testimonial">
+                            <img src={ClearPRO_logo} alt=""/>
+                            <div className="ClearPRO">
+                                ClearPro
+                            </div>
+                            <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
+                        </div>
+                        <div className="col">
+                        <div className="Testimonial">
+                            <img src={APEX_logo} alt=""/>
+                            <div className="APEX">
+                                Apex Window Cleaning
+                            </div>
+                            <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </p>
+                        </div>
+                        
+                    </div>
+                    
                     </div>
                 </div>
             </div>
