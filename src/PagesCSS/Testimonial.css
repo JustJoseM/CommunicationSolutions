@@ -1,18 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "monsterrat", sans-serif
+}
+
 .Testimonials {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     padding-left: 30px;
     align-items: left;
+    text-align: center;
 }
 
-.header {
-    margin-bottom: 20px;
-}
-
-.partners {
-    flex: 1;
-    padding: 20px;
+.inner {
+    max-width: 1500px;
     overflow: hidden;
+    padding: 0 20px;
+}
+
+.border {
+    width: 160px;
+    height: 5px;
+    color: black;
+    margin: 26px auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.col {
+    flex: 33.33%;
+    max-width: 33.33%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+.testimonial {
+    background: #fff;
+    padding: 30px;
+}
+.testimonial img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 /* .USAPRO,
