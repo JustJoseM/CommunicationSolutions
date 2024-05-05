@@ -29,24 +29,20 @@ Background can be about the client or company
 
 # Tech Stack
 ### Frontend
-1. First list item: Description 
-2. Second list item: Description 
-3. Third list item: Description 
-4. Fourth list item: Description
+1. ReactJS Framework 
+  - HTML, CSS, JavaScript
 
 ### Backend
-1. First list item: Description 
-2. Second list item: Description
-3. Third list item: Descritpion
-   - Cost:
+1. Flask Framework
+2. Azure Database for MySQL
+   - Cost: $29.99/Month
 
 ### API
-1. First list item
-   - Cost:
+1. SuperSaaS
+   - Cost: $9/Month
 
 ### Version Control
-1. First list item: Description 
-2. Second list item: Descirption 
+1. Github 
 
 ### Deployment
 1. First list item
