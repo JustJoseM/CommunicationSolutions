@@ -11,12 +11,12 @@ Background can be about the client or company
 # Key Features
 + Key Feature #1
    - Login portal: The user can securely access and manage their account. Includes a sign-up feature as well as an option to reset the password if it has been forgotten.
-   - Upon signing in, the user will be sent an email containing a code that they will enter to confirm their identity.
+   - Upon signing in, the user will be sent an email containing a code that they will enter to confirm their identity (authentication).
  
 + Key Feature #2
    - Scheduling an Appointment: Those who are interested in a consultation can reach out to our client and schedule a phone appointment with him.
    - A list of available times will be shown when the interested person navigates to page, through the use of a calendar.
-   - Will be implemented in CSC 191.
+   - The complete functionality will be implemented in CSC 191.
  
 + Key Feature #3
    - Testimonial Page: Read about other businesses our client has worked with, and how their business has succeeded thanks to his assistance.
