@@ -5,6 +5,9 @@
 
 # Introduction 
 
+# Background
+Background can be about the client or company
+
 # Key Features
 + Key Feature #
    - Description:
