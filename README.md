@@ -80,13 +80,24 @@ _Placeholders for CSC191_
    - Refine About Us page UI as per client feedback
 
 + Sprint 7
-   - Task #
+   - Develop Schedule Appointment page
+   - Implement backend logic for appointment booking using API
+   - Set up system for sending confirmation emails upon booking
+   - Enable clients to cancel appointments
+   - Display booking confirmation message on site
  
 + Sprint 8
-   - Task #
+   - Allow Admin to manage appointments (cancel/edit)
+   - Allow Clients to reschedule appointments
+   - Create Client Testimonial page
+   - Collect testimonials from previous clients
+   - Add links to previous clients on landing page
+   - Implement SEO strategies
  
 + Sprint 9
-   - Task #
+   - Finalize UI across all site pages
+   - Address any remaining bugs
+   - Enhance password security with implementation of requirements 
 
 # Contact
 + Savannah Birdsong-See (Development Team)
