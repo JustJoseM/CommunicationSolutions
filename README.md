@@ -6,7 +6,7 @@
 # Introduction 
 
 # Background
-Background can be about the client or company
+Communication Solutions is a startup company in a consulting industry owned by Issac Jones. The mission is to provbide professional assistance in managing the marketing of other companies specifically specializing supporting startup companies. His years of experience in the filed have given him a deep understanding of how the professional service industry works and what it takes for a company to success. With Communication Solutions, Jones hopes to help grow clients' buisiness by developing their buisiness techniques.
 
 # Key Features
 + Key Feature #1
