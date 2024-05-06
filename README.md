@@ -28,7 +28,7 @@ Background can be about the client or company
  
 + Key Feature #5
    - User Friendly UI: Whoever is accessing the site can easily navigate to whatever page they need, and gather the information they require.
-   - To be further expanded upon in CSC 191.
+   - To be further improved upon in CSC 191.
 
 # Tech Stack
 ### Frontend
