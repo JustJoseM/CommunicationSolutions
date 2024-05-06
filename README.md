@@ -4,6 +4,7 @@
 ![fillerlogo](https://github.com/JustJoseM/CommunicationSolutions/assets/115119329/bd259dbd-4098-41f5-9c5f-1d04de4dab84)
 
 # Introduction 
+Bit Theory is a group formed of Sacramento State University senior CS students. We are currently working on the development of a website that can provide for our client's need for a platform that can properly host and advertise his services so that he may futher his reach on clientel and grow his business. Our members are comprised of individuals with their own unique software development skills which we use accordingly in order to achieve appointed tasks and contribute to the growth of the project. Led by Savannah Birdsong-See, Bit Theory's members are working towards completion of this project within Fall 2024.
 
 # Background
 Communication Solutions is a startup company in a consulting industry owned by Issac Jones. The mission is to provbide professional assistance in managing the marketing of other companies specifically specializing supporting startup companies. His years of experience in the filed have given him a deep understanding of how the professional service industry works and what it takes for a company to success. With Communication Solutions, Jones hopes to help grow clients' buisiness by developing their buisiness techniques.
