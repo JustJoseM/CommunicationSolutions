@@ -20,12 +20,15 @@ Background can be about the client or company
  
 + Key Feature #3
    - Testimonial Page: Read about other businesses our client has worked with, and how their business has succeeded thanks to his assistance.
+   - Actual testimonials will be acquired from previous clients prior to the final publication of the website.
  
 + Key Feature #4
-   - Description:
+   - Admin portal: The site admin, in this case, our client, can access the Admin portal to cancel or edit appointments as necessary.
+   - To be implemented in CSC 191.
  
 + Key Feature #5
-   - Description:
+   - User Friendly UI: Whoever is accessing the site can easily navigate to whatever page they need, and gather the information they require.
+   - To be further expanded upon in CSC 191.
 
 # Tech Stack
 ### Frontend
