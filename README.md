@@ -48,8 +48,8 @@ Communication Solutions is a startup company in a consulting industry owned by I
 1. Github 
 
 ### Deployment
-1. First list item
-   - Cost:
+1. Azure App Service
+   - Cost:$13.14/Monthg
 
 # Prototype 
 images of prototypes
@@ -65,11 +65,19 @@ _Placeholders for CSC191_
 
 # TimeLine
 + Sprint 5
-   - Task #
+   - Enhance Landing Page UI based on client feedback
+   - Develop Navigation Menu functionality
+   - Implement Client Sign In and Login features
+   - Define SQL Tables for database structure
+   - Establish database connection
 
 + Sprint 6
-   - Task #
- 
+   - Integrate Sign-up authentication process
+   - Implement backend logic for password recovery
+   - Enable password change functionality for clients
+   - Provide Admin portal with a list of current clients
+   - Refine About Us page UI as per client feedback
+
 + Sprint 7
    - Task #
  
