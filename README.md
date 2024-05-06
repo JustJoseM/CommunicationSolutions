@@ -77,19 +77,19 @@ _Placeholders for CSC191_
    - Task #
 
 # Contact
-+ Name (Development Team)
-   - Contact: (email) 
-+ Name (Development Team)
-   - Contact: (email) 
-+ Name (Development Team)
-   - Contact: (email) ail)
-+ Name (Development Team)
-   - Contact: (email) 
-+ Name (Development Team)
-   - Contact: (email) 
-+ Name (Development Team)
-   - Contact: (email) 
-+ Name (Development Team)
-   - Contact: (email) 
-+ Name (Development Team)
-   - Contact: (email) 
++ Savannah Birdsong-See (Development Team)
+   - Contact: sbirdsong-see@csus.edu
++ Arshmit Singh Bains (Development Team)
+   - Contact: abains2@csus.edu
++ Arjhay Quismorio (Development Team)
+   - Contact: arjhayquismorio@csus.edu
++ Daniel Chu (Development Team)
+   - Contact: dchu@csus.edu
++ Yaksh Patel (Development Team)
+   - Contact: yakshpatel@csus.edu
++ Jose Martinez (Development Team)
+   - Contact: jjmartinez@csus.edu
++ Seungjin Chae (Development Team)
+   - Contact: seungjinchae@csus.edu
++ Jaime Montanez (Development Team)
+   - Contact: jaimemontanez@csus.edu
