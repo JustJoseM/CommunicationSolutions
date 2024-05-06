@@ -1,7 +1,8 @@
 
 # CommunicationSolutions
 
-![fillerlogo](https://github.com/JustJoseM/CommunicationSolutions/assets/115119329/bd259dbd-4098-41f5-9c5f-1d04de4dab84)
+![protoLogo](https://github.com/JustJoseM/CommunicationSolutions/assets/115119329/15707eed-64c0-4dfa-934a-109fac31b94b)
+
 
 # Introduction 
 Bit Theory is a group formed of Sacramento State University senior CS students. We are currently working on the development of a website that can provide for our client's need of a platform that can properly host and advertise his services so that he may futher his reach on clientel and grow his business. Our members are comprised of individuals with their own unique software development skills which we use accordingly in order to achieve appointed tasks and contribute to the growth of the project. Led by Savannah Birdsong-See, Bit Theory's members are working towards completion of this project within Fall 2024.
@@ -50,7 +51,7 @@ Communication Solutions is a startup company in a consulting industry owned by I
 
 ### Deployment
 1. Azure App Service
-   - Cost:$13.14/Monthg
+   - Cost:$13.14/Month
 
 # Prototype 
 https://github.com/JustJoseM/CommunicationSolutions/assets/59710423/bcdb6e9d-f12d-48af-9182-483922540687
