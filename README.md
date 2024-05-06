@@ -54,6 +54,12 @@ Communication Solutions is a startup company in a consulting industry owned by I
 # Prototype 
 https://github.com/JustJoseM/CommunicationSolutions/assets/59710423/bcdb6e9d-f12d-48af-9182-483922540687
 
+Mockup:
+![image](https://github.com/JustJoseM/CommunicationSolutions/assets/93031586/ea2c6e3d-92a9-4d82-ba0d-6d5e9b5e1cb7)
+
+ER Diagram:
+![CSC 190 (3)](https://github.com/JustJoseM/CommunicationSolutions/assets/93031586/239667fc-b1fa-48bc-a886-930d07e6391e)
+
 
 # Testing
 _Placeholders for CSC191_
