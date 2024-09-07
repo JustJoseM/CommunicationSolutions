@@ -1,7 +1,7 @@
 import React from "react";
 import './Clients.css';
 
-function Users() {
+function Clients() {
     return (
         <div className="ClientPage">
             <h1>Client information here</h1>
