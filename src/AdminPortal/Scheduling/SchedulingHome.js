@@ -8,3 +8,5 @@ function SchedulingHome() {
         </div>
     )
 }
+
+export default SchedulingHome;
