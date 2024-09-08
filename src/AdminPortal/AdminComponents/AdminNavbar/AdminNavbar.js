@@ -16,22 +16,33 @@ const AdminNavbar = () => {
                 <span>Admin123</span>
             </div>
             <div className="icons">
-                <img src={search} alt="search icon"/>
-                <img src={calendar} alt="calendar icon"/>
-                <img src={apps} alt="apps icon"/>
+                <a href="/admin">
+                    <img src={search} alt="search icon"/>
+                </a>
+                <a href="/admin">
+                    <img src={calendar} alt="calendar icon"/>
+                </a>
+                <a href="/admin">
+                    <img src={apps} alt="apps icon"/>
+                </a>
             </div>
             <div className="notification">
-                <img src={notification} alt="notification icon"/>
-                <span>1</span>
+                <a href="/admin">
+                    <img src={notification} alt="notification icon"/>
+                    <span>1</span>
+                </a> 
             </div>
             <div className="user">
-                <img src={user} alt="user icon"/>
-                <span>Admin</span>
+                <a href="/admin">
+                    <img src={user} alt="user icon" />
+                    <span>Admin</span>
+                </a>
             </div>
             <div className="settings">
-                <img src={setting} alt="settings icon"/>
+                <a href="/admin">
+                    <img src={setting} alt="settings icon" />
+                </a>
             </div>
-
         </div>
     )
 }
