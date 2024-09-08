@@ -45,7 +45,7 @@ function App() {
                 },
                 { /* Route for Clients*/
                     path:"/admin/clients",
-                    element:<Clients/>
+                    element:<Clients />
                 },
                 { /* Route for Scheduling*/
                     path:"/admin/schedule",
