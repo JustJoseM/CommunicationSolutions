@@ -68,46 +68,61 @@
 import AdminHome from './AdminPortal/Home/AdminHome';
 import Clients from './AdminPortal/Clients/Clients';
 import SchedulingHome from './AdminPortal/Scheduling/SchedulingHome';
+import AdminFooter from './AdminPortal/Components/Footer/AdminFooter';
+import AdminNavbar from './AdminPortal/Components/Navbar/AdminNavbar';
+import Menu from './AdminPortal/Components/Menu/Menu';
 import {
-    BrowserRouter as Router,
-    Routes, 
-    Route,
-    Navigate,
-} from "react-router-dom";
-
-const Layout = ()=> {
-    return(
-        <div className="main">
-            
-        </div>
-    )
-}
+    createBrowserRouter,
+    RouterProvider,
+    Outlet
+  } from "react-router-dom";
 
 
 function App() {
+
+    const Layout =()=> {
+        return (
+            <div className="App">
+                <AdminNavbar />
+                <div className="container">
+                    <div className="menuContainer">
+                        <Menu />
+                    </div>
+                    <div className="contentContainer">
+                        <Outlet />
+
+                    </div>
+                </div>
+                <AdminFooter />
+            </div>
+
+        )
+    }
+
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Layout />,
+            children:[
+                { /* Route for Home*/
+                    path:"/",
+                    element:<AdminHome/>
+                },
+                { /* Route for Clients*/
+                    path:"/clients",
+                    element:<Clients/>
+                },
+                { /* Route for Scheduling*/
+                    path:"/schedule",
+                    element:<SchedulingHome/>
+                },
+            ]
+        },
+      ]);
+
+
     return (
-        <div className="App">
-            <Router>
-                <Routes>
-                    {/* Route for 'AdminHome' component -> path is '/' */}
-                    <Route
-                        exact
-                        path="/"
-                        element={<AdminHome />}
-                    />
-                    {/*This route is for the 'Clients' component -> path is /schedule*/}
-                         <Route
-                             path="/clients"
-                             element={<Clients />}
-                         />
-                         {/*This route is for the 'Scheduling' component -> path is /about*/}
-                         <Route
-                             path="/schedule"
-                             element={<SchedulingHome />}
-                         />
-                </Routes>
-            </Router>
-        </div>
+        <RouterProvider router={router}/>
     );
 }
 

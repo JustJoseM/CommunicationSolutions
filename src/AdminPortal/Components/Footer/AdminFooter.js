@@ -1,7 +1,7 @@
 import React from "react";
 import "./AdminFooter.css";
 
-function AdminFooter() {
+const AdminFooter = () => {
     return(
         <div className="footer">Footer</div>
     )

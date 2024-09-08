@@ -1,7 +1,7 @@
 import React from "react";
 import './AdminHome.css';
 
-function AdminHome() {
+const AdminHome = () => {
     return(
         <div className="AdminHome">
             <h1>Welcome to Admin Portal</h1>

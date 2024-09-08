@@ -1,7 +1,7 @@
 import React from "react";
 import './SchedulingHome.css';
 
-function SchedulingHome() {
+const SchedulingHome = () => {
     return (
         <div className="SchedulingHome">
             <h1>Temporary page for scheduling to later be implemented</h1>
