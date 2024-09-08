@@ -90,13 +90,13 @@ export const menu = [
             {
                 id: 1,
                 title: "Charts",
-                url: "/",
+                url: "/admin",
                 icon: "",
             },
             {
                 id: 2,
                 title: "Logs",
-                url: "/",
+                url: "/admin",
                 icon: "log.svg",
             },
         ],
