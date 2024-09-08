@@ -17,12 +17,12 @@
 
 .box1 {
     grid-column: span 1;
-    grid-row: span 3;
+    grid-row: span 4;
 }
 
 .box4 {
     grid-column: span 1;
-    grid-row: span 3;
+    grid-row: span 4;
 }
 
 .box7 {
