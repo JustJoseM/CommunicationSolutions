@@ -1,0 +1,28 @@
+
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 200;
+    color: #ddd;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    color: #ddd;
+    text-decoration: none;
+    gap: 10px;
+    padding: 10px;
+
+    &:hover {
+        background-color: #384256;
+    }
+}

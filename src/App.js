@@ -6,6 +6,7 @@ import SchedulingHome from './AdminPortal/AdminScheduling/SchedulingHome';
 import AdminFooter from './AdminPortal/AdminComponents/AdminFooter/AdminFooter';
 import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
+import Profile from './AdminPortal/AdminProfile/Profile';
 import './App.css';
 import {
     createBrowserRouter,
@@ -50,6 +51,11 @@ function App() {
                     path:"/admin/schedule",
                     element:<SchedulingHome/>
                 },
+                {
+                    /* Route for Profile */
+                    path:"/admin/profile",
+                    element:<Profile />
+                }
             ]
         }
       ]);

@@ -13,7 +13,7 @@ const AdminNavbar = () => {
         <div className="navbar">
             <div className="logo">
                 <img src={logo} alt="admin logo" />
-                <span>admin</span>
+                <span>Admin123</span>
             </div>
             <div className="icons">
                 <img src={search} alt="search icon"/>
