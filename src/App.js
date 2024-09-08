@@ -71,6 +71,8 @@ import SchedulingHome from './AdminPortal/Scheduling/SchedulingHome';
 import AdminFooter from './AdminPortal/Components/Footer/AdminFooter';
 import AdminNavbar from './AdminPortal/Components/Navbar/AdminNavbar';
 import Menu from './AdminPortal/Components/Menu/Menu';
+import Login from './AdminPortal/Login/Login';
+import './App.css';
 import {
     createBrowserRouter,
     RouterProvider,
@@ -90,12 +92,10 @@ function App() {
                     </div>
                     <div className="contentContainer">
                         <Outlet />
-
                     </div>
                 </div>
                 <AdminFooter />
             </div>
-
         )
     }
 
@@ -118,6 +118,10 @@ function App() {
                 },
             ]
         },
+        {
+            path:"/login",
+            element: <Login />
+        }
       ]);
 
 
