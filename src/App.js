@@ -19,7 +19,7 @@ function App() {
 
     const Layout =()=> {
         return (
-            <div className="AdminApp">
+            <div className="App">
                 <AdminNavbar />
                 <div className="container">
                     <div className="menuContainer">
@@ -45,17 +45,12 @@ function App() {
                 },
                 { /* Route for Clients*/
                     path:"/admin/clients",
-                    element:<Clients />
+                    element:<Clients/>
                 },
                 { /* Route for Scheduling*/
                     path:"/admin/schedule",
                     element:<SchedulingHome/>
                 },
-                {
-                    /* Route for Profile */
-                    path:"/admin/profile",
-                    element:<Profile />
-                }
             ]
         }
       ]);

@@ -7,6 +7,7 @@ import {
     Navigate,
 } from "react-router-dom";
 import './App.css';
+import './AdminApp.css';
 import './PagesCSS/Footer.css';
 
 /* Regular Site imports */
