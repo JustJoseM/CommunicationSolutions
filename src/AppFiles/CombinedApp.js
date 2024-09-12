@@ -109,6 +109,10 @@ function App() {
                     path:"/admin/schedule",
                     element:<SchedulingHome/>
                 },
+                { /* Route for Profile */
+                    path:"/admin/profile",
+                    element:<Profile />
+                }
             ]
         }
     ]);
