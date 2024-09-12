@@ -12,24 +12,32 @@ import Sidebar from './Components/Sidebar';
 import Home from './Pages/Home';
 import Footer from "./Components/Footer";
 import SignIn from "./Pages/SignIn";
+import ScheduleAppt from "./Pages/ScheduleAppt";
 import AboutUs from "./Pages/AboutUs";
 import Testimonial from "./Pages/Testimonial";
 import Contact from "./Pages/Contact";
 
 function App() {
     return (
-        <div className="App">
-            <Navbar />
-            <Sidebar />
-            <Router>
+        <Router>
+            <div className="App">
+                <Navbar />
+                <Sidebar />
                 <Routes>
-                    {/* This route is for 'Home' component -> path is '/' */}
+                        {/* This route is for 'Home' component -> path is '/' */}
                         <Route
                             exact
                             path="/"
                             element={<Home />}
                         />
-                        {/*This route is for the 'Schedule' component -> path is /schedule*/}
+
+                        {/*This route is for the 'Schdule Appointment' component -> path is /scheduleappt*/}
+                        <Route
+                            path="/schedule"
+                            element={<ScheduleAppt />}
+                        />
+
+                        {/*This route is for the 'Signin' component -> path is /signin*/}
                         <Route
                             path="/signin"
                             element={<SignIn />}
@@ -55,10 +63,9 @@ function App() {
                             element={<Navigate to="/" />}
                         />
                 </Routes>
-            </Router>
-        <Footer />
-        </div>
-        
+                <Footer />
+            </div>
+        </Router> 
     )
 }
 export default App;
