@@ -22,7 +22,7 @@ export const recentClients = [
     },
     {
         id: 4,
-        img: "https://static.wikia.nocookie.net/kirby/images/0/0b/1543204521785.png/revision/latest?cb=20181229025645&path-prefix=en",
+        img: "https://cdn.wikirby.com/thumb/2/25/KDL3_ChuChu_artwork.png/200px-KDL3_ChuChu_artwork.png",
         name: "ChuChu",
         email: "chuchu@kirby.co.jp",
         number: "342-170-0010",
@@ -43,9 +43,23 @@ export const recentClients = [
     },
     {
         id: 7,
-        img: "https://static.wikia.nocookie.net/kirby/images/a/a7/HnK_Pon.png/revision/latest?cb=20130823203929&path-prefix=en",
-        name: "Pon",
-        email: "pon@kirby.co.jp",
+        img: "https://cdn.wikirby.com/thumb/2/25/KSA_Zan_Partizanne_pause_screen_artwork.png/537px-KSA_Zan_Partizanne_pause_screen_artwork.png?20230218234936",
+        name: "Zan Partizanne",
+        email: "ZanP@kirby.co.jp",
         number: "534-175-4441",
+    },
+    {
+        id: 8,
+        img: "https://64.media.tumblr.com/95bb001905ab586f9b2cc72f18c48f14/tumblr_pp8gedmiD01x908lio1_400.png",
+        name: "Nyunpun",
+        email: "nyunpun@kirby.co.jp",
+        number: "491-2951-8972"
+    },
+    {
+        id: 9,
+        img: "https://cdn.wikirby.com/thumb/d/df/KSA_Flamberge_pause_screen_artwork.png/520px-KSA_Flamberge_pause_screen_artwork.png?20230218234252",
+        name: "Flamberge",
+        email: "flamberge@kirby.co.jp",
+        number: "534-191-3391"
     },
 ];

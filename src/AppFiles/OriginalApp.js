@@ -23,33 +23,33 @@ function App() {
             <Sidebar />
             <Router>
                 <Routes>
-                    {/* This route is for 'Home' component -> path is '/' */}
+                    {/* This route is for 'Home' component */}
                         <Route
                             exact
                             path="/"
                             element={<Home />}
                         />
-                        {/*This route is for the 'Schedule' component -> path is /schedule*/}
+                        {/*This route is for the 'sign-in' component */}
                         <Route
                             path="/signin"
                             element={<SignIn />}
                         />
-                        {/*This route is for the 'About' component -> path is /about*/}
+                        {/*This route is for the 'About' component*/}
                         <Route
                             path="/about"
                             element={<AboutUs />}
                         />
-                        {/*This route is for the 'Testimonial' component -> path is /testimonial*/}
+                        {/*This route is for the 'Testimonial' component */}
                         <Route
                             path="/testimonial"
                             element={<Testimonial />}
                         />
-                        {/*This route is for the 'Contact' component -> path is /contact*/}
+                        {/*This route is for the 'Contact' component */}
                         <Route
                             path="/contact"
                             element={<Contact />}
                         />
-                        {/*This route is for any mismatch -> defaults to '/'*/}
+                        {/*This route is for any mismatch */}
                         <Route
                             path="*"
                             element={<Navigate to="/" />}

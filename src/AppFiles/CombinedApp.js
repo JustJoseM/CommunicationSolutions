@@ -23,9 +23,10 @@ import Contact from "./Pages/Contact";
 import AdminHome from './AdminPortal/AdminHome/AdminHome';
 import Clients from './AdminPortal/AdminClients/Clients';
 import SchedulingHome from './AdminPortal/AdminScheduling/SchedulingHome';
-import AdminFooter from './AdminPortal/Components/AdminFooter/AdminFooter';
-import AdminNavbar from './AdminPortal/Components/AdminNavbar/AdminNavbar';
-import Menu from './AdminPortal/Components/AdminMenu/Menu';
+import AdminFooter from './AdminPortal/AdminComponents/AdminFooter/AdminFooter';
+import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
+import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
+import Profile from './AdminPortal/AdminProfile/Profile';
 
 function App() {
     const MainLayout = () => {
@@ -60,29 +61,35 @@ function App() {
             path: "/",
             element: <MainLayout />,
             children: [
-                {/* This route is for 'Home' component -> path is '/' */
+                {
+                    /* This route is for the 'Home' component */
                     path: "/",
                     element: <Home />
                 },
                 {
+                    /* This route is for the 'Sign-In' component */
                     path: "/signin",
                     element: <SignIn />
                 },
                 {
+                    /* This route is for the 'About' component */
                     path: "/about",
                     element: <AboutUs />
                 },
                 {
+                    /* This route is for the 'Testimonial' component */
                     path: "/testimonial",
                     element: <Testimonial />
                 },
                 {
+                    /* This route is for the 'Contact' component */
                     path: "/contact",
                     element: <Contact />
                 },
                 {
-                    path: "/*",
-                    element: <Navigate to = "/" />
+                    /* This route is for any mismatch. Defaults to '/' */
+                    path: "*",
+                    element: <Navigate to="/" />
                 }
             ]
         },

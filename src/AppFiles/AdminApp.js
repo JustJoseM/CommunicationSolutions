@@ -1,11 +1,12 @@
 //Temporary Admin Portal Landing Page
 
-import AdminHome from './AdminPortal/Home/AdminHome';
-import Clients from './AdminPortal/Clients/Clients';
-import SchedulingHome from './AdminPortal/Scheduling/SchedulingHome';
-import AdminFooter from './AdminPortal/Components/Footer/AdminFooter';
-import AdminNavbar from './AdminPortal/Components/Navbar/AdminNavbar';
-import Menu from './AdminPortal/Components/Menu/Menu';
+import AdminHome from './AdminPortal/AdminHome/AdminHome';
+import Clients from './AdminPortal/AdminClients/Clients';
+import SchedulingHome from './AdminPortal/AdminScheduling/SchedulingHome';
+import AdminFooter from './AdminPortal/AdminComponents/AdminFooter/AdminFooter';
+import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
+import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
+import Profile from './AdminPortal/AdminProfile/Profile';
 import './App.css';
 import {
     createBrowserRouter,
