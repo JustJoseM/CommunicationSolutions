@@ -1,4 +1,4 @@
-.contact_container {
+.MainApp .contact_container {
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -9,29 +9,29 @@
     padding-bottom: 15rem;
 }
 
-.contact-text{
+.MainApp .contact-text{
     position: relative;
     top: -110px;
     left: 0px;
     /* border: 5px solid black; */
 }
 
-.contact-text h4{
+.MainApp .contact-text h4{
     font-size: 60px;
     color: rgb(12, 66, 12);
 }
 
-.contact-text p{
+.MainApp .contact-text p{
     font-size: 20px;
 }
 
-.contact-img img{
+.MainApp .contact-img img{
     border-radius: 10px;
     width: 800px;
     height: auto;
 }
 
-.phone-number{
+.MainApp .phone-number{
     font-size: large;
     background-color: white;
     padding: 5rem;
@@ -43,7 +43,7 @@
     /* border: 5px solid black; */
 }
 
-.email{
+.MainApp .email{
     font-size: large;
     background-color: white;
     padding: 5rem;

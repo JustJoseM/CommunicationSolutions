@@ -1,4 +1,4 @@
-.AdminHome {
+.AdminApp .AdminHome {
     display: grid;
     padding-left: 20px;
     padding-right: 20px;
@@ -7,7 +7,7 @@
     grid-auto-rows: minmax(180px, auto);
 }
 
-.box {
+.AdminApp .box {
     padding: 20px;
     border-radius: 10px;
     border: 2px solid #384256;
@@ -15,17 +15,17 @@
     color: #596277;
 }
 
-.box1 {
+.AdminApp .box1 {
     grid-column: span 1;
     grid-row: span 4;
 }
 
-.box4 {
+.AdminApp .box4 {
     grid-column: span 1;
     grid-row: span 4;
 }
 
-.box7 {
+.AdminApp .box7 {
     grid-column: span 2;
     grid-row: span 2;
 }

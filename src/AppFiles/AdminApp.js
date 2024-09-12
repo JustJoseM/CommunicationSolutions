@@ -37,7 +37,7 @@ function App() {
     const router = createBrowserRouter([
         {
             path: "/admin",
-            element: <Layout />,
+            element: <AdminLayout />,
             children:[
                 { /* Route for Home*/
                     path:"/admin",
@@ -51,6 +51,11 @@ function App() {
                     path:"/admin/schedule",
                     element:<SchedulingHome/>
                 },
+                {
+                 /* Route for Profile */
+                 path:"/admin/profile",
+                 element:<Profile />
+             }
             ]
         }
       ]);

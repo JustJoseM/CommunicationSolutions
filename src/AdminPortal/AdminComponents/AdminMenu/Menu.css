@@ -1,18 +1,18 @@
-.items {
+.AdminApp .items {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.title {
+.AdminApp .title {
     font-size: 15px;
     font-weight: 200;
     color: #ddd;
     text-transform: uppercase;
 }
 
-.listItem {
+.AdminApp .listItem {
     display: flex;
     align-items: center;
     border-radius: 5px;

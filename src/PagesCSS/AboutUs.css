@@ -1,5 +1,5 @@
 /*For Navbar*/
-.nav {
+.MainApp .nav {
     background-color: #0b0a17;
     color: white;
     display: flex;
@@ -10,16 +10,16 @@
     padding-left: 2rem;
 }
 
-.title {
+.MainApp .title {
     font-size: 30px;
 }
 
-.sample{
+.MainApp .sample{
     font-size: 30px;
     padding-right: 20rem;
 }
 
-.button{
+.MainApp .button{
     background-color: black;
     color: white;
     padding: 1rem;
@@ -28,7 +28,7 @@
 }
 
 /*For HeroSection*/
-.Homes {
+.MainApp .Homes {
     height: 300px;
     /* background-image: url(../assets/hero.jpeg);
     background-size: cover;
@@ -40,14 +40,14 @@
     /* font-size: xx-large; */
 }
 
-.container {
+.MainApp .container {
     background-color: black;
     display: inline-block;
     color: white;
     padding: 1rem;
 }
 
-.text{
+.MainApp .text{
     font-size: 2em;
     letter-spacing: 10px;
     font-family: monospace;
@@ -68,7 +68,7 @@
     from { width: 0 }
 }
 
-.containersz{
+.MainApp .containersz{
     background-color: #0b0a17;
     color: white;
     display: flex;
@@ -79,7 +79,7 @@
 }
 
 
-.title-text{
+.MainApp .title-text{
     font-size: x-large;
     display: flex;
     justify-content: space-between;
@@ -88,7 +88,7 @@
     padding-left: 25rem;
 }
 
-.serv_container {
+.MainApp .serv_container {
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -98,7 +98,7 @@
     padding-left: 13rem; 
 }
 /*For Content1*/
-.serv_img img{
+.MainApp .serv_img img{
     border: 5px solid black;
     border-radius: 10px;
     width: 400px;
@@ -106,7 +106,7 @@
     overflow: hidden;
 }
 
-.vLine {
+.MainApp .vLine {
     border-left: 6px solid black;
     height: 350px;
     position: absolute;
@@ -114,7 +114,7 @@
     margin-left: -4px;
  }
 
-.service_one{
+.MainApp .service_one{
     font-size: xx-large;
     position: absolute;
     text-align: center;
@@ -122,7 +122,7 @@
 }
 
 /*For Content2*/
-.serv_container_t {
+.MainApp .serv_container_t {
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -132,14 +132,14 @@
     padding-right: 16rem; 
 }
 
-.serv_img_t img{
+.MainApp .serv_img_t img{
     border: 5px solid black;
     border-radius: 10px;
     width: 400px;
     height: auto;
 }
 
-.service_two{
+.MainApp .service_two{
     font-size: xx-large;
     position: absolute;
     text-align: center;
@@ -147,7 +147,7 @@
 }
 
 /*For Content3*/
-.serv_container_th {
+.MainApp .serv_container_th {
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -157,14 +157,14 @@
     padding-left: 13rem; 
 }
 
-.serv_img_th img{
+.MainApp .serv_img_th img{
     border: 5px solid black;
     border-radius: 10px;
     width: 400px;
     height: auto;
 }
 
-.service_three{
+.MainApp .service_three{
     font-size: xx-large;
     position: absolute;
     text-align: center;
