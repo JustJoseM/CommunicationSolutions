@@ -35,6 +35,9 @@ function App() {
             <div className="MainApp">
                 <Navbar />
                 <Sidebar />
+                <div>
+                    <Outlet />
+                </div>
                 <Footer />
             </div>
         )
@@ -64,7 +67,7 @@ function App() {
             children: [
                 {
                     /* This route is for the 'Home' component */
-                    path: "/",
+                    index: true,
                     element: <Home />
                 },
                 {
@@ -99,7 +102,7 @@ function App() {
             element: <AdminLayout />,
             children: [
                 { /* Route for Home*/
-                    path:"/admin",
+                    index: true,
                     element:<AdminHome/>
                 },
                 { /* Route for Clients*/
