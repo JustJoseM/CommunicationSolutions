@@ -32,12 +32,9 @@ import Profile from './AdminPortal/AdminProfile/Profile';
 function App() {
     const MainLayout = () => {
         return (
-            <div className="MainApp">
+            <div className="App">
                 <Navbar />
                 <Sidebar />
-                <div>
-                    <Outlet />
-                </div>
                 <Footer />
             </div>
         )
@@ -67,7 +64,7 @@ function App() {
             children: [
                 {
                     /* This route is for the 'Home' component */
-                    index: true,
+                    path: "/",
                     element: <Home />
                 },
                 {
@@ -102,7 +99,7 @@ function App() {
             element: <AdminLayout />,
             children: [
                 { /* Route for Home*/
-                    index: true,
+                    path:"/admin",
                     element:<AdminHome/>
                 },
                 { /* Route for Clients*/

@@ -1,0 +1,31 @@
+.AdminApp .AdminHome {
+    display: grid;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+}
+
+.AdminApp .box {
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #384256;
+    background-color: #e0f1ff;
+    color: #596277;
+}
+
+.AdminApp .box1 {
+    grid-column: span 1;
+    grid-row: span 4;
+}
+
+.AdminApp .box4 {
+    grid-column: span 1;
+    grid-row: span 4;
+}
+
+.AdminApp .box7 {
+    grid-column: span 2;
+    grid-row: span 2;
+}

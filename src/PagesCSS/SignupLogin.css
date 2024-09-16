@@ -1,4 +1,4 @@
-body {
+.MainApp body {
     --color-background: #ffffff;
     --color-primary: #9facbb;
     --color-border: #4b98f0;
@@ -17,12 +17,12 @@ body {
 }
 
 /* Hide sign up page */
-.form__hidden {
+.MainApp .form__hidden {
     display: none;
 }
 
 /* Set size and location of the container*/
-.login__container {
+.MainApp .login__container {
     flex-direction: column;
     width: 400px;
     height: 450px;
@@ -37,7 +37,7 @@ body {
 }
 
 /* Seeting for Sign in text */
-.header {
+.MainApp .header {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -49,34 +49,34 @@ body {
 }
 
 /* Elimitate the gap on top and bottom */
-.form > *:first-child {
+.MainApp .form > *:first-child {
     margin-top: 0;
 }
 
-.form > *:last-child {
+.MainApp .form > *:last-child {
     margin-bottom: 0;
 }
 
-.form__message {
+.MainApp .form__message {
     text-align: center;
     margin-bottom: 1rem;
 }
 
-.form__message-success {
+.MainApp .form__message-success {
     color: var(--color-success);
 }
 
-.form__message-error {
+.MainApp .form__message-error {
     color: var(--color-error);
 }
 
 /* Make space between boxes */
-.forom__input-group {
+.MainApp .forom__input-group {
     margin-bottom: 1rem;
 }
 
 /* Create grey box for user input */
-.form__input {
+.MainApp .form__input {
     display: block;
     width: 100%;
     padding: 0.75rem;
@@ -89,20 +89,20 @@ body {
 }
 
 /* Set color when column box is clicked */
-.form__input:focus {
+.MainApp .form__input:focus {
     border-color: var(--color-border);
     background: #ffffff;
 }
 
 /* Set error message color */
-.form__input-error-message {
+.MainApp .form__input-error-message {
     margin-top: 0.5rem;
     font-size: 0.85rem;
     color: var(--color-error);
 }
 
 /* Change size and color of button */
-.form__button {
+.MainApp .form__button {
     width: 100%;
     padding: 1rem 2rem;
     font-weight: bold;
@@ -116,41 +116,41 @@ body {
 }
 
 /* Change color when mouse is hovered on button */
-.form__button:hover {
+.MainApp .form__button:hover {
     background: var(--color-primary-dark);
 }
 /* Shrink size of button when it's clicked */
-.form__button:active {
+.MainApp .form__button:active {
     transform: scale(0.98);
 }
 
-.form__text__forgot {
+.MainApp .form__text__forgot {
     margin-top: 0.3rem;
 }
 
-.form__text__login {
+.MainApp .form__text__login {
     margin-top: 5.5rem;
 }
 
-.form__text__createAcc {
+.MainApp .form__text__createAcc {
     margin-top: 10rem;
 }
 
 /* Forgot password text setting */
-.forgot-password {
+.MainApp .forgot-password {
     color:#4797e7;
     font-size: 13px;
 }
 
 /* Setting for create account and log in button */
-.form__link {
+.MainApp .form__link {
     color:#2486e9;
     cursor: pointer;
     border: none;
     font-size: 15px;
 }
 
-.form__link:hover {
+.MainApp .form__link:hover {
   
     border-radius: 20px;
     background:#e1e4e9;
