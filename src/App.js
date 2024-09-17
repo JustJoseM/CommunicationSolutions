@@ -19,6 +19,7 @@ import SignIn from "./Pages/SignIn";
 import AboutUs from "./Pages/AboutUs";
 import Testimonial from "./Pages/Testimonial";
 import Contact from "./Pages/Contact";
+import ScheduleAppt from "./Pages/ScheduleAppt";
 
 /* Admin imports */
 import AdminHome from './AdminPortal/AdminHome/AdminHome';
@@ -69,6 +70,11 @@ function App() {
                     /* This route is for the 'Home' component */
                     index: true,
                     element: <Home />
+                },
+                {
+                    /* This route is for the 'Schdule Appointment' component */
+                    path: "/schedule",
+                    element: <ScheduleAppt />
                 },
                 {
                     /* This route is for the 'Sign-In' component */

@@ -1,4 +1,4 @@
-.MainApp body {
+body {
     --color-background: #ffffff;
     --color-primary: #9facbb;
     --color-border: #4b98f0;
@@ -107,17 +107,17 @@
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
+    background: #95a0ab;
     color: #ffffff;
     border: none;
     border-radius: var(--border-radius);
     outline: none;
     cursor: pointer;
-    background: var(--color-primary);
 }
 
 /* Change color when mouse is hovered on button */
 .MainApp .form__button:hover {
-    background: var(--color-primary-dark);
+    background: #5e666e;
 }
 /* Shrink size of button when it's clicked */
 .MainApp .form__button:active {
@@ -151,7 +151,6 @@
 }
 
 .MainApp .form__link:hover {
-  
     border-radius: 20px;
     background:#e1e4e9;
 }
