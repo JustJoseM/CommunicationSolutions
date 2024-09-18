@@ -1,6 +1,6 @@
 import React from 'react';
 import '../PagesCSS/AboutUs.css';
-// import Button from './Button';
+import {Link} from 'react-router-dom';
 
 function Navbar() {
  
@@ -11,7 +11,9 @@ function Navbar() {
                     <h4>Communication Solutions</h4>
                 </div>
                 <div className='sample'>
-                    <button class="button">Schedule Appointment</button>
+                    <Link to="/schedule">
+                        <button className="button">Schedule Appointment</button>
+                    </Link>
                 </div>
             </div>
         </>

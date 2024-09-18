@@ -3,6 +3,7 @@ import '../PagesCSS/Home.css';
 import { Link } from "react-router-dom";
 import placeholder from '../assets/hero.jpeg';
 
+
 function Home() {
     return (
         <div className="Home">

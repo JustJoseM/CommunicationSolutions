@@ -1,0 +1,68 @@
+/* Sidebar default hidden state */
+.Sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+}
+
+/* Open state when sidebar is visible */
+.Sidebar.open {
+    width: 270px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+.SidebarList .row {
+    padding: 15px 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.SidebarList .row:hover {
+    background-color: #575757;
+}
+
+#active {
+    background-color: #575757;
+}
+
+.toggle-btn {
+    font-size: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    transition: 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: #575757;
+}
+
+.toggle-btn span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+}
