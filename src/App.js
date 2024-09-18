@@ -35,9 +35,7 @@ function App() {
             <div className="MainApp">
                 <Navbar />
                 <Sidebar />
-                <div>
-                    <Outlet />
-                </div>
+                <Outlet />
                 <Footer />
             </div>
         )

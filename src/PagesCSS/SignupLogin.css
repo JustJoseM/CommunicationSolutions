@@ -107,7 +107,7 @@
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
-    color: #ffffff;
+    color: #261717;
     border: none;
     border-radius: var(--border-radius);
     outline: none;
@@ -154,4 +154,10 @@
   
     border-radius: 20px;
     background:#e1e4e9;
+}
+
+.MainApp .background{
+    background-image: url('../assets/liger.png');
+    height: 100vh;
+    background-size: cover;
 }

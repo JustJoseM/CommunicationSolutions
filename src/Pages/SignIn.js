@@ -6,6 +6,7 @@ function SignupLogin() {
     const [showLoginForm, setShowLoginForm] = useState(true);
 
     return (
+        <div className='background'>
         <div className="login__container">
             {showLoginForm ? (
                 // Log in to existing account
@@ -71,6 +72,7 @@ function SignupLogin() {
                     </p>
                 </form>
             )}
+        </div>
         </div>
     );
 }
