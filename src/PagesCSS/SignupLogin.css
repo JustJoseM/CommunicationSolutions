@@ -116,7 +116,7 @@ body {
 
 /* Change color when mouse is hovered on button */
 .MainApp .form__button:hover {
-    background: #5e666e;
+    background: #d4d7d8;
 }
 
 /* Shrink size of button when it's clicked */
@@ -125,11 +125,11 @@ body {
 }
 
 .MainApp .form__text__forgot {
-    margin-top: 0.3rem;
+    margin-top: 5.5rem;
 }
 
 .MainApp .form__text__login {
-    margin-top: 1.5rem;
+    margin-top: 3.5rem;
 }
 
 .MainApp .form__text__createAcc {
@@ -147,12 +147,12 @@ body {
     color: #2486e9;
     cursor: pointer;
     border: none;
-    font-size: 22px;
+    font-size: 15px;
 }
 
 .MainApp .form__link:hover {
     border-radius: 20px;
-    background: #e1e4e9;
+    background: #e2e4e7;
 }
 
 .MainApp .background {

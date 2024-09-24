@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { auth } from '../firebaseConfig';  // Adjust the import path as needed
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification } from 'firebase/auth';
 import '../PagesCSS/SignupLogin.css'; // Ensure the path is correct
+
 
 function SignIn() {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -20,6 +21,10 @@ function SignIn() {
         }
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // send verification email
+            await sendEmailVerification(user);
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
             setShowLoginForm(true); // Switch back to login form after successful sign-up
@@ -42,6 +47,7 @@ function SignIn() {
         }
     };
 
+    // Function to handle forgot password
     const handleForgotPassword = async (e) => {
         e.preventDefault();
         try {
