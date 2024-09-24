@@ -12,6 +12,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* margin-top: 200px; */
     background: var(--color-background);
 }
 
@@ -20,12 +21,12 @@ body {
     display: none;
 }
 
-/* Set size and location of the container */
+/* Set size and location of the container*/
 .MainApp .login__container {
     flex-direction: column;
     width: 400px;
     height: 450px;
-    max-width: 400px;
+    max-width: 400;
     margin: auto;
     margin-top: 100px;
     margin-bottom: 100px;
@@ -35,7 +36,7 @@ body {
     background: #ebe9e9af;
 }
 
-/* Setting for Sign in text */
+/* Seeting for Sign in text */
 .MainApp .header {
     display: flex;
     flex-direction: column;
@@ -47,7 +48,7 @@ body {
     font-family: 'Zen Maru Gothic', sans-serif;
 }
 
-/* Eliminate the gap on top and bottom */
+/* Elimitate the gap on top and bottom */
 .MainApp .form > *:first-child {
     margin-top: 0;
 }
@@ -66,12 +67,11 @@ body {
 }
 
 .MainApp .form__message-error {
-   
     color: var(--color-error);
 }
 
 /* Make space between boxes */
-.MainApp .form__input-group {
+.MainApp .forom__input-group {
     margin-bottom: 1rem;
 }
 
@@ -118,7 +118,6 @@ body {
 .MainApp .form__button:hover {
     background: #5e666e;
 }
-
 /* Shrink size of button when it's clicked */
 .MainApp .form__button:active {
     transform: scale(0.98);
@@ -129,33 +128,33 @@ body {
 }
 
 .MainApp .form__text__login {
-    margin-top: 1.5rem;
+    margin-top: 5.5rem;
 }
 
 .MainApp .form__text__createAcc {
-    margin-top: 0.5rem;
+    margin-top: 10rem;
 }
 
 /* Forgot password text setting */
 .MainApp .forgot-password {
-    color: #4797e7;
+    color:#4797e7;
     font-size: 13px;
 }
 
 /* Setting for create account and log in button */
 .MainApp .form__link {
-    color: #2486e9;
+    color:#2486e9;
     cursor: pointer;
     border: none;
-    font-size: 22px;
+    font-size: 15px;
 }
 
 .MainApp .form__link:hover {
     border-radius: 20px;
-    background: #e1e4e9;
+    background:#e1e4e9;
 }
 
-.MainApp .background {
+.MainApp .background{
     background-image: url('../assets/liger.png');
     height: 100vh;
     background-size: cover;
