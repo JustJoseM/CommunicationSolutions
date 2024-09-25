@@ -3,8 +3,11 @@ import { getAuth } from 'firebase/auth';  // Correct import for Firebase Authent
 import {getAnalysis} from "firebase/analytics"
 import { getFirestore } from 'firebase/firestore';  // Import Firestore
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your Firebase configuration object
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyA2_qZWW5fFIf-boGPuFDQUpxgAzPDRNQM",
   authDomain: "communnications-solutions.firebaseapp.com",
@@ -19,6 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and Firestore
+const analytics = getAnalytics(app);
 const auth = getAuth(app);  // Firebase Authentication setup
 const db = getFirestore(app);  // Firestore setup
 
