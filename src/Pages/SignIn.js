@@ -64,74 +64,135 @@ function SignIn() {
 
     return (
         <div className='background'>
-        <div className="login__container">
-            {showLoginForm ? (
-                // Log in to existing account
-                <form className="form" id="login">
-                    <h1 className="header">Sign in</h1>
-                    {/* Create sign in column */}
-                    <div className="form__input-group">
-                        <input type="text" className="form__input" autoFocus placeholder="Enter your email" />
-                        <div className="form__input-error-message"></div>
-                    </div>
-                    {/* Create password column */}
-                    <div className="form__input-group">
-                        <input type="password" className="form__input" placeholder="Password"/>
-                        <div className="form__input-error-message"></div>
-                    </div>
-                    <button className="form__button" type="submit">Continue</button>    
-                    <p className="form__text__forgot">
-                        <a href="#" className="forgot-password">Forgot password?</a>
-                    </p>
-                    <p className="form__text__createAcc">
-                        <button 
-                            type="button"
-                            className="form__link" 
-                            onClick={() => setShowLoginForm(false)} // Switch to create account form
-                        >
-                            Create account
-                        </button>
-                    </p>
-                </form>
-            ) : (
-                // Create new account
-                <form className="form" id="createAccount">
-                    <h1 className="header">Create Account</h1>
-                    {/* Create username column */}
-                    <div className="form__input-group">
-                        <input type="text" className="form__input" autoFocus placeholder="Username" />
-                        <div className="form__input-error-message"></div>
-                    </div>
-                    {/* Create email column */}
-                    <div className="form__input-group">
-                        <input type="email" className="form__input" placeholder="Email" />
-                        <div className="form__input-error-message"></div>
-                    </div>
-                    {/* Create password column */}
-                    <div className="form__input-group">
-                        <input type="password" className="form__input" placeholder="Password"/>
-                        <div className="form__input-error-message"></div>
-                    </div>
-                    {/* Confirm password column */}
-                    <div className="form__input-group">
-                        <input type="password" className="form__input" placeholder="Confirm Password"/>
-                        <div className="form__input-error-message"></div>
-                    </div>
-                    <button className="form__button" type="submit">Continue</button>    
-                    <p className="form__text__login">Already have an account?
-                        <button 
-                            type="button"
-                            className="form__link" 
-                            onClick={() => setShowLoginForm(true)} // Switch to login form
-                        >
-                            Log in
-                        </button>
-                    </p>
-                </form>
-            )}
-        </div>
+            <div className="login__container">
+                {showForgotPasswordForm ? (
+                    <form className="form" id="forgotPassword" onSubmit={handleForgotPassword}>
+                        <h1 className="header">Reset Password</h1>
+                        <div className="form__input-group">
+                            <input
+                                type="email"
+                                className="form__input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Enter your email"
+                                required
+                            />
+                        </div>
+                        <button className="form__button" type="submit">Send Request Email</button>
+                        <p className="form__text__login">
+                            <button
+                                type="button"
+                                className="form__link"
+                                onClick={() => {
+                                    setShowForgotPasswordForm(false);
+                                    setShowLoginForm(true);
+                                }}
+                            >
+                                Back to login
+                            </button>
+                        </p>
+                        {successMessage && <div className="form__message form__message-success">{successMessage}</div>}
+                        {errorMessage && <div className="form__message form__message-error">{errorMessage}</div>}
+                    </form>
+                ) : showLoginForm ? (
+                    <form className="form" id="login" onSubmit={handleSignIn}>
+                        <h1 className="header">Sign in</h1>
+                        <div className="form__input-group">
+                            <input
+                                type="email"
+                                className="form__input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Enter your email"
+                                required
+                            />
+                        </div>
+                        <div className="form__input-group">
+                            <input
+                                type="password"
+                                className="form__input"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                required
+                            />
+                        </div>
+                        <button className="form__button" type="submit">Continue</button>
+                        <p className="form__text__forgot">
+                            <button
+                                type="button"
+                                className="form__link"
+                                onClick={() => {
+                                    setShowForgotPasswordForm(true);
+                                    setShowLoginForm(false);
+                                }}
+                            >
+                                Forgot password?
+                            </button>
+                        </p>
+                        <p className="form__text__createAcc">
+                            <button
+                                type="button"
+                                className="form__link"
+                                onClick={() => setShowLoginForm(false)}
+                            >
+                                Create account
+                            </button>
+                        </p>
+                        {successMessage && <div className="form__message form__message-success">{successMessage}</div>}
+                        {errorMessage && <div className="form__message form__message-error">{errorMessage}</div>}
+                    </form>
+                ) : (
+                    <form className="form" id="createAccount" onSubmit={handleSignUp}>
+                        <h1 className="header">Create Account</h1>
+                        <div className="form__input-group">
+                            <input
+                                type="email"
+                                className="form__input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Email"
+                                required
+                            />
+                        </div>
+                        <div className="form__input-group">
+                            <input
+                                type="password"
+                                className="form__input"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                required
+                            />
+                        </div>
+                        <div className="form__input-group">
+                            <input
+                                type="password"
+                                className="form__input"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                placeholder="Confirm Password"
+                                required
+                            />
+                        </div>
+                        <button className="form__button" type="submit">Continue</button>
+                        <p className="form__text__login">
+                            Already have an account?
+                            <button
+                                type="button"
+                                className="form__link"
+                                onClick={() => setShowLoginForm(true)}
+                            >
+                                Log in
+                            </button>
+                        </p>
+                        {successMessage && <div className="form__message form__message-success">{successMessage}</div>}
+                        {errorMessage && <div className="form__message form__message-error">{errorMessage}</div>}
+                    </form>
+                )}
+            </div>
         </div>
     );
 }
 
-export default SignupLogin;
+export default SignIn;

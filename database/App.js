@@ -7,31 +7,31 @@ import { addAdmin, addClient, addAccount, addMeeting, addSchedule } from './fire
 
 function App() {
   useEffect(() => {
-    // Testing with data to verify constraints and foreign key relationships and valid entries to register into db
+    // Testing with data to verify constraints and foreign key relationships
 
     // Test: Add an Admin (this will succeed)
-    addAdmin("Ted Cruz", "TCruz", "TCruz@gmail.com", "4everRepub");
+    addAdmin("admin1", "adminUser", "admin1@example.com", "hashedPassword123");
 
     // Test: Add an Admin with the same email (this will fail due to unique constraint)
-    addAdmin("Ted Cruz", "TCruz", "TCruz@gmail.com", "4everRepub");
+    addAdmin("admin2", "adminUser2", "admin1@example.com", "hashedPassword123");
 
     // Test: Add a Client (this will succeed)
-    addClient("Jeff Bezos", "Amazon", "https://photo-url.com/client1");
+    addClient("client1", "CompanyXYZ", "https://photo-url.com/client1");
 
     // Test: Add an Account for Admin (this will succeed)
-    addAdmin("Donald Trump", "DTrump", "DTrump.com", "trumpster222");
+    addAccount("Admins", "admin1", "adminAccount", "admin_account@example.com", "hashedPassword");
 
     // Test: Add an Account for a non-existing Admin (this will fail due to foreign key constraint)
-    addAccount("Admins", "Joe Biden", "JBiden", "JBiden@example.com", "golfmaster345");
+    addAccount("Admins", "admin2", "adminAccount", "admin_account2@example.com", "hashedPassword");
 
     // Test: Add a Meeting (this will succeed)
-    addMeeting("Client Meeting", "Jeff Bezos", "10:00 AM - 11:00 AM", "2024-09-16", "1 hour");
+    addMeeting("meeting1", "client1", "10:00 AM - 11:00 AM", "2024-09-16", "1 hour");
 
     // Test: Add a Schedule for the Client (this will succeed)
-    addSchedule("Ted Cruz", "2:00 PM - 3:00 PM");
+    addSchedule("client1", "2:00 PM - 3:00 PM");
 
     // Test: Add a Meeting for non-existing Client (this will fail due to foreign key constraint)
-    addMeeting("Urgent Discussion", "Hunter Biden", "11:00 AM - 12:00 PM", "2024-09-16", "1 hour");
+    addMeeting("meeting2", "client2", "11:00 AM - 12:00 PM", "2024-09-16", "1 hour");
 
   }, []);
 
