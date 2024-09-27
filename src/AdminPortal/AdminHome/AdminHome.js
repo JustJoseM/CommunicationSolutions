@@ -2,6 +2,9 @@ import React from "react";
 import './AdminHome.css';
 import TopBox from "../AdminComponents/TopBox/TopBox";
 import StatisticsWidget from "../AdminWidgets/StatisticsWidget";
+import ConsultationChart from "../AdminComponents/AdminCharts/ConsultationChart";
+import RevenueChart from "../AdminComponents/AdminCharts/RevenueChart";
+import chartData from "../AdminComponents/AdminCharts/chartData";
 
 const AdminHome = () => {
 
@@ -14,10 +17,10 @@ const AdminHome = () => {
                 <TopBox />
             </div>
             <div className="box box2">
-                <StatisticsWidget title="Total Number of Consultations" value={totalConsultations} />
+                <ConsultationChart />
             </div>
             <div className="box box3">
-                <StatisticsWidget title="Total Revenue" value={totalRevenue} />
+                <RevenueChart />
             </div>
             <div className="box box4">Upcoming Appointments</div>
             <div className="box box5">Client Satisfaction</div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './StatisticsWidget.css'
+import './StatisticsWidget.css';
 
 const statisticsData = {
     totalUsers: 15,
