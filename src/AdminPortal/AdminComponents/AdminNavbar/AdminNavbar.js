@@ -22,6 +22,7 @@ const NotificationPopup = ({ notifications, onClose}) => {
 
 const AdminNavbar = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
+    const [hasViewedNotifications, setHasViewedNotifications] = useState(false);
 
     // Sample notifications
     const notifications = [
@@ -36,6 +37,11 @@ const AdminNavbar = () => {
 
     const togglePopup = () => {
         setPopupVisible(!isPopupVisible);
+
+        // Mark notifications as viewed when the popup is opened
+        if(!isPopupVisible) {
+            setHasViewedNotifications(true);
+        }
     }
 
     return(
@@ -54,9 +60,13 @@ const AdminNavbar = () => {
             </div>
             <div className="notification" onClick={togglePopup} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && togglePopup()}>
                     <img src={notification} alt="notification icon"/>
-                    <span>{notifications.length}</span>
-                {isPopupVisible && (
-                    <NotificationPopup notifications={notifications} onClose={togglePopup} />
+
+                    {/* Only show the notification count if notifications has not been viewed */}
+                    {!hasViewedNotifications && notifications.length > 0 && (
+                        <span>{notifications.length}</span>
+                    )}
+                    {isPopupVisible && (
+                        <NotificationPopup notifications={notifications} onClose={togglePopup} />
                 )}
             </div>
             <div className="user">
