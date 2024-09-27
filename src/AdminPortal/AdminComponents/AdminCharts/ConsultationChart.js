@@ -15,8 +15,8 @@ const ConsultationChart = () => {
                 label: 'Consultations',
                 data: chartData.consultations,
                 fill: false,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(157, 190, 187, 0.2)',
+                borderColor: 'rgba(157, 190, 187, 1)',
                 borderWidth: 2,
             },
         ],
@@ -37,6 +37,7 @@ const ConsultationChart = () => {
                     display: true,
                     text: 'Number of Consultations',
                 },
+                beginAtZero: true,
             },
         },
     };

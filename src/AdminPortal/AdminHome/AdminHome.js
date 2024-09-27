@@ -1,10 +1,9 @@
 import React from "react";
 import './AdminHome.css';
 import TopBox from "../AdminComponents/TopBox/TopBox";
-import StatisticsWidget from "../AdminWidgets/StatisticsWidget";
 import ConsultationChart from "../AdminComponents/AdminCharts/ConsultationChart";
 import RevenueChart from "../AdminComponents/AdminCharts/RevenueChart";
-import chartData from "../AdminComponents/AdminCharts/chartData";
+import ClientSatisfactionChart from "../AdminComponents/AdminCharts/ClientSatisfactionChart";
 
 const AdminHome = () => {
 
@@ -23,7 +22,9 @@ const AdminHome = () => {
                 <RevenueChart />
             </div>
             <div className="box box4">Upcoming Appointments</div>
-            <div className="box box5">Client Satisfaction</div>
+            <div className="box box5">
+                <ClientSatisfactionChart />
+            </div>
             <div className="box box6">Upcoming Tasks</div>
             <div className="box box7">Task List/Notes</div>
         </div>

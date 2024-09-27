@@ -14,8 +14,8 @@ const RevenueChart = () => {
                 label: 'Revenue',
                 data: chartData.revenue,
                 fill: false,
-                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(9, 58, 62, 0.2)',
+                borderColor: 'rgba(9, 58, 62, 0.5)',
                 borderWidth: 2,
             },
         ],
@@ -35,8 +35,19 @@ const RevenueChart = () => {
                     display: true,
                     text: 'Revenue ($)',
                 },
+                beginAtZero: true,
             },
         },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: (context) => {
+                        const value = context.raw; // Get the raw value
+                        return `$${value}`; // Return the value formatted with $ before it
+                    }
+                }
+            }
+        }
     };
 
     return (
