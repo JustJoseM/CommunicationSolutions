@@ -23,12 +23,12 @@ import ScheduleAppt from "./Pages/ScheduleAppt";
 
 /* Admin imports */
 import AdminHome from './AdminPortal/AdminHome/AdminHome';
-import Clients from './AdminPortal/AdminClients/Clients';
+import Clients from "./AdminPortal/AdminPages/AdminClients/Clients";
 import SchedulingHome from './AdminPortal/AdminScheduling/SchedulingHome';
 import AdminFooter from './AdminPortal/AdminComponents/AdminFooter/AdminFooter';
 import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
-import Profile from './AdminPortal/AdminProfile/Profile';
+import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
 
 function App() {
     const MainLayout = () => {

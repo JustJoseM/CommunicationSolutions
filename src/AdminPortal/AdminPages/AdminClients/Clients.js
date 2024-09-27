@@ -1,6 +1,6 @@
 import React from "react";
 import './Clients.css';
-import { recentClients } from "../data2";
+import { recentClients } from "../../data2";
 
 const Clients = () => {
     return (
