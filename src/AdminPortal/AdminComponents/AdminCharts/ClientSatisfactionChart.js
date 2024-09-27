@@ -11,7 +11,7 @@ const ClientSatisfactionChart = () => {
         labels: satisfactionData.labels,
         datasets: [
             {
-                label: 'Client Satisfaction',
+                label: 'Number of Clients',
                 data: satisfactionData.ratings,
                 backgroundColor: 'rgba(106, 91, 110, 0.6)',
                 borderColor: 'rgba(106, 91, 110, 1)',
