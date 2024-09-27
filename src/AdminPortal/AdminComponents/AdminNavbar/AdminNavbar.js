@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import './AdminNavbar.css';
 import logo from '../../AdminAssets/pngwing.com.png';
-import search from "../../AdminAssets/search.png";
 import calendar from "../../AdminAssets/alternate-calendar.png";
 import apps from "../../AdminAssets/apps.png";
 import setting from "../../AdminAssets/cog.png";
@@ -9,6 +8,7 @@ import notification from "../../AdminAssets/notification.png";
 import user from "../../AdminAssets/characters-kirby.png";
 
 const AdminNavbar = () => {
+
     return(
         <div className="navbar">
             <div className="logo">
@@ -16,9 +16,6 @@ const AdminNavbar = () => {
                 <span>Admin123</span>
             </div>
             <div className="icons">
-                <a href="/admin">
-                    <img src={search} alt="search icon"/>
-                </a>
                 <a href="/admin">
                     <img src={calendar} alt="calendar icon"/>
                 </a>
