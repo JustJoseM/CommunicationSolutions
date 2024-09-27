@@ -29,9 +29,9 @@ const AdminNavbar = () => {
         'Notification 2',
         'Notification 3',
         'Notification 4',
-        'Notification 4',
-        'Notification 4',
-        'Notification 4',
+        'Notification 5',
+        'Notification 6',
+        'Notification 7',
     ];
 
     const togglePopup = () => {
@@ -54,7 +54,7 @@ const AdminNavbar = () => {
             </div>
             <div className="notification" onClick={togglePopup} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && togglePopup()}>
                     <img src={notification} alt="notification icon"/>
-                    <span>3</span>
+                    <span>{notifications.length}</span>
                 {isPopupVisible && (
                     <NotificationPopup notifications={notifications} onClose={togglePopup} />
                 )}
