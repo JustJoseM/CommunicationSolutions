@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './AdminNavbar.css';
 import logo from '../../AdminAssets/pngwing.com.png';
 import calendar from "../../AdminAssets/alternate-calendar.png";
@@ -25,15 +25,11 @@ const AdminNavbar = () => {
     const [hasViewedNotifications, setHasViewedNotifications] = useState(false);
 
     // Sample notifications
-    const notifications = [
+    const [notifications, setNotifications] = useState([
         'Notification 1',
         'Notification 2',
         'Notification 3',
-        'Notification 4',
-        'Notification 5',
-        'Notification 6',
-        'Notification 7',
-    ];
+    ]);
 
     const togglePopup = () => {
         setPopupVisible(!isPopupVisible);
@@ -42,7 +38,27 @@ const AdminNavbar = () => {
         if(!isPopupVisible) {
             setHasViewedNotifications(true);
         }
+    };
+
+    // Function to generate random number of notifications
+    const generateRandomNotifications = () => {
+        const randomCount = Math.floor(Math.random() * 7) + 1; // Generates a number between 1 and 7
+        const newNotifications = Array.from({ length: randomCount }, (_, index) => `Notification ${index + 1}`);
+        return newNotifications;
     }
+
+    // Simulate refreshing notifications every 10 seconds, as an API might
+    useEffect(() => {
+        const interval = setInterval(() => {
+            // Generate a random number of notifications
+            const randomNotifications = generateRandomNotifications();
+            setNotifications(randomNotifications);
+            setHasViewedNotifications(false); // Reset the viewed state
+
+        }, 15000); // Refresh every 15 seconds
+
+        return () => clearInterval(interval); // Clean up interval on component unmount
+    }, []);
 
     return(
         <div className="navbar">
