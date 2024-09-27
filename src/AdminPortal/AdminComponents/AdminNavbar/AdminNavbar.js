@@ -10,7 +10,6 @@ import user from "../../AdminAssets/characters-kirby.png";
 const NotificationPopup = ({ notifications, onClose}) => {
     return (
         <div className="notification-popup">
-            <button onClick={onClose}>Close</button>
             <ul>
                 {notifications.map((notif, index) => (
                     <li key={index}>{notif}</li>
@@ -24,6 +23,7 @@ const AdminNavbar = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [hasViewedNotifications, setHasViewedNotifications] = useState(false);
     const [showUserDropdown, setShowUserDropdown] = useState(false);
+    const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
 
     // Sample notifications
     const [notifications, setNotifications] = useState([
@@ -43,6 +43,10 @@ const AdminNavbar = () => {
 
     const toggleUserDropdown = () => {
         setShowUserDropdown(!showUserDropdown);
+    }
+
+    const toggleSettingsDropdown = () => {
+        setShowSettingsDropdown(!showSettingsDropdown);
     }
 
     // Function to generate random number of notifications
@@ -81,7 +85,6 @@ const AdminNavbar = () => {
             </div>
             <div className="notification" onClick={toggleNotifPopup} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && toggleNotifPopup()}>
                     <img src={notification} alt="notification icon"/>
-
                     {/* Only show the notification count if notifications has not been viewed */}
                     {!hasViewedNotifications && notifications.length > 0 && (
                         <span>{notifications.length}</span>
@@ -102,10 +105,19 @@ const AdminNavbar = () => {
                     </div>
                 )}
             </div>
-            <div className="settings">
-                <a href="/admin">
-                    <img src={setting} alt="settings icon" />
-                </a>
+            <div className="settings" onClick={toggleSettingsDropdown} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && toggleSettingsDropdown()}>
+                <img src={setting} alt="settings icon" />
+                {showSettingsDropdown && (
+                    <div className="settings-dropdown">
+                        <ul>
+                            <li>Profile Settings</li> {/* Later redirect to something like /admin/settings/profile */}
+                            <li>Notification Settings</li> {/* Later redirect to something like /admin/settings/notifications */}
+                            <li>Scheduling Options</li> {/* Later redirect to something like /admin/settings/scheduling */}
+                            <li>General Settings</li> {/* Later redirect to something like /admin/settings/general */}
+                            <li>Advanced Settings</li> {/* Later redirect to something like /admin/settings/advanced */}
+                        </ul>
+                    </div>
+                )}
             </div>
         </div>
     )
