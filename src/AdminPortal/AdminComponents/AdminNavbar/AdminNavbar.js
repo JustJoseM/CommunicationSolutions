@@ -23,6 +23,7 @@ const NotificationPopup = ({ notifications, onClose}) => {
 const AdminNavbar = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [hasViewedNotifications, setHasViewedNotifications] = useState(false);
+    const [showUserDropdown, setShowUserDropdown] = useState(false);
 
     // Sample notifications
     const [notifications, setNotifications] = useState([
@@ -31,7 +32,7 @@ const AdminNavbar = () => {
         'Notification 3',
     ]);
 
-    const togglePopup = () => {
+    const toggleNotifPopup = () => {
         setPopupVisible(!isPopupVisible);
 
         // Mark notifications as viewed when the popup is opened
@@ -39,6 +40,10 @@ const AdminNavbar = () => {
             setHasViewedNotifications(true);
         }
     };
+
+    const toggleUserDropdown = () => {
+        setShowUserDropdown(!showUserDropdown);
+    }
 
     // Function to generate random number of notifications
     const generateRandomNotifications = () => {
@@ -67,14 +72,14 @@ const AdminNavbar = () => {
                 <span>Admin123</span>
             </div>
             <div className="icons">
-                <a href="/admin">
+                <a href="/admin/schedule">
                     <img src={calendar} alt="calendar icon"/>
                 </a>
                 <a href="/admin">
                     <img src={apps} alt="apps icon"/>
                 </a>
             </div>
-            <div className="notification" onClick={togglePopup} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && togglePopup()}>
+            <div className="notification" onClick={toggleNotifPopup} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && toggleNotifPopup()}>
                     <img src={notification} alt="notification icon"/>
 
                     {/* Only show the notification count if notifications has not been viewed */}
@@ -82,14 +87,20 @@ const AdminNavbar = () => {
                         <span>{notifications.length}</span>
                     )}
                     {isPopupVisible && (
-                        <NotificationPopup notifications={notifications} onClose={togglePopup} />
+                        <NotificationPopup notifications={notifications} onClose={toggleNotifPopup} />
                 )}
             </div>
-            <div className="user">
-                <a href="/admin">
-                    <img src={user} alt="user icon" />
-                    <span>Admin</span>
-                </a>
+            <div className="user" onClick={toggleUserDropdown} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && toggleUserDropdown()}>
+                <img src={user} alt="user icon" />
+                <span>Admin</span>
+                {showUserDropdown && (
+                    <div className="user-dropdown">
+                        <ul>
+                            <li>Edit Profile</li> {/* Will later redirect somewhere like /admin/edit-profile */}
+                            <li>Logout</li> {/* Will later redirect somewhere like /logout */}
+                        </ul>
+                    </div>
+                )}
             </div>
             <div className="settings">
                 <a href="/admin">

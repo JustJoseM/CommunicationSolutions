@@ -29,6 +29,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
+    position: relative;
 }
 
 .AdminApp .user span {
@@ -40,6 +42,40 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.AdminApp .user-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.AdminApp .user-dropdown ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.AdminApp .user-dropdown li {
+    padding: 8px 10px;
+}
+
+.AdminApp .user-dropdown li:hover {
+    background-color: #f5f5f5;
+}
+
+.AdminApp .user-dropdown a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    display: block;
 }
 
 .AdminApp .notification {
