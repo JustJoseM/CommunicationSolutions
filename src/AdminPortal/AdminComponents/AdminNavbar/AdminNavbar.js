@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState } from "react";
 import './AdminNavbar.css';
 import logo from '../../AdminAssets/pngwing.com.png';
 import calendar from "../../AdminAssets/alternate-calendar.png";
@@ -7,7 +7,36 @@ import setting from "../../AdminAssets/cog.png";
 import notification from "../../AdminAssets/notification.png";
 import user from "../../AdminAssets/characters-kirby.png";
 
+const NotificationPopup = ({ notifications, onClose}) => {
+    return (
+        <div className="notification-popup">
+            <button onClick={onClose}>Close</button>
+            <ul>
+                {notifications.map((notif, index) => (
+                    <li key={index}>{notif}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
 const AdminNavbar = () => {
+    const [isPopupVisible, setPopupVisible] = useState(false);
+
+    // Sample notifications
+    const notifications = [
+        'Notification 1',
+        'Notification 2',
+        'Notification 3',
+        'Notification 4',
+        'Notification 4',
+        'Notification 4',
+        'Notification 4',
+    ];
+
+    const togglePopup = () => {
+        setPopupVisible(!isPopupVisible);
+    }
 
     return(
         <div className="navbar">
@@ -23,11 +52,12 @@ const AdminNavbar = () => {
                     <img src={apps} alt="apps icon"/>
                 </a>
             </div>
-            <div className="notification">
-                <a href="/admin">
+            <div className="notification" onClick={togglePopup} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && togglePopup()}>
                     <img src={notification} alt="notification icon"/>
-                    <span>1</span>
-                </a> 
+                    <span>3</span>
+                {isPopupVisible && (
+                    <NotificationPopup notifications={notifications} onClose={togglePopup} />
+                )}
             </div>
             <div className="user">
                 <a href="/admin">
