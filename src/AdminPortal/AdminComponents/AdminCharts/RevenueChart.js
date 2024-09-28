@@ -16,7 +16,7 @@ const RevenueChart = ( {timePeriod = 'lastMonth'}) => {
                 fill: false,
                 backgroundColor: 'rgba(9, 58, 62, 0.2)',
                 borderColor: 'rgba(9, 58, 62, 0.5)',
-                borderWidth: 2,
+                borderWidth: 4,
             },
         ],
     };

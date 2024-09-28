@@ -17,7 +17,7 @@ const ConsultationChart = ( { timePeriod = 'lastMonth' }) => {
                 fill: false,
                 backgroundColor: 'rgba(157, 190, 187, 0.2)',
                 borderColor: 'rgba(157, 190, 187, 1)',
-                borderWidth: 2,
+                borderWidth: 4,
             },
         ],
     };
