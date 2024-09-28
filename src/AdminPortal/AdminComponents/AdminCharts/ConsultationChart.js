@@ -6,14 +6,14 @@ import chartData from './chartData'; // Local data import
 // Register required components
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
-const ConsultationChart = () => {
+const ConsultationChart = ( { timePeriod = 'lastMonth' }) => {    
     // Load the data into the chart
     const data = {
-        labels: chartData.labels,
+        labels: chartData[timePeriod].labels,
         datasets: [
             {
                 label: 'Consultations',
-                data: chartData.consultations,
+                data: chartData[timePeriod].consultations,
                 fill: false,
                 backgroundColor: 'rgba(157, 190, 187, 0.2)',
                 borderColor: 'rgba(157, 190, 187, 1)',
@@ -29,7 +29,7 @@ const ConsultationChart = () => {
             x: {
                 title: {
                     display: true,
-                    text: 'Weeks',
+                    text: 'Time Period',
                 },
             },
             y: {
@@ -44,7 +44,7 @@ const ConsultationChart = () => {
 
     return (
         <div>
-            <h3>Consultations Over the Last Month</h3>
+            <h3>Consultations Over the Selected Time Period</h3>
             <Line data={data} options={options} />
         </div>
     );

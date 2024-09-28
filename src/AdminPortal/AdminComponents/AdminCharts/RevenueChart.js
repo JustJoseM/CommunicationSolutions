@@ -6,13 +6,13 @@ import chartData from './chartData';
 // Register required components
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
-const RevenueChart = () => {
+const RevenueChart = ( {timePeriod = 'lastMonth'}) => {
     const data = {
-        labels: chartData.labels,
+        labels: chartData[timePeriod].labels,
         datasets: [
             {
                 label: 'Revenue',
-                data: chartData.revenue,
+                data: chartData[timePeriod].revenue,
                 fill: false,
                 backgroundColor: 'rgba(9, 58, 62, 0.2)',
                 borderColor: 'rgba(9, 58, 62, 0.5)',
@@ -27,7 +27,7 @@ const RevenueChart = () => {
             x: {
                 title: {
                     display: true,
-                    text: 'Weeks',
+                    text: 'Time Period',
                 },
             },
             y: {
@@ -52,7 +52,7 @@ const RevenueChart = () => {
 
     return (
         <div>
-            <h3>Revenue over the Last Month</h3>
+            <h3>Revenue over the Selected Time Period</h3>
             <Line data={data} options={options} />
         </div>
     );

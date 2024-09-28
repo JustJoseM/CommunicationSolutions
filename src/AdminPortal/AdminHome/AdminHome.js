@@ -7,23 +7,20 @@ import ClientSatisfactionChart from "../AdminComponents/AdminCharts/ClientSatisf
 
 const AdminHome = () => {
 
-    const totalConsultations = 15;
-    const totalRevenue = "$1000";
-
     return(
         <div className="AdminHome">
             <div className="box box1">
                 <TopBox />
             </div>
             <div className="box box2">
-                <ConsultationChart />
+                <ConsultationChart timePeriod="lastMonth" />
             </div>
             <div className="box box3">
-                <RevenueChart />
+                <RevenueChart timePeriod="lastMonth" />
             </div>
             <div className="box box4">Upcoming Appointments</div>
             <div className="box box5">
-                <ClientSatisfactionChart />
+                <ClientSatisfactionChart timePeriod="lastMonth"/>
             </div>
             <div className="box box6">Upcoming Tasks</div>
             <div className="box box7">Task List/Notes</div>

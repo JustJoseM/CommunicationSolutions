@@ -6,13 +6,13 @@ import satisfactionData from './satisfactionData';
 // Register required components
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-const ClientSatisfactionChart = () => {
+const ClientSatisfactionChart = ({ timePeriod = 'lastMonth' }) => {
     const data = {
-        labels: satisfactionData.labels,
+        labels: satisfactionData[timePeriod].labels,
         datasets: [
             {
                 label: 'Number of Clients',
-                data: satisfactionData.ratings,
+                data: satisfactionData[timePeriod].ratings,
                 backgroundColor: 'rgba(106, 91, 110, 0.6)',
                 borderColor: 'rgba(106, 91, 110, 1)',
                 borderWidth: 1,
