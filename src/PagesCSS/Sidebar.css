@@ -1,5 +1,5 @@
 /* Sidebar default hidden state */
-.Sidebar {
+.MainApp .Sidebar {
     height: 100%;
     width: 0;
     position: fixed;
@@ -12,11 +12,11 @@
 }
 
 /* Open state when sidebar is visible */
-.Sidebar.open {
+.MainApp .Sidebar.open {
     width: 270px;
 }
 
-.close-btn {
+.MainApp .close-btn {
     position: absolute;
     top: 0px;
     left: 20px;
@@ -25,24 +25,24 @@
     cursor: pointer;
 }
 
-.SidebarList .row {
-    padding: 15px 10px;
+.MainApp .SidebarList .row {
+    padding: 20px 10px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 23px;
     color: white;
     display: block;
     transition: 0.3s;
 }
 
-.SidebarList .row:hover {
+.MainApp .SidebarList .row:hover {
     background-color: #575757;
 }
 
-#active {
+.MainApp #active {
     background-color: #575757;
 }
 
-.toggle-btn {
+.MainApp .toggle-btn {
     font-size: 20px;
     padding: 10px 15px;
     cursor: pointer;
@@ -50,19 +50,19 @@
     color: white;
     border: none;
     position: absolute;
-    top: 20px;
-    right: 60px;
+    top: 35px;
+    right: 75px;
     transition: 0.3s;
 }
 
-.toggle-btn:hover {
+.MainApp .toggle-btn:hover {
     background-color: #575757;
 }
 
-.toggle-btn span {
+.MainApp .toggle-btn span {
     display: block;
-    width: 30px;
-    height: 3px;
+    width: 40px;
+    height: 4px;
     background-color: white;
-    margin: 6px 0;
+    margin: 7px 0;
 }

@@ -112,6 +112,7 @@ function ScheduleAppt() {
 
   // JSX returned by the component
   return (
+    <div className='appoint_background'>
     <div className="schedule-appt-container">
       <form onSubmit={addAppointment}>
         <div>
@@ -155,6 +156,7 @@ function ScheduleAppt() {
           <p>No appointments found</p>
         )}
       </div>
+    </div>
     </div>
   );
 }
