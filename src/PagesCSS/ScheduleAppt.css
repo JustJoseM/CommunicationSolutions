@@ -88,3 +88,8 @@
     background-color: #cc0000;
   }
   
+  .MainApp .appoint_background{
+    background-image: url('../assets/apointment_page.jpg');
+    height: 75vh;
+    background-size: cover;
+}
