@@ -1,26 +1,50 @@
 import React from "react";
 import '../PagesCSS/Home.css';
 import { Link } from "react-router-dom";
-import placeholder from '../assets/hero.jpeg';
+import one from '../assets/home_one.png';
+import two from '../assets/home_two.png';
+// import lines from '../assets/home-lines-bg.svg';
 
 
 function Home() {
     return (
         <div className="Home">
-            <h1 className="companyName"> Communication Solutions</h1>
-            <h2>
-                What can we do for you?
-            </h2>
-            <div className="content">
-                <div className ="bodyText-box">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus, elit id ultrices porttitor, ligula lacus tempor nisi, eget finibus orci elit vel dolor.
-                    </p>
+            {/* <img src={lines} alt="" className="home_lines"/> */}
+            <div className="home_data">
+                <h1 className="home_title">
+                    Create the <br />
+                    Dream Buisness <br />
+                    You Want Here
+                </h1>
+                <p className="home_description">
+                    We provide the best buisness coaching, plan of action, and <br />
+                    customer service to help make your dream a reality.
+                </p>
+
+                <div className="home_buttons">
+                <   Link to="/about">
+                        <button className="button_service">Our Services</button>
+                    </Link>
+
+                    <Link to="/testimonial" className="text_link">
+                         Testimonials <span className="arrow">➔</span>
+                    </Link>
                 </div>
-            <div className="bodyImg-box">
-                <img src={placeholder} alt="" />
             </div>
+            <div className="home_images">
+                <img src={one} alt="" className="home_one"/>
+                <img src={two} alt="" className="home_two"/>
             </div>
+
+            {/* <div className="home_info">
+                <div>
+                    <h3 className="home_info-title"></h3>
+                    <p className="home_info-description"></p>
+                </div>
+                <div>
+                    <h3 className="home_info-title"></h3>
+                    <p className="home_info-description"></p>
+                </div> */}
         </div>
     );
 }
