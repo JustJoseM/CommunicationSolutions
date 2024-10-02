@@ -23,12 +23,13 @@ import ScheduleAppt from "./Pages/ScheduleAppt";
 
 /* Admin imports */
 import AdminHome from './AdminPortal/AdminHome/AdminHome';
-import Clients from './AdminPortal/AdminClients/Clients';
-import SchedulingHome from './AdminPortal/AdminScheduling/SchedulingHome';
+import Clients from "./AdminPortal/AdminPages/AdminClients/Clients";
+import SchedulingHome from './AdminPortal/AdminPages/AdminScheduling/SchedulingHome';
 import AdminFooter from './AdminPortal/AdminComponents/AdminFooter/AdminFooter';
 import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
-import Profile from './AdminPortal/AdminProfile/Profile';
+import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
+import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
 
 function App() {
     const MainLayout = () => {
@@ -120,6 +121,10 @@ function App() {
                 { /* Route for Profile */
                     path:"/admin/profile",
                     element:<Profile />
+                },
+                { /* Route for Charts */
+                    path: "/admin/charts",
+                    element: <ChartsPage />
                 }
             ]
         }

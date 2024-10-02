@@ -1,0 +1,17 @@
+.AdminApp .chartsPage {
+    padding-left: 20px;
+    height: 80%;
+    width: 90%;
+}
+
+.AdminApp .tabs {
+    margin-bottom: 20px;
+}
+
+.AdminApp .chartContainer {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
