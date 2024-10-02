@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../firebaseConfig';  // Adjust the import path as needed
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, sendEmailVerification } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import '../PagesCSS/SignupLogin.css'; // Ensure the path is correct
-
 
 function SignIn() {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -21,10 +20,6 @@ function SignIn() {
         }
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-
-            // send verification email
-            await sendEmailVerification(user);
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
             setShowLoginForm(true); // Switch back to login form after successful sign-up
@@ -47,20 +42,26 @@ function SignIn() {
         }
     };
 
-    // Function to handle forgot password
     const handleForgotPassword = async (e) => {
         e.preventDefault();
         try {
+            // Attempt to send password reset email
             await sendPasswordResetEmail(auth, email);
-            setSuccessMessage('Password reset email sent. Please check your inbox.');
+            setSuccessMessage('If you are registered user, password reset email will be sent soon.');
             setErrorMessage('');
             setShowForgotPasswordForm(false); // Hide the form after request
             setShowLoginForm(true); // Switch back to login form after sending reset email
         } catch (error) {
-            setErrorMessage(`Error resetting password: ${error.message}`);
+            // Check for specific error codes
+            if (error.code === 'auth/user-not-found') {
+                setErrorMessage("User doesn't exist.");
+            } else {
+                setErrorMessage(`Error resetting password: ${error.message}`);
+            }
             setSuccessMessage('');
         }
     };
+    
 
     return (
         <div className='background'>
@@ -196,3 +197,5 @@ function SignIn() {
 }
 
 export default SignIn;
+
+
