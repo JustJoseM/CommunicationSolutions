@@ -1,0 +1,47 @@
+.MainApp .testimonial-section {
+    padding-left: 30px;
+    background: #f1f1f1;
+    color: #434343;
+    text-align: center;
+}
+
+.MainApp .testimonial-container {
+    max-width: 1500px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.MainApp .header-divider {
+    width: 160px;
+    height: 5px;
+    background: black;
+    margin: 30px auto;
+}
+
+.MainApp .testimonial-header {
+    font-size: 36px;
+}
+
+.MainApp .testimonial-slide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.MainApp .testimonial-card {
+    background: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+.MainApp .company-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.MainApp .testimonial-description {
+    margin: auto;
+    max-width: 800px;
+}
