@@ -25,7 +25,7 @@ export const clientTestimonials = [
     {
         id: 4,
         img: Random_logo,
-        name: "USA PRO",
+        name: "Random Company",
         review: "Review goes here",
     }
 ];
