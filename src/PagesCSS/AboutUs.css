@@ -1,4 +1,5 @@
 /*For Navbar*/
+
 .MainApp .nav {
     background-color: #0b0a17;
     color: white;
@@ -42,14 +43,14 @@
     /* font-size: xx-large; */
 }
 
-.MainApp .container {
+.MainApp .who_are_we_container {
     background-color: black;
     display: inline-block;
     color: white;
     padding: 1rem;
 }
 
-.MainApp .text{
+.MainApp .who_text{
     font-size: 2em;
     letter-spacing: 10px;
     font-family: monospace;
@@ -70,8 +71,8 @@
     from { width: 0 }
 }
 
-.MainApp .containersz{
-    background-color: #0b0a17;
+.MainApp .company_container{
+    background-color: #394052;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -90,85 +91,134 @@
     padding-left: 25rem;
 }
 
-.MainApp .serv_container {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10rem;
-    padding: 2rem; 
-    padding-left: 13rem; 
+.MainApp .company_logo img{
+    width: 300px;
 }
-/*For Content1*/
-.MainApp .serv_img img{
-    border: 5px solid black;
+
+.MainApp .yelp_container {
+    background-color: #181a1b;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 2rem; 
+    padding-left: 8rem; 
+}
+
+/*For Yelp Service*/
+.MainApp .yelp_service_img {
+    margin-left: 2rem;
+}
+.MainApp .yelp_service_img img{
+    border: 5px solid cadetblue;
     border-radius: 10px;
     width: 400px;
     height: auto;
     overflow: hidden;
 }
 
-.MainApp .vLine {
+/* .MainApp .vLine {
     border-left: 6px solid black;
     height: 350px;
     position: absolute;
     left: 50%;
-    margin-left: -4px;
- }
+    margin-left: 4px;
+ } */
 
 .MainApp .service_one{
-    font-size: xx-large;
-    position: absolute;
+    font-size: x-large;
+    text-align: left;
+    max-width: 800px;
+    padding-right: 150px;
+    margin: 0 auto;
+}
+
+.MainApp .yelp_title {
+    padding-bottom: 20px;
     text-align: center;
-    right: 250px;
+    font-size: 2rem;
 }
 
-/*For Content2*/
-.MainApp .serv_container_t {
-    background-color: white;
+.MainApp .campaign_text_right{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/*For Business Coaching*/
+
+.MainApp .business_coaching_container {
+    background-color: #1d1f20;
+    color: whitesmoke;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 10rem;
-    padding: 2rem; 
-    padding-right: 16rem; 
+    gap: 4rem;
+    padding: 4rem 2rem; 
+    padding-left: 8rem; 
 }
 
-.MainApp .serv_img_t img{
-    border: 5px solid black;
+.MainApp .business_service_img {
+    margin-right: 6rem;
+}
+
+.MainApp .business_service_img img{
+    border: 5px solid cadetblue;
     border-radius: 10px;
     width: 400px;
     height: auto;
+    overflow: hidden;
 }
 
 .MainApp .service_two{
-    font-size: xx-large;
-    position: absolute;
+    font-size: x-large;
+    text-align: left;
+    max-width: 800px;
+    padding-left: 150px;
+    margin: 0 auto;
+}
+
+.MainApp .coaching_title {
+    padding-bottom: 20px;
     text-align: center;
-    left: 150px;
+    font-size: 2rem;
 }
 
-/*For Content3*/
-.MainApp .serv_container_th {
-    background-color: white;
+.MainApp .campaign_text_left{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+/*For Communication Optimization*/
+
+.MainApp .optimization_container {
+    background-color: #181a1b;
+    color: whitesmoke;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 10rem;
-    padding: 2rem; 
-    padding-left: 13rem; 
+    gap: 4rem;
+    padding: 4rem 2rem; 
+    padding-left: 8rem;
 }
 
-.MainApp .serv_img_th img{
-    border: 5px solid black;
+.MainApp .optimization_img {
+    margin-left: 2rem;
+}
+.MainApp .optimization_img img{
+    border: 5px solid cadetblue;
     border-radius: 10px;
     width: 400px;
     height: auto;
+    overflow: hidden;
 }
 
+
 .MainApp .service_three{
-    font-size: xx-large;
-    position: absolute;
-    text-align: center;
-    right: 150px;
+    font-size: x-large;
+    text-align: left;
+    max-width: 800px;
+    padding-right: 150px;
+    margin: 0 auto;
 }
