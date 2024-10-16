@@ -18,6 +18,7 @@ import Footer from "./Components/Footer";
 import SignIn from "./Pages/SignIn";
 import AboutUs from "./Pages/AboutUs";
 import Testimonial from "./Pages/Testimonial";
+import TestimonialTest from "./Pages/TestimonialTest";
 import Contact from "./Pages/Contact";
 import ScheduleAppt from "./Pages/ScheduleAppt";
 
@@ -88,7 +89,7 @@ function App() {
                 {
                     /* This route is for the 'Testimonial' component */
                     path: "/testimonial",
-                    element: <Testimonial />
+                    element: <TestimonialTest />
                 },
                 {
                     /* This route is for the 'Contact' component */
