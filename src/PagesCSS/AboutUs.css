@@ -113,20 +113,13 @@
     margin-left: 2rem;
 }
 .MainApp .yelp_service_img img{
-    border: 5px solid cadetblue;
-    border-radius: 10px;
+    border: 5px solid #141618;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     width: 400px;
     height: auto;
     overflow: hidden;
 }
-
-/* .MainApp .vLine {
-    border-left: 6px solid black;
-    height: 350px;
-    position: absolute;
-    left: 50%;
-    margin-left: 4px;
- } */
 
 .MainApp .service_one{
     font-size: x-large;
@@ -165,8 +158,9 @@
 }
 
 .MainApp .business_service_img img{
-    border: 5px solid cadetblue;
-    border-radius: 10px;
+    border: 5px solid #181a1b;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     width: 400px;
     height: auto;
     overflow: hidden;
@@ -209,8 +203,9 @@
     margin-left: 2rem;
 }
 .MainApp .optimization_img img{
-    border: 5px solid cadetblue;
-    border-radius: 10px;
+    border: 5px solid #141618;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     width: 400px;
     height: auto;
     overflow: hidden;

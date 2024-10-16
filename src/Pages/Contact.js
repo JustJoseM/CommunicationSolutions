@@ -12,6 +12,7 @@ const Contact = () => {
                     <p>We're here to help. Reach out to us through the method that works best for you.</p>
                 </div>
             </div>
+            <div className="divider"></div>
 
             {/* Contact Methods */}
             <div className="contact-methods">

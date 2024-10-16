@@ -1,7 +1,7 @@
 .MainApp .testimonial-section {
     padding-left: 30px;
-    background: #f1f1f1;
-    color: #434343;
+    background-color: #f1f1f1;
+    color: #222020;
     text-align: center;
 }
 
@@ -53,7 +53,6 @@
 }
 
 .MainApp .company-logo {
-   
     margin: -70px auto 20px;
     width: 100px;
     height: 100px;
@@ -73,16 +72,15 @@
 
 .slick-prev {
     left: 10px;
+    z-index: 1;
 }
 
 .slick-next {
     right: 10px;
+    z-index: 1;
 }
 
 .slick-prev:before, .slick-next:before {
     font-size: 25px;
     color: grey; 
-}
-.slick-prev:hover, .slick-next:hover {
-    background-color: #0056b3; /* Darker shade on hover */
 }
