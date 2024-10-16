@@ -4,20 +4,20 @@ import s1 from '../assets/imgplaceholder.jpg';
 import place from '../assets/placeholder.png';
 import logo from "../assets/business_logo.png";
 
-const ContactUs = () => {
+const AboutUs = () => {
 	return (
 		<>
-		<div className="Homes">
-            <div className="who_are_we_container">
-                <p className="who_text">Who Are We?</p>
-            </div>
-        </div>
 		<div className="company_container">
             <div className="title-text">
                 <div className="company_logo">
                     <img src={logo} alt=""/>             
                 </div>
-                <p>Communications Solution</p>
+                <p className="company_name">Communications Solution</p>
+            </div>
+        </div>
+        <div className="main_about">
+            <div className="who_are_we_container">
+                <p className="who_text">Who Are We?</p>
             </div>
         </div>
 		<div className="yelp_container">
@@ -36,7 +36,7 @@ const ContactUs = () => {
             </div>
         </div>
 		<div className="business_coaching_container">
-            <div className="gapspace"></div>
+            {/* <div className="gapspace"></div> */}
             <div className="service_two">
                 <h4 className="coaching_title">Business Coaching</h4>
                 <p className="campaign_text_left">
@@ -71,4 +71,4 @@ const ContactUs = () => {
 	);
 };
 
-export default ContactUs;
+export default AboutUs;

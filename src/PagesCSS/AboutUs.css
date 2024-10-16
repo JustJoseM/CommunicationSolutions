@@ -1,7 +1,7 @@
 /*For Navbar*/
 
 .MainApp .nav {
-    background-color: #0b0a17;
+    background-color: #0f1011;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -30,17 +30,13 @@
     border-radius: 5px;
 }
 
-/*For HeroSection*/
-.MainApp .Homes {
+.MainApp .main_about {
     height: 300px;
-    /* background-image: url(../assets/hero.jpeg);
-    background-size: cover;
-    filter: grayscale(100%); */
+    background-color: #1d1f20;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* font-size: xx-large; */
 }
 
 .MainApp .who_are_we_container {
@@ -72,15 +68,14 @@
 }
 
 .MainApp .company_container{
-    background-color: #394052;
-    color: white;
+    background-color: #181a1b;
+    color: whitesmoke;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
     padding: 3rem;
 }
-
 
 .MainApp .title-text{
     font-size: x-large;
@@ -93,6 +88,13 @@
 
 .MainApp .company_logo img{
     width: 300px;
+    border-radius: 30%;
+    object-fit: cover;
+}
+
+.MainApp .company_name {
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 .MainApp .yelp_container {
@@ -145,8 +147,8 @@
     margin-bottom: 20px;
 }
 
-/*For Business Coaching*/
 
+/*For Business Coaching*/
 .MainApp .business_coaching_container {
     background-color: #1d1f20;
     color: whitesmoke;
@@ -214,11 +216,16 @@
     overflow: hidden;
 }
 
-
 .MainApp .service_three{
     font-size: x-large;
     text-align: left;
     max-width: 800px;
     padding-right: 150px;
     margin: 0 auto;
+}
+
+.MainApp .optimization_title {
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
 }

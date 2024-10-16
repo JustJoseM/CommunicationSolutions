@@ -1,56 +1,74 @@
-.MainApp .contact_container {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding-top: 1rem;
-    padding-right: 3rem;
-    padding-left: 5rem;
-    padding-bottom: 15rem;
+.MainApp .contact-pg {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #242729;
 }
 
-.MainApp .contact-text{
-    position: relative;
-    top: -110px;
-    left: 0px;
-    /* border: 5px solid black; */
+/* Hero Selection */
+.MainApp .hero-section {
+    background: linear-gradient(to bottom, #0f1011 30%, #242729 100%);
+    background-size: cover;
+    background-position: center;
+    padding: 20px 20px;
 }
 
-.MainApp .contact-text h4{
-    font-size: 60px;
-    color: rgb(12, 66, 12);
+.MainApp .hero-content {
+    align-items: center;
+    text-align: center;
 }
 
-.MainApp .contact-text p{
-    font-size: 20px;
+.MainApp .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: whitesmoke;
 }
 
-.MainApp .contact-img img{
+.MainApp .hero-content p {
+    font-size: 1.5rem;
+    color: whitesmoke;
+    padding-bottom: 20px;
+}
+
+.MainApp .contact-methods {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.MainApp .contact-methods h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.MainApp .methods-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.MainApp .phone-method, .email-method, .office-method {
+    padding: 30px;
+    background-color: whitesmoke;
     border-radius: 10px;
-    width: 800px;
-    height: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0. 0.1);
+    text-align: center;
 }
 
-.MainApp .phone-number{
-    font-size: large;
-    background-color: white;
-    padding: 5rem;
-    text-align: center;
-    position: absolute;
-    top: 500px;
-    right: 450px;
-    box-shadow: 10px 10px 5px lightblue inset;
-    /* border: 5px solid black; */
+.MainApp .phone-method h4, .email-method h4, .office-method h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
-.MainApp .email{
-    font-size: large;
-    background-color: white;
-    padding: 5rem;
-    text-align: center;
-    position: absolute;
-    top: 500px;
-    left: 200px;
-    box-shadow: 10px 10px 5px lightblue inset;
-    /* border: 5px solid black; */
+.MainApp .phone-method p, .email-method p, .office-method p {
+    font-size: 1rem;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.MainApp .phone-method a, .email-method a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.MainApp .phone-method a:hover, .email-method a:hover {
+    text-decoration: underline;
 }
