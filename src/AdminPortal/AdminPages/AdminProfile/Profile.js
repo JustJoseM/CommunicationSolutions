@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './Profile.css';
-import placeholder from '../AdminAssets/profileplaceholder.png'
+import placeholder from '../../AdminAssets/profileplaceholder.png'
 
 const Profile = () => {
     //const state variables for the information 

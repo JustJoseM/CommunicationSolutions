@@ -32,7 +32,7 @@ function ScheduleAppt() {
 
     try {
       //Add meeting to firestore
-      await addDoc(collection(db, 'Meetings'), newAppointment);
+      await addDoc(collection(db, 'Appointments'), newAppointment);
 
       // Reload the list
       showAppointments();
@@ -54,7 +54,7 @@ function ScheduleAppt() {
   // Function to get meetings in the database
   const showAppointments = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, 'Meetings'));
+      const querySnapshot = await getDocs(collection(db, 'Appointments'));
       const appointmentList = [];
       querySnapshot.forEach((doc) => {
         appointmentList.push({ ...doc.data(), id: doc.id})
@@ -68,7 +68,7 @@ function ScheduleAppt() {
   // Function to remove an appointment from the database
   const removeAppointment = async (id) => {
     try {
-      await deleteDoc(doc(db, 'Meetings', id));
+      await deleteDoc(doc(db, 'Appointments', id));
       console.log('Appointment removed successfully');
       showAppointments();
     } catch (error) {
