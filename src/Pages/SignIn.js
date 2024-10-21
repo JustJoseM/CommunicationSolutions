@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../firebaseConfig';  // Adjust the import path as needed
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import '../PagesCSS/SignupLogin.css'; // Ensure the path is correct
+import '../PagesCSS/SignupLogin.css'; 
 
 function SignIn() {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -80,7 +80,7 @@ function SignIn() {
                             />
                         </div>
                         <button className="form__button" type="submit">Send Request Email</button>
-                        <p className="form__text__login">
+                        <p className="form__text__login__one">
                             <button
                                 type="button"
                                 className="form__link"
@@ -177,7 +177,7 @@ function SignIn() {
                             />
                         </div>
                         <button className="form__button" type="submit">Continue</button>
-                        <p className="form__text__login">
+                        <p className="form__text__login__two">
                             Already have an account?
                             <button
                                 type="button"
@@ -193,6 +193,7 @@ function SignIn() {
                 )}
             </div>
         </div>
+
     );
 }
 

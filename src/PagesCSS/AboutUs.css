@@ -224,3 +224,39 @@
     text-align: center;
     font-size: 2rem;
 }
+
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    .MainApp .menu-icon {
+        display: block; /* Show menu icon on mobile */
+    }
+
+    .MainApp .sample {
+        /* Instead of hiding it completely, you can use flexbox to align items */
+        display: flex; /* Keep it displayed */
+        justify-content: center; /* Center items horizontally */
+        padding: 10px 0; /* Add some padding for spacing */
+        font-size: 24px; 
+        width: 50px;
+        position: relative;
+        right: 70px;
+    }
+
+    .MainApp .sample.active {
+        display: flex; /* Show links when active */
+    }
+
+    .MainApp .title {
+        font-size: 1.5rem; /* Adjust title size for mobile */
+        padding-left: 0; /* Remove extra padding */
+    }
+
+    .MainApp .button {
+        /* Adjust button size for mobile */
+        width: 100%; /* Make it take more width */
+        padding: 1rem; /* Keep padding for a better touch target */
+        font-size: 0.5rem; /* Adjust font size */
+    }
+
+}

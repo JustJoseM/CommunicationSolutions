@@ -66,3 +66,22 @@
     background-color: white;
     margin: 7px 0;
 }
+
+@media (max-width: 768px) {
+    .MainApp .toggle-btn {
+        width: 40px;
+        height: 50px;
+        top: 45px; 
+        right: 10px;
+    }
+
+    .MainApp .toggle-btn span {
+        
+        width: 20px;
+        height: 2px;
+        margin: 4px 0;
+        margin-left: -25px;
+        
+        
+    }
+}
