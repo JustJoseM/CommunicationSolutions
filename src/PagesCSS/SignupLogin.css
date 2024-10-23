@@ -174,7 +174,7 @@ body {
   /* Mobile View (768px and below) */
   @media all and (max-width: 768px) {
     .MainApp .login__container {
-      max-width: 65%; /* Take almost full width on mobile */
+      max-width: 80%; /* Take almost full width on mobile */
       padding: 1rem;
       align-items: center;
       height: 415px;

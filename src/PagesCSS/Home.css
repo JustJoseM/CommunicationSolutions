@@ -82,3 +82,36 @@
     font-size: 30px;
     transform: translateX(.25rem);
   }
+
+
+  @media all and (max-width: 768px) {
+    .MainApp .Home {
+        padding-left: 10px; /* Reduce padding for smaller screens */
+        padding-right: 10px; /* Add right padding */
+        gap: 1rem; /* Adjust gap for smaller screens */
+    }
+
+    .MainApp .home_title {
+        font-size: 28px; 
+    }
+
+    .MainApp .home_description {
+        font-size: 14px; 
+    }
+
+    .MainApp .home_buttons {
+        flex-direction: column; /* Stack buttons on mobile */
+        gap: 0.5rem; 
+    }
+
+    .MainApp .home_one, .MainApp .home_two {
+        max-width: 100%; 
+        width: auto; /* Let the images resize dynamically */
+        margin-left: 0; /* Center align images on mobile */
+    }
+
+    .MainApp .home_two {
+        margin-top: 1.5rem; 
+        border-width: 2px; 
+    }
+}

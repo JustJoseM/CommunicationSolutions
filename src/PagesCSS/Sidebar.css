@@ -9,6 +9,7 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 50px;
+    z-index: 1000;
 }
 
 /* Open state when sidebar is visible */
@@ -76,12 +77,9 @@
     }
 
     .MainApp .toggle-btn span {
-        
         width: 20px;
         height: 2px;
         margin: 4px 0;
-        margin-left: -25px;
-        
-        
+        margin-left: -25px; 
     }
 }
