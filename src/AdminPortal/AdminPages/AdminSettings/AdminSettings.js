@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import { Link, useNavigate, Outlet, useLocation } from "react-router-dom";
 import './AdminSettings.css';
 
 const AdminSettings = () => {
     const [selectedSetting, setSelectedSetting] = useState("");
     const navigate = useNavigate();
+    const currentLocation = useLocation();
 
     const handleDropdownChange = (event) => {
         const selectedValue = event.target.value;
@@ -15,6 +16,9 @@ const AdminSettings = () => {
             navigate(`${selectedValue}`);
         }
     };
+
+    // Determine if on main settings page
+    const isMainSettingsPage = currentLocation.pathname === "/admin/settings";
 
     return (
         <div>
@@ -33,26 +37,31 @@ const AdminSettings = () => {
                 <option value="advanced">Advanced Settings</option>
             </select>
 
-            <h2>Navigate Directly:</h2>
-            <ul>
-                <li>
-                    <Link to="profile">Profile Settings</Link>
-                </li>
-                <li>
-                    <Link to="notifications">Notification Settings</Link>
-                </li>
-                <li>
-                    <Link to="scheduling">Scheduling Settings</Link>
-                </li>
-                <li>
-                    <Link to="general">General Settings</Link>
-                </li>
-                <li>
-                    <Link to="advanced">Advanced Settings</Link>
-                </li>
-            </ul>
-
-            <Outlet /> {/* This is where the child components will render */}
+            {/* Direct Navigation options are only available on main settings page */}
+            {isMainSettingsPage && (
+                <>
+                    <h2>Navigate Directly:</h2>
+                    <ul>
+                        <li>
+                            <Link to="profile">Profile Settings</Link>
+                        </li>
+                        <li>
+                            <Link to="notifications">Notification Settings</Link>
+                        </li>
+                        <li>
+                            <Link to="scheduling">Scheduling Settings</Link>
+                        </li>
+                        <li>
+                            <Link to="general">General Settings</Link>
+                        </li>
+                        <li>
+                            <Link to="advanced">Advanced Settings</Link>
+                        </li>
+                    </ul>
+                </>
+            )}
+            
+            <Outlet />
         </div>
     );
 };
