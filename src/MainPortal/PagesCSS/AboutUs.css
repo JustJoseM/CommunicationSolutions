@@ -55,8 +55,8 @@
     white-space: nowrap;
     overflow: hidden;
     animation:
-        typing 3s steps(25) infinite ,
-        cursor .4s step-end infinite alternate;
+        typing 3s steps(25),
+        cursor .4s step-end alternate;
 }
 
 @keyframes cursor {

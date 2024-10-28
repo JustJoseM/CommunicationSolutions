@@ -13,7 +13,7 @@ function Home() {
             <div className="home_data">
                 <h1 className="home_title">
                     Create the <br />
-                    Dream Buisness <br />
+                    Dream Business <br />
                     You Want Here
                 </h1>
                 <p className="home_description">

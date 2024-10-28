@@ -6,9 +6,6 @@
     padding-left: 270px;
     padding-bottom: 220px;
     gap: 20rem;
-    /* flex-direction: column; */
-    /* padding-left: 100px;
-    align-items: left; */
 }
 
 .MainApp .home_data{
@@ -67,7 +64,7 @@
 
 .MainApp .text_link {
     text-decoration: none;
-    color: blue; /* Set your desired text color */
+    color: black; /* Set your desired text color */
     font-size: 25px;
     font-weight: bolder;
     cursor: pointer;

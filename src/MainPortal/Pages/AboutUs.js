@@ -17,7 +17,7 @@ const AboutUs = () => {
         </div>
         <div className="main_about">
             <div className="who_are_we_container">
-                <p className="who_text">Who Are We?</p>
+                <p className="who_text">Who are we?</p>
             </div>
         </div>
 		<div className="yelp_container">

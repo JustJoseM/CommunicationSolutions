@@ -8,7 +8,7 @@ const Contact = () => {
             {/* Hero Section */}
             <div className="hero-section">
                 <div className="hero-content">
-                    <h1>Get in Touch with Us</h1>
+                    <h1>Get in touch with us</h1>
                     <p>We're here to help. Reach out to us through the method that works best for you.</p>
                 </div>
             </div>
@@ -16,7 +16,7 @@ const Contact = () => {
 
             {/* Contact Methods */}
             <div className="contact-methods">
-                <h2>How Can We Help?</h2>
+                <h2>How can we help?</h2>
                 <div className="methods-container">
                     <div className="phone-method">
                         <h4>Phone Support</h4>
