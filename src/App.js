@@ -42,6 +42,7 @@ import GeneralSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPage
 import NotificationSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/NotificationSettings";
 import ProfileSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/ProfileSettings";
 import SchedulingSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/SchedulingSettings";
+import ProfileSettingsTest from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/ProfileSettingsTest";
 
 function App() {
     const MainLayout = () => {
@@ -145,7 +146,7 @@ function App() {
                     children: [
                         {
                             path: "profile",
-                            element: <ProfileSettings />
+                            element: <ProfileSettingsTest />
                         },
                         {
                             path: "notifications",
