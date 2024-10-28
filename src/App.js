@@ -33,6 +33,8 @@ import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
 import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
 import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
 import AdminSettings from "./AdminPortal/AdminPages/AdminSettings/AdminSettings";
+import ProfileTest from "./AdminPortal/AdminPages/AdminProfile/ProfileTest"
+
 
 /* Admin Settings imports */
 import AdvancedSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/AdvancedSettings";
@@ -132,7 +134,7 @@ function App() {
                 },
                 { /* Route for Profile */
                     path:"profile",
-                    element:<Profile />
+                    element:<ProfileTest />
                 },
                 { /* Route for Charts */
                     path: "charts",
