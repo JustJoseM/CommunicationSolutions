@@ -32,7 +32,7 @@ import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
 import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
 import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
-import SettingsPage from "./AdminPortal/AdminPages/AdminSettings/AdminSettings";
+import AdminSettings from "./AdminPortal/AdminPages/AdminSettings/AdminSettings";
 
 /* Admin Settings imports */
 import AdvancedSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/AdvancedSettings";
@@ -123,48 +123,48 @@ function App() {
                     element:<AdminHome/>
                 },
                 { /* Route for Clients*/
-                    path:"/admin/clients",
+                    path:"clients",
                     element:<Clients/>
                 },
                 { /* Route for Appointments & Scheduling*/
-                    path:"/admin/appointments",
+                    path:"appointments",
                     element:<AppointmentsHome />
                 },
                 { /* Route for Profile */
-                    path:"/admin/profile",
+                    path:"profile",
                     element:<Profile />
                 },
                 { /* Route for Charts */
-                    path: "/admin/charts",
+                    path: "charts",
                     element: <ChartsPage />
                 },
                 {
                     /* Route for Settings */
-                    path:"/admin/settings",
-                    element: <SettingsPage />,
+                    path:"settings",
+                    element: <AdminSettings />,
                     children: [
                         {
-                            path: "/admin/settings/profile",
+                            path: "profile",
                             element: <ProfileSettings />
                         },
                         {
-                            path: "/admin/settings/notifications",
+                            path: "notifications",
                             element: <NotificationSettings />
                         },
                         {
-                            path: "/admin/settings/scheduling",
+                            path: "scheduling",
                             element: <SchedulingSettings />
                         },
                         {
-                            path: "/admin/settings/general",
+                            path: "general",
                             element: <GeneralSettings />
                         },
                         {
-                            path: "/admin/settings/advanced",
+                            path: "advanced",
                             element: <AdvancedSettings />
                         },
                     ]
-                }
+                },
             ]
         }
     ]);
