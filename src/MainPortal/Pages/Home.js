@@ -1,8 +1,8 @@
 import React from "react";
 import '../PagesCSS/Home.css';
 import { Link } from "react-router-dom";
-import one from '../assets/home_one.png';
-import two from '../assets/home_two.png';
+import one from '../../assets/home_one.png';
+import two from '../../assets/home_two.png';
 // import lines from '../assets/home-lines-bg.svg';
 
 

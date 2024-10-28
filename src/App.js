@@ -9,17 +9,17 @@ import {
 
 import './SiteCss/App.css';
 import './SiteCss/AdminApp.css';
-import './PagesCSS/Footer.css';
+import './MainPortal/PagesCSS/Footer.css';
 
 /* Regular Site imports */
 import Navbar from "./MainPortal/Components/Navbar";
 import Sidebar from './MainPortal/Components/Sidebar';
-import Home from './Pages/Home';
-import Footer from "./MainPortal/Components/Footer";
+import Home from './MainPortal/Pages/Home';
+import Footer from './MainPortal/Components/Footer';
+
 import SignIn from "./MainPortal/Pages/SignIn";
 import AboutUs from "./MainPortal/Pages/AboutUs";
-import Testimonial from "./Pages/Testimonial";
-import TestimonialTest from "./MainPortal/Pages/TestimonialTest";
+import Testimonial from "./MainPortal/Pages/Testimonial";
 import Contact from "./MainPortal/Pages/Contact";
 import ScheduleAppt from "./MainPortal/Pages/ScheduleAppt";
 
@@ -90,7 +90,7 @@ function App() {
                 {
                     /* This route is for the 'Testimonial' component */
                     path: "/testimonial",
-                    element: <TestimonialTest />
+                    element: <Testimonial />
                 },
                 {
                     /* This route is for the 'Contact' component */

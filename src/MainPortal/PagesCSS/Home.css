@@ -1,7 +1,7 @@
 .MainApp .Home {
     display: flex;
     /* background-color: white; */
-    background-image: url(../assets/home_background.jpg);
+    background-image: url(../../assets/home_background.jpg);
     padding-top: 75px;
     padding-left: 270px;
     padding-bottom: 220px;

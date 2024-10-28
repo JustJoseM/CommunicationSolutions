@@ -1,6 +1,7 @@
 /* The following CSS is for Main site*/
 
 .MainApp {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
