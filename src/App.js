@@ -43,8 +43,6 @@ import NotificationSettings from "./AdminPortal/AdminPages/AdminSettings/Setting
 import ProfileSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/ProfileSettings";
 import SchedulingSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/SchedulingSettings";
 
-
-
 function App() {
     const MainLayout = () => {
         return (

@@ -47,6 +47,9 @@ const ProfileTest = () => {
         <div className="ProfilePage">
             <div className="profile-container">
                 <h1>User Profile</h1>
+                <div className="profile-main">
+
+                {/* Profile Card Section */}
                 <div className="profile-picture">
                     <img src={icon} alt="Profile"/>
                     <div className="display-info">
@@ -60,7 +63,7 @@ const ProfileTest = () => {
                 </div>
 
                 {/* Profile Information Section - Read Only */}
-                <div className="profile=info">
+                <div className="profile-info">
                     <label>
                         First Name:
                         <input
@@ -105,10 +108,11 @@ const ProfileTest = () => {
                     <button onClick={handleEditProfile}>
                         Edit Profile
                     </button>
-                </div>
+                    </div>
+                </div>    
             </div>
         </div>
     );
-};
+}
 
 export default ProfileTest;

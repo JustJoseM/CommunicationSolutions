@@ -77,10 +77,6 @@ const Profile = () => {
                                 rows="4"
                             />
                         </label>
-                        {/*Save Button Section */}
-                        {/* <button onClick={isEditable ? handleProfileChanges : handleEditProfile}>
-                            {isEditable ? 'Save Changes' : 'Edit Profile'}
-                        </button> */}
                         <button onClick={handleEditProfile}>
                             Edit Profile
                         </button>
