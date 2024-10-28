@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import { db } from "../../../firebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
+
 import './AdminNavbar.css';
 import logo from '../../AdminAssets/pngwing.com.png';
 import calendar from "../../AdminAssets/alternate-calendar.png";
 import apps from "../../AdminAssets/apps.png";
 import setting from "../../AdminAssets/cog.png";
 import notification from "../../AdminAssets/notification.png";
-import user from "../../AdminAssets/characters-kirby.png";
 
 const NotificationPopup = ({ notifications, onClose}) => {
     return (
@@ -24,6 +27,7 @@ const AdminNavbar = () => {
     const [hasViewedNotifications, setHasViewedNotifications] = useState(false);
     const [showUserDropdown, setShowUserDropdown] = useState(false);
     const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
+    const [userData, setUserData] = useState(null);
 
     // Sample notifications
     const [notifications, setNotifications] = useState([
@@ -56,8 +60,25 @@ const AdminNavbar = () => {
         return newNotifications;
     }
 
-    // Simulate refreshing notifications every 10 seconds, as an API might
+    
     useEffect(() => {
+        // Read from database
+        const fetchUserData = async () => {
+            const adminID = "admin1";
+            const docRef = doc(db, "Admins", adminID);
+            const docSnap = await getDoc(docRef);
+            
+            if(docSnap.exists()) {
+                setUserData(docSnap.data());
+            }
+            else {
+                console.log("No such document");
+            }
+        };
+
+        fetchUserData();
+
+        // Simulate refreshing notifications every 10 seconds, as an API might
         const interval = setInterval(() => {
             // Generate a random number of notifications
             const randomNotifications = generateRandomNotifications();
@@ -69,14 +90,19 @@ const AdminNavbar = () => {
         return () => clearInterval(interval); // Clean up interval on component unmount
     }, []);
 
+    // Render user data
+    const username = userData ? userData.Username: "Loading ...";
+    const firstName = userData ? userData.FirstName: "Loading ...";
+    const profileImage = userData ? userData.Icon: "";
+
     return(
         <div className="navbar">
             <div className="logo">
                 <img src={logo} alt="admin logo" />
-                <span>Admin123</span>
+                <span>{username}</span>
             </div>
             <div className="icons">
-                <a href="/admin/schedule">
+                <a href="/admin/appointments">
                     <img src={calendar} alt="calendar icon"/>
                 </a>
                 <a href="/admin">
@@ -94,12 +120,12 @@ const AdminNavbar = () => {
                 )}
             </div>
             <div className="user" onClick={toggleUserDropdown} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && toggleUserDropdown()}>
-                <img src={user} alt="user icon" />
-                <span>Admin</span>
+                <img src={profileImage} alt="user-icon" />
+                <span>{firstName}</span>
                 {showUserDropdown && (
                     <div className="user-dropdown">
                         <ul>
-                            <li>Edit Profile</li> {/* Will later redirect somewhere like /admin/edit-profile */}
+                        <li><Link to="/admin/settings/profile">Edit Profile</Link></li>
                             <li>Logout</li> {/* Will later redirect somewhere like /logout */}
                         </ul>
                     </div>
@@ -110,11 +136,11 @@ const AdminNavbar = () => {
                 {showSettingsDropdown && (
                     <div className="settings-dropdown">
                         <ul>
-                            <li>Profile Settings</li> {/* Later redirect to something like /admin/settings/profile */}
-                            <li>Notification Settings</li> {/* Later redirect to something like /admin/settings/notifications */}
-                            <li>Scheduling Options</li> {/* Later redirect to something like /admin/settings/scheduling */}
-                            <li>General Settings</li> {/* Later redirect to something like /admin/settings/general */}
-                            <li>Advanced Settings</li> {/* Later redirect to something like /admin/settings/advanced */}
+                            <li><Link to="/admin/settings/profile">Profile Settings</Link></li>
+                            <li><Link to="/admin/settings/notifications">Notification Settings</Link></li>
+                            <li><Link to="/admin/settings/scheduling">Scheduling Settings</Link></li>
+                            <li><Link to="/admin/settings/general">General Settings</Link></li>
+                            <li><Link to="/admin/settings/advanced">Advanced Settings</Link></li>
                         </ul>
                     </div>
                 )}
