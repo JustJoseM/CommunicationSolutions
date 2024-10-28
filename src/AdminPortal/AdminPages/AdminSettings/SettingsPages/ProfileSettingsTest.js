@@ -10,6 +10,7 @@ const ProfileSettingsTest = () => {
     const [company, setCompany] = useState('');
     const [bio, setBio] = useState('');
     const [icon, setIcon] = useState('');
+    const [showPopup, setShowPopup] = useState(false); // State for popup visibility
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -50,6 +51,13 @@ const ProfileSettingsTest = () => {
         }, {merge: true });
         
         console.log('Profile updated:', { firstName, lastName, email, company, bio});
+
+        //Show popup for 5 seconds with a 0.5 second delay
+
+        setTimeout(() => {
+            setShowPopup(true);
+            setTimeout(() => setShowPopup(false), 5000);
+        }, 200);
     };
 
     return (
@@ -119,6 +127,9 @@ const ProfileSettingsTest = () => {
             <button onClick={handleProfileChanges}>
               Save Changes
             </button>
+
+            {/* Popup Message */}
+            {showPopup && <div className="popup fade-out">Information changed </div>}
           </div>
         </div>
       </div>
