@@ -1,18 +1,11 @@
 
-/*
-.topBox {
-} */
-
 h1 {
     margin-bottom: 20px;
-    color: #596277;
+    color: black;
+    text-align: center;
 }
 
-/* .list {
-
-} */
-
-.topBoxlistItem {
+.clientBoxlistItem {
     display: flex;
     align-items: center;
     justify-content: space-between;

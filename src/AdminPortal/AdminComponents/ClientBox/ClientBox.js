@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./TopBox.css"
+import "./ClientBox.css"
 import { db } from '../../../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
-const TopBox = () => {
+const ClientBox = () => {
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
@@ -22,11 +22,11 @@ const TopBox = () => {
     }, []);
 
     return (    
-        <div className="topBox">
+        <div className="clientHoldingBox">
             <h1>Recent Clients</h1>
             <div className="list">
                 {clients.map(recentClients=>(
-                    <div className="topBoxlistItem" key={recentClients.id}>
+                    <div className="clientBoxlistItem" key={recentClients.id}>
                         <div className="client">
                             <img src={recentClients.Photo} alt=""/>
                             <div className="clientTexts">
@@ -42,8 +42,4 @@ const TopBox = () => {
     )
 };
 
-
-
-
-
-export default TopBox;
+export default ClientBox;

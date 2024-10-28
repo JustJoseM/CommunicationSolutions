@@ -26,7 +26,7 @@ const Clients = () => {
             <h1 className="clientInfo">Client Information</h1>
             <div className="boxHolder">
                 {clients.map(client => (
-                    <div key={client.id} className={`clientBox box${client.id}c`}>
+                    <div key={client.id} className={`clientBox box${client.id}`}>
                         <img src={client.Photo} alt={client.name} className="clientImg"/>
                         <h2 className="clientName">{client.CompanyName}</h2>
                         <p className="clientEmail">Email: {client.Email}</p>

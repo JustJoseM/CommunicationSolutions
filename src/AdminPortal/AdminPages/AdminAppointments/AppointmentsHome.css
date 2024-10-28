@@ -6,7 +6,7 @@
 .AdminApp .manage-appointments h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #e0f1ff
+    color: white;
   }
   
 .AdminApp .appointments-list {
@@ -19,7 +19,7 @@
   }
   
 .AdminApp  .appointments-list li {
-    background-color: #e0f1ff;
+    background-color: whitesmoke;
     padding: 15px;
     margin-bottom: 10px;
     border: 2px solid #384256;
