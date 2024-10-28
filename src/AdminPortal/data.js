@@ -90,7 +90,7 @@ export const menu = [
             {
                 id: 1,
                 title: "Charts",
-                url: "/admin",
+                url: "/admin/charts",
                 icon: "",
             },
             {

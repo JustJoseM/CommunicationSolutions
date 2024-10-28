@@ -18,18 +18,19 @@ import Footer from "./Components/Footer";
 import SignIn from "./Pages/SignIn";
 import AboutUs from "./Pages/AboutUs";
 import Testimonial from "./Pages/Testimonial";
+import TestimonialTest from "./Pages/TestimonialTest";
 import Contact from "./Pages/Contact";
 import ScheduleAppt from "./Pages/ScheduleAppt";
 
 /* Admin imports */
 import AdminHome from './AdminPortal/AdminHome/AdminHome';
-import Clients from './AdminPortal/AdminClients/Clients';
-import SchedulingHome from './AdminPortal/AdminScheduling/SchedulingHome';
+import Clients from "./AdminPortal/AdminPages/AdminClients/Clients";
+import SchedulingHome from './AdminPortal/AdminPages/AdminScheduling/SchedulingHome';
 import AdminFooter from './AdminPortal/AdminComponents/AdminFooter/AdminFooter';
 import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
-import Profile from './AdminPortal/AdminProfile/Profile';
-import Notes from './AdminPortal/AdminNotes/NotesHome'
+import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
+import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
 
 function App() {
     const MainLayout = () => {
@@ -88,7 +89,7 @@ function App() {
                 {
                     /* This route is for the 'Testimonial' component */
                     path: "/testimonial",
-                    element: <Testimonial />
+                    element: <TestimonialTest />
                 },
                 {
                     /* This route is for the 'Contact' component */
@@ -125,6 +126,10 @@ function App() {
                 { /* Route for Profile */
                     path:"/admin/profile",
                     element:<Profile />
+                },
+                { /* Route for Charts */
+                    path: "/admin/charts",
+                    element: <ChartsPage />
                 }
             ]
         }

@@ -1,31 +1,31 @@
 /* General Styles */
-body {
+.MainApp body {
     font-family: 'Roboto', sans-serif;
   }
   
-  .schedule-appt-container {
+  .MainApp .schedule-appt-container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
     padding: 100px 20px;
   }
   
-  form {
+  .MainApp form {
     display: flex;
     flex-direction: column;
   }
   
-  form div {
+  .MainApp form div {
     margin-bottom: 15px;
   }
   
-  label {
+  .MainApp label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
   }
   
-  input[type="text"], input[type="date"], input[type="time"], textarea {
+  .MainApp input[type="text"], input[type="date"], input[type="time"], textarea {
     width: 80%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -33,12 +33,12 @@ body {
     font-size: 16px;
   }
   
-  textarea {
+  .MainApp textarea {
     height: 100px;
     resize: vertical;
   }
   
-  .submit_button {
+  .MainApp .submit_button {
     width: 80%;
     background-color: #9facbb;
     border: none;
@@ -50,20 +50,20 @@ body {
     transition: background-color 0.3s;
   }
   
-  button:hover {
+  .MainApp button:hover {
     background-color: #5e666e;
   }
   
-  .appointments-list {
+  .MainApp .appointments-list {
     margin-top: 20px;
   }
   
-  .appointments-list ul {
+  .MainApp .appointments-list ul {
     list-style-type: none;
     padding: 0;
   }
   
-  .appointments-list li {
+  .MainApp .appointments-list li {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -71,11 +71,11 @@ body {
     margin-bottom: 10px;
   }
   
-  .appointments-list li p {
+  .MainApp .appointments-list li p {
     margin: 5px 0;
   }
   
-  .appointments-list button {
+  .MainApp .appointments-list button {
     background-color: #ff4d4d;
     border: none;
     color: #fff;
@@ -84,12 +84,12 @@ body {
     cursor: pointer;
   }
   
-  .appointments-list button:hover {
+  .MainApp .appointments-list button:hover {
     background-color: #cc0000;
   }
   
   .MainApp .appoint_background{
-    background-image: url('../assets/apointment_page.jpg');
+    /* background-image: url('../assets/apointment_page.jpg'); */
     height: 75vh;
     background-size: cover;
 }

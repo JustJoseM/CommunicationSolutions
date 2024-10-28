@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./TopBox.css"
+import './Clients.css';
 import { db } from '../../../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
-const TopBox = () => {
+const Clients = () => {
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
@@ -21,29 +21,21 @@ const TopBox = () => {
         fetchClients();
     }, []);
 
-    return (    
-        <div className="topBox">
-            <h1>Recent Clients</h1>
-            <div className="list">
-                {clients.map(recentClients=>(
-                    <div className="topBoxlistItem" key={recentClients.id}>
-                        <div className="client">
-                            <img src={recentClients.Photo} alt=""/>
-                            <div className="clientTexts">
-                                <span className="name">{recentClients.CompanyName}</span>
-                                <span className="email">{recentClients.Email}</span>
-                            </div>
-                        </div>
-                        
+    return (
+        <div className="ClientPage">
+            <h1 className="clientInfo">Client Information</h1>
+            <div className="boxHolder">
+                {clients.map(client => (
+                    <div key={client.id} className={`clientBox box${client.id}c`}>
+                        <img src={client.Photo} alt={client.name} className="clientImg"/>
+                        <h2 className="clientName">{client.CompanyName}</h2>
+                        <p className="clientEmail">Email: {client.Email}</p>
+                        <p className="clientPhone">Phone Number: {client.Contact}</p>
                     </div>
                 ))}
             </div>
-        </div> 
-    )
+        </div>
+    );
 };
 
-
-
-
-
-export default TopBox;
+export default Clients;

@@ -1,28 +1,38 @@
 import React from "react";
-import contact from '../assets/contact.jpg';
+import contactImage from '../assets/hero.jpeg';
 import '../PagesCSS/Contact.css';
 
-function Contact() {
+const Contact = () => {
     return (
-        <div className="contact_container">
-            <div className="contact-text">
-                <h4>Get In Touch!</h4>
-                    <p>Have any more questions? We'd love to hear from you. Here is </p>
-                    <p>how to get in touch...</p>
-            </div>
-            <div className="contact-img">
-                <img src={contact} alt=""/>             
-            </div>
-            <div className="contact-methods">
-                <div className="phone-number">
-                    <h4>Phone Number</h4>
-                        <p>If you have any further questions contact this number</p>
-                        <p>111-2222</p>
+        <div className="contact-pg">
+            {/* Hero Section */}
+            <div className="hero-section">
+                <div className="hero-content">
+                    <h1>Get in Touch with Us</h1>
+                    <p>We're here to help. Reach out to us through the method that works best for you.</p>
                 </div>
-                <div className="email">
-                    <h4>Email</h4>
-                        <p>Want another way to get a hold of us. Here is our email.</p>
-                        <p>buisnessinfo@gmail.com</p>
+            </div>
+            <div className="divider"></div>
+
+            {/* Contact Methods */}
+            <div className="contact-methods">
+                <h2>How Can We Help?</h2>
+                <div className="methods-container">
+                    <div className="phone-method">
+                        <h4>Phone Support</h4>
+                        <p>Call us for immediate support at:</p>
+                        <a href="tel:+111-2222">111-2222</a>
+                    </div>
+                    <div className="email-method">
+                        <h4>Email Support</h4>
+                        <p>For general inquiries, email us at:</p>
+                        <a href="mailto:businessinfo@business.com">businessinfo@business.com</a>
+                    </div>
+                    <div className="office-method">
+                        <h4>Our Office</h4>
+                        <p>Visit us at:</p>
+                        <p>123 Business Street, Business City</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../PagesCSS/ScheduleAppt.css';
+import { db } from '../firebaseConfig.js';
+import { collection, doc, setDoc, getDoc, query, where, getDocs, addDoc, deleteDoc } from "firebase/firestore";
 
 function ScheduleAppt() {
   // State for form input values
@@ -9,40 +11,14 @@ function ScheduleAppt() {
   const [time, setTime] = useState('');
   const [note, setNote] = useState('');
   const [appointments, setAppointments] = useState([]);
-  const [db, setDb] = useState(null);
 
   useEffect(() => {
-    // Create and open the IndexedDB database
-    const request = window.indexedDB.open('appointments', 1);
-
-    // Handle any errors in opening the database
-    request.onerror = () => {
-      console.log('Database failed to open');
-    };
-
-    // Success handler when the database opens
-    request.onsuccess = () => {
-      setDb(request.result);
-      showAppointments(request.result);
-    };
-
-    request.onupgradeneeded = (e) => {
-      const db = e.target.result;
-      const objectStore = db.createObjectStore('appointments', { keyPath: 'key', autoIncrement: true });
-
-      // Create indexes for queying data later
-      objectStore.createIndex('username', 'username', { unique: false });
-      objectStore.createIndex('contact', 'contact', { unique: false });
-      objectStore.createIndex('date', 'date', { unique: false });
-      objectStore.createIndex('time', 'time', { unique: false });
-      objectStore.createIndex('note', 'note', { unique: false });
-
-      console.log('Database setup complete');
-    };
+    //Get appointments when component mounts
+    showAppointments();
   }, []);
 
   // Function to add a new appointment
-  const addAppointment = (e) => {
+  const addAppointment = async (e) => {
     e.preventDefault();
 
     // Create a new appointment object from form values
@@ -54,60 +30,50 @@ function ScheduleAppt() {
       note: note,
     };
 
-    // Begin a new transaction to write to the appointments object store
-    const transaction = db.transaction(['appointments'], 'readwrite');
-    const objectStore = transaction.objectStore('appointments');
-    const request = objectStore.add(newAppointment);
+    try {
+      //Add meeting to firestore
+      await addDoc(collection(db, 'Appointments'), newAppointment);
 
-    // When the addition is successful, clear the form inputs
-    request.onsuccess = () => {
+      // Reload the list
+      showAppointments();
+
+      //Clear the form
       setUserName('');
       setContact('');
       setDate('');
       setTime('');
       setNote('');
-    };
 
-    // Once the transaction completes, reload the list of appointments
-    transaction.oncomplete = () => {
-      console.log('Appointment added');
-      showAppointments(db);
-    };
+      console.log('Appointment added successfully')
+    } catch (error) {
+      console.error('Error adding appointment: ', error);
+    }
 
-    // Handle any error that occurs during the transaction
-    transaction.onerror = () => {
-      console.log('Error adding appointment');
-    };
   };
 
-  // Function to show all appointments in the database
-  const showAppointments = (db) => {
-    const objectStore = db.transaction('appointments').objectStore('appointments');
-    const appointmentsList = [];
-
-    // Open a cursor to iterate through all the appointments
-    objectStore.openCursor().onsuccess = (e) => {
-      const cursor = e.target.result;
-      if (cursor) {
-        appointmentsList.push(cursor.value);
-        cursor.continue();
-      } else {
-        setAppointments(appointmentsList);
-      }
-    };
+  // Function to get meetings in the database
+  const showAppointments = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'Appointments'));
+      const appointmentList = [];
+      querySnapshot.forEach((doc) => {
+        appointmentList.push({ ...doc.data(), id: doc.id})
+      });
+      setAppointments(appointmentList);
+    } catch (error) {
+      console.error('Error removing appointment: ', error);
+    }
   };
 
   // Function to remove an appointment from the database
-  const removeAppointment = (key) => {
-    const transaction = db.transaction(['appointments'], 'readwrite');
-    const objectStore = transaction.objectStore('appointments');
-    objectStore.delete(key);
-
-    // Once the deletion is complete, reload the list of appointments
-    transaction.oncomplete = () => {
-      console.log('Appointment removed');
-      showAppointments(db);
-    };
+  const removeAppointment = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'Appointments', id));
+      console.log('Appointment removed successfully');
+      showAppointments();
+    } catch (error) {
+      console.error('Error removing appointment: ', error);
+    }
   };
 
   // JSX returned by the component
@@ -142,13 +108,13 @@ function ScheduleAppt() {
         {appointments.length > 0 ? (
           <ul>
             {appointments.map((appointment) => (
-              <li key={appointment.key}>
+              <li key={appointment.id}>
                 <p>Name: {appointment.username}</p>
                 <p>Contact: {appointment.contact}</p>
                 <p>Date: {appointment.date}</p>
                 <p>Time: {appointment.time}</p>
                 <p>Note: {appointment.note}</p>
-                <button onClick={() => removeAppointment(appointment.key)}>Cancel</button>
+                <button onClick={() => removeAppointment(appointment.id)}>Cancel</button>
               </li>
             ))}
           </ul>
