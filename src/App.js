@@ -6,26 +6,27 @@ import {
     Outlet,
     Navigate,
 } from "react-router-dom";
-import './App.css';
-import './AdminApp.css';
+
+import './SiteCss/App.css';
+import './SiteCss/AdminApp.css';
 import './PagesCSS/Footer.css';
 
 /* Regular Site imports */
-import Navbar from "./Components/Navbar";
-import Sidebar from './Components/Sidebar';
+import Navbar from "./MainPortal/Components/Navbar";
+import Sidebar from './MainPortal/Components/Sidebar';
 import Home from './Pages/Home';
-import Footer from "./Components/Footer";
-import SignIn from "./Pages/SignIn";
-import AboutUs from "./Pages/AboutUs";
+import Footer from "./MainPortal/Components/Footer";
+import SignIn from "./MainPortal/Pages/SignIn";
+import AboutUs from "./MainPortal/Pages/AboutUs";
 import Testimonial from "./Pages/Testimonial";
-import TestimonialTest from "./Pages/TestimonialTest";
-import Contact from "./Pages/Contact";
-import ScheduleAppt from "./Pages/ScheduleAppt";
+import TestimonialTest from "./MainPortal/Pages/TestimonialTest";
+import Contact from "./MainPortal/Pages/Contact";
+import ScheduleAppt from "./MainPortal/Pages/ScheduleAppt";
 
 /* Admin imports */
 import AdminHome from './AdminPortal/AdminHome/AdminHome';
 import Clients from "./AdminPortal/AdminPages/AdminClients/Clients";
-import SchedulingHome from './AdminPortal/AdminPages/AdminScheduling/SchedulingHome';
+import AppointmentsHome from './AdminPortal/AdminPages/AdminAppointments/AppointmentsHome';
 import AdminFooter from './AdminPortal/AdminComponents/AdminFooter/AdminFooter';
 import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
@@ -115,9 +116,9 @@ function App() {
                     path:"/admin/clients",
                     element:<Clients/>
                 },
-                { /* Route for Scheduling*/
-                    path:"/admin/schedule",
-                    element:<SchedulingHome/>
+                { /* Route for Appointments & Scheduling*/
+                    path:"/admin/appointments",
+                    element:<AppointmentsHome />
                 },
                 { /* Route for Profile */
                     path:"/admin/profile",

@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import '../PagesCSS/TestimonialTest.css';
-import { clientTestimonials } from "../Data/clientsTestimonial";
+import { clientTestimonials } from "../../Data/clientsTestimonial";
 
 const Testimonial = () => {
     const settings = {

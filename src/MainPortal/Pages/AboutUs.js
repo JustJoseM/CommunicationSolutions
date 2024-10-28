@@ -1,8 +1,8 @@
 import React from "react";
 import "../PagesCSS/AboutUs.css";
-import s1 from '../assets/imgplaceholder.jpg';
-import place from '../assets/placeholder.png';
-import logo from "../assets/business_logo.png";
+import s1 from '../../assets/imgplaceholder.jpg';
+import place from '../../assets/placeholder.png';
+import logo from "../../assets/business_logo.png";
 
 const AboutUs = () => {
 	return (

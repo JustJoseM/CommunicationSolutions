@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { db } from '../../../firebaseConfig.js';
 import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
-import './SchedulingHome.css';
+import './AppointmentsHome.css';
 
 function SchedulingHome() {
     const [appointments, setAppointments] = useState([]);

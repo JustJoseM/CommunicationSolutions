@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../PagesCSS/ScheduleAppt.css';
-import { db } from '../firebaseConfig.js';
+import { db } from '../../firebaseConfig.js';
 import { collection, doc, setDoc, getDoc, query, where, getDocs, addDoc, deleteDoc } from "firebase/firestore";
 
 function ScheduleAppt() {

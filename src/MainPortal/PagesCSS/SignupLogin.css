@@ -156,7 +156,7 @@
 }
 
 .MainApp .background {
-    background-image: url('../assets/liger.png');
+    /* background-image: url('../assets/liger.png'); */
     height: 100vh;
     background-size: cover;
 }

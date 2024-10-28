@@ -10,8 +10,8 @@
 .AdminApp .box {
     padding: 20px;
     border-radius: 10px;
-    border: 2px solid #384256;
-    background-color: #e0f1ff;
+    border: 2px solid whitesmoke;
+    background-color: white;
     color: #596277;
 }
 

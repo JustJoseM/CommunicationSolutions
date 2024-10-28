@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';  // Adjust the import path as needed
+import { auth } from '../../firebaseConfig';  // Adjust the import path as needed
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import '../PagesCSS/SignupLogin.css'; // Ensure the path is correct
 
