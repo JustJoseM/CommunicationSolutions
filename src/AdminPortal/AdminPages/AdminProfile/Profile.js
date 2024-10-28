@@ -1,8 +1,10 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import './Profile.css';
 import placeholder from '../../AdminAssets/profileplaceholder.png'
 
 const Profile = () => {
+    const navigate = useNavigate();
     //const state variables for the information 
     const [firstName, setFirstName] = useState('John');
     const [lastName, setLastName] = useState('Doe');
@@ -47,6 +49,11 @@ const Profile = () => {
         //Toggle
         setIsEditable(!isEditable);
     };
+
+    // Redirect to ProfileSettings when 'Edit Profile' is clicked
+    const handleEditProfile = () => {
+        navigate('/admin/settings/profile')
+    }
 
     return(
         <div className="ProfilePage">
@@ -114,7 +121,7 @@ const Profile = () => {
                             />
                         </label>
                         {/*Save Button Section */}
-                        <button onClick={handleProfileChanges}>
+                        <button onClick={isEditable ? handleProfileChanges : handleEditProfile}>
                             {isEditable ? 'Save Changes' : 'Edit Profile'}
                         </button>
                     </div>
