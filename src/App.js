@@ -32,6 +32,16 @@ import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
 import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
 import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
+import SettingsPage from "./AdminPortal/AdminPages/AdminSettings/AdminSettings";
+
+/* Admin Settings imports */
+import AdvancedSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/AdvancedSettings";
+import GeneralSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/GeneralSettings";
+import NotificationSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/NotificationSettings";
+import ProfileSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/ProfileSettings";
+import SchedulingSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/SchedulingSettings";
+
+
 
 function App() {
     const MainLayout = () => {
@@ -127,6 +137,33 @@ function App() {
                 { /* Route for Charts */
                     path: "/admin/charts",
                     element: <ChartsPage />
+                },
+                {
+                    /* Route for Settings */
+                    path:"/admin/settings",
+                    element: <SettingsPage />,
+                    children: [
+                        {
+                            path: "/admin/settings/profile",
+                            element: <ProfileSettings />
+                        },
+                        {
+                            path: "/admin/settings/notifications",
+                            element: <NotificationSettings />
+                        },
+                        {
+                            path: "/admin/settings/scheduling",
+                            element: <SchedulingSettings />
+                        },
+                        {
+                            path: "/admin/settings/general",
+                            element: <GeneralSettings />
+                        },
+                        {
+                            path: "/admin/settings/advanced",
+                            element: <AdvancedSettings />
+                        },
+                    ]
                 }
             ]
         }
