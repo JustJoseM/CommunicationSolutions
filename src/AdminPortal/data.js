@@ -48,7 +48,7 @@ export const menu = [
             {
                 id: 2,
                 title: "Notes",
-                url: "/admin",
+                url: "/admin/notes",
                 icon: ""
             },
             {

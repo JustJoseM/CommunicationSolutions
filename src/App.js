@@ -29,6 +29,7 @@ import AdminFooter from './AdminPortal/AdminComponents/AdminFooter/AdminFooter';
 import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
 import Profile from './AdminPortal/AdminProfile/Profile';
+import Notes from './AdminPortal/AdminNotes/NotesHome'
 
 function App() {
     const MainLayout = () => {
@@ -116,6 +117,10 @@ function App() {
                 { /* Route for Scheduling*/
                     path:"/admin/schedule",
                     element:<SchedulingHome/>
+                },
+                { /* Route for Notes*/
+                    path:"/admin/notes",
+                    element:<Notes/>
                 },
                 { /* Route for Profile */
                     path:"/admin/profile",
