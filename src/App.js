@@ -31,6 +31,8 @@ import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
 import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
 import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
+import CancelAppointment from "./Appointment/CancelAppointment";
+import RescheduleAppointment from "./Appointment/RescheduleAppointment";
 
 function App() {
     const MainLayout = () => {
@@ -100,6 +102,14 @@ function App() {
                     /* This route is for any mismatch. Defaults to '/' */
                     path: "*",
                     element: <Navigate to="/" />
+                },
+                {
+                    path: "/Reschedule",
+                    element: <RescheduleAppointment />
+                },
+                {
+                    path: "/Cancel",
+                    element: <CancelAppointment />
                 }
             ]
         },
