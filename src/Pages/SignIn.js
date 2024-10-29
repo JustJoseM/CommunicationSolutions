@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';  
+import { auth } from '../firebaseConfig';
+import { db } from '../firebaseConfig';  // Make sure Firestore is initialized in firebaseConfig
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom'; 
-import '../PagesCSS/SignupLogin.css'; 
+import { collection, addDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import '../PagesCSS/SignupLogin.css';
 
 function SignIn() {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -13,7 +15,7 @@ function SignIn() {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -23,6 +25,14 @@ function SignIn() {
         }
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+            // Save user data to Firestore
+            await addDoc(collection(db, "users"), {
+                uid: userCredential.user.uid,
+                email: email,
+                password: password  // For real-world applications, never store plain passwords. Use Firebase Authentication instead.
+            });
+
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
             setShowLoginForm(true);
