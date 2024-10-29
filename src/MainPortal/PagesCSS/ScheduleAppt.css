@@ -5,18 +5,21 @@
   
   .MainApp .schedule-appt-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 100px 20px;
+   
   }
   
   .MainApp form {
     display: flex;
     flex-direction: column;
+    
   }
   
   .MainApp form div {
     margin-bottom: 15px;
+    
   }
   
   .MainApp label {
@@ -26,11 +29,12 @@
   }
   
   .MainApp input[type="text"], input[type="date"], input[type="time"], textarea {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    
   }
   
   .MainApp textarea {
@@ -39,7 +43,7 @@
   }
   
   .MainApp .submit_button {
-    width: 80%;
+    width: 100%;
     background-color: #9facbb;
     border: none;
     color: #fff;
@@ -55,7 +59,9 @@
   }
   
   .MainApp .appointments-list {
-    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 40px;
   }
   
   .MainApp .appointments-list ul {
@@ -89,7 +95,6 @@
   }
   
   .MainApp .appoint_background{
-    /* background-image: url('../assets/apointment_page.jpg'); */
-    height: 75vh;
-    background-size: cover;
+    background-color: #f7f7f4;   
 }
+

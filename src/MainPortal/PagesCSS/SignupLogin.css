@@ -1,4 +1,4 @@
-.MainApp body {
+body {
     --color-background: #ffffff;
     --color-primary: #9facbb;
     --color-border: #4b98f0;
@@ -124,13 +124,21 @@
     transform: scale(0.98);
 }
 
+/* Position for 'Forgot pw and create acct link' */
 .MainApp .form__text__forgot {
     margin-top: 5.5rem;
 }
 
-.MainApp .form__text__login {
+/* Position for 'back to login */
+.MainApp .form__text__login__one {
+    margin-top: 10.5rem;
+}
+
+/* Popsition for 'already have an accoun? log in' */
+.MainApp .form__text__login__two {
     margin-top: 3.5rem;
 }
+
 
 .MainApp .form__text__createAcc {
     margin-top: 0.5rem;
@@ -160,3 +168,30 @@
     height: 100vh;
     background-size: cover;
 }
+
+
+  
+  /* Mobile View (768px and below) */
+  @media all and (max-width: 768px) {
+    .MainApp .login__container {
+      max-width: 80%; /* Take almost full width on mobile */
+      padding: 1rem;
+      align-items: center;
+      height: 415px;
+      
+    }
+
+    .MainApp .background {
+        height: 80vh;
+        background-position: center;
+        justify-content: center;
+        background-repeat: no-repeat; /* Prevent image from repeating */
+        
+    }
+
+  
+    .MainApp .header {
+      font-size: 30px; /* Adjust header size */
+    }
+}
+

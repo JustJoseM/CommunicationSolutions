@@ -1,0 +1,62 @@
+.MainApp .nav {
+    background-color: #0f1011;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    padding-top: 40px;
+    padding-left: 2rem;
+}
+
+.MainApp .title {
+    font-size: 40px;
+    padding-left: 75px;
+}
+
+.MainApp .sample{
+    font-size: 30px;
+    padding-right: 20rem;
+}
+
+.MainApp .button{
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    font-size: medium;
+    border-radius: 5px;
+}
+
+ /* Media Queries for Mobile */
+@media all and (max-width: 768px) {
+    .MainApp .menu-icon {
+        display: block; /* Show menu icon on mobile */
+    }
+
+    .MainApp .sample {
+        /* Instead of hiding it completely, you can use flexbox to align items */
+        display: flex; /* Keep it displayed */
+        justify-content: center;  
+        padding: 10px 0; /* Add some padding for spacing */
+        font-size: 24px; 
+        width: 50px;
+        position: relative;
+        right: 70px;
+    }
+
+    .MainApp .sample.active {
+        display: flex; 
+    }
+
+    .MainApp .title {
+        font-size: 1.5rem; 
+        padding-left: 0; /* Remove extra padding */
+    }
+
+    .MainApp .button {
+        width: 100%; 
+        padding: 1rem; 
+        font-size: 0.5rem; 
+    }
+}

@@ -4,6 +4,7 @@
 
 .MainApp .footer{
     background-color: #0f1011;
+    
 }
 
 .MainApp .sb__footer{
@@ -126,6 +127,7 @@
         margin-top: 1rem;
     }
 }
+
 
 @media screen and (max-width: 400px){
     .MainApp .sb__footer-heading h1{
