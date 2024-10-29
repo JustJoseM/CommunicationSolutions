@@ -1,16 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { db } from "../../../../firebaseConfig";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import "../SettingsPagesCSS/NotificationSettings.css";
 
 const NotificationSettings = () => {
 
   // State to manage notification preferences
   const [notifications, setNotifications] = useState({
-    push: false,
-    email: false,
-    sms: false,
-    sound: false,
+    Push: false,
+    Email: false,
+    Sms: false,
+    Sound: false,
   });
 
+  const fetchNotificationSettings = async () => {
+    const adminID = "admin1";
+    const docRef = doc(db, "Admins", adminID, "NotificationSettings", "Notifications");
+    const docSnap = await getDoc(docRef);
+
+    if(docSnap.exists()) {
+      setNotifications(docSnap.data());
+    }
+    else {
+      console.log("No such document");
+    }
+  };
+
+  // Function to update notification settings
+  const updateNotificationSettings = async () => {
+    const adminID = "admin1";
+    const docRef = doc(db, "Admins", adminID, "NotificationSettings", "Notifications");
+
+    try {
+      await setDoc(docRef, notifications);
+      alert("Settings updated successfully.");
+    } catch(error) {
+      console.error("Error updating document: ", error);
+      alert("Failed to update settings.");
+    }
+  };
+
+  useEffect(() => {
+    fetchNotificationSettings();
+  }, []);
+
+  // Function to handle checkbox changes
   const handleChange = (event) => {
     const { name, type, checked } = event.target;
     setNotifications((prev) => ({
@@ -27,8 +61,8 @@ const NotificationSettings = () => {
         <label>
           <input
             type="checkbox"
-            name="push"
-            checked={notifications.push}
+            name="Push"
+            checked={notifications.Push}
             onChange={handleChange}
           />
           Push Notifications
@@ -36,8 +70,8 @@ const NotificationSettings = () => {
         <label>
           <input
             type="checkbox"
-            name="email"
-            checked={notifications.email}
+            name="Email"
+            checked={notifications.Email}
             onChange={handleChange}
           />
           Email Notifications
@@ -45,8 +79,8 @@ const NotificationSettings = () => {
         <label>
           <input
             type="checkbox"
-            name="sms"
-            checked={notifications.sms}
+            name="SMS"
+            checked={notifications.SMS}
             onChange={handleChange}
           />
           SMS Notifications
@@ -54,15 +88,17 @@ const NotificationSettings = () => {
         <label>
           <input
             type="checkbox"
-            name="sound"
-            checked={notifications.sound}
+            name="Sound"
+            checked={notifications.Sound}
             onChange={handleChange}
           />
           Enable Sound
         </label>
       </div>
 
-      <button className="save-button">Save Changes</button>
+      <button className="save-button" onClick={updateNotificationSettings}>
+        Save Changes
+      </button>
     </div>
   );
 };

@@ -77,26 +77,3 @@
 .AdminApp .profile-info button:hover {
     background-color: rgb(59, 59, 255);
 }
-
-.AdminApp .popup {
-    position: fixed;
-    top: 100px;
-    right: 20px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.AdminApp .fade-out {
-    animation: fadeOut 5s forwards;
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1,}
-    100% {opacity: 0;}
-}
