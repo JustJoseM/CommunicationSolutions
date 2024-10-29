@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { db } from "../../../../firebaseConfig";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import moment from 'moment-timezone';
+import "../SettingsPagesCSS/SchedulingSettings.css";
 
 const SchedulingOptions = () => {
   const [timezones, setTimezones] = useState([]);
@@ -139,7 +140,9 @@ const SchedulingOptions = () => {
       </section>
 
       {/* Save Button */}
-      <button onClick={updateSchedulingSettings}>Save Changes</button>
+      <button className="save-button" onClick={updateSchedulingSettings}>
+        Save Changes
+      </button>
     </div>
   )
 };
