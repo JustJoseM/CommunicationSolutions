@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';  // Adjust the import path as needed
+import { auth } from '../firebaseConfig';  
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import '../PagesCSS/SignupLogin.css'; // Ensure the path is correct
+import { useNavigate } from 'react-router-dom'; 
+import '../PagesCSS/SignupLogin.css'; 
 
 function SignIn() {
     const [showLoginForm, setShowLoginForm] = useState(true);
-    const [showForgotPasswordForm, setShowForgotPasswordForm] = useState(false);  // Separate state for forgot password
+    const [showForgotPasswordForm, setShowForgotPasswordForm] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    
+    const navigate = useNavigate(); 
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -22,7 +25,7 @@ function SignIn() {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
-            setShowLoginForm(true); // Switch back to login form after successful sign-up
+            setShowLoginForm(true);
         } catch (error) {
             setErrorMessage(`Error signing up: ${error.message}`);
             setSuccessMessage('');
@@ -35,7 +38,7 @@ function SignIn() {
             await signInWithEmailAndPassword(auth, email, password);
             setSuccessMessage('Sign-in successful! Welcome back.');
             setErrorMessage('');
-            // Optionally redirect to another page
+            navigate('/admin');
         } catch (error) {
             setErrorMessage(`Error signing in: ${error.message}`);
             setSuccessMessage('');
@@ -45,14 +48,12 @@ function SignIn() {
     const handleForgotPassword = async (e) => {
         e.preventDefault();
         try {
-            // Attempt to send password reset email
             await sendPasswordResetEmail(auth, email);
-            setSuccessMessage('If you are registered user, password reset email will be sent soon.');
+            setSuccessMessage('If you are a registered user, a password reset email will be sent soon.');
             setErrorMessage('');
-            setShowForgotPasswordForm(false); // Hide the form after request
-            setShowLoginForm(true); // Switch back to login form after sending reset email
+            setShowForgotPasswordForm(false);
+            setShowLoginForm(true);
         } catch (error) {
-            // Check for specific error codes
             if (error.code === 'auth/user-not-found') {
                 setErrorMessage("User doesn't exist.");
             } else {
@@ -61,7 +62,6 @@ function SignIn() {
             setSuccessMessage('');
         }
     };
-    
 
     return (
         <div className='background'>
@@ -197,5 +197,3 @@ function SignIn() {
 }
 
 export default SignIn;
-
-
