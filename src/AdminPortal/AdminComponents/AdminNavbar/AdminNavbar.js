@@ -8,7 +8,6 @@ import './AdminNavbar.css';
 import logo from '../../AdminAssets/pngwing.com.png';
 import calendar from "../../AdminAssets/alternate-calendar.png";
 import apps from "../../AdminAssets/apps.png";
-import setting from "../../AdminAssets/cog.png";
 import notification from "../../AdminAssets/notification.png";
 
 const NotificationPopup = ({ notifications, onClose }) => {
@@ -126,20 +125,6 @@ const AdminNavbar = () => {
                         <ul>
                         <li><Link to="/admin/settings/profile">Edit Profile</Link></li>
                         <li onClick={handleLogout}>Logout</li>
-                        </ul>
-                    </div>
-                )}
-            </div>
-            <div className="settings" onClick={toggleSettingsDropdown} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && toggleSettingsDropdown()}>
-                <img src={setting} alt="settings icon" />
-                {showSettingsDropdown && (
-                    <div className="settings-dropdown">
-                        <ul>
-                            <li><Link to="/admin/settings/profile">Profile Settings</Link></li>
-                            <li><Link to="/admin/settings/notifications">Notification Settings</Link></li>
-                            <li><Link to="/admin/settings/scheduling">Scheduling Settings</Link></li>
-                            <li><Link to="/admin/settings/general">General Settings</Link></li>
-                            <li><Link to="/admin/settings/advanced">Advanced Settings</Link></li>
                         </ul>
                     </div>
                 )}

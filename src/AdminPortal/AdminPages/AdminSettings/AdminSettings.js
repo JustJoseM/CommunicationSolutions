@@ -36,7 +36,6 @@ const AdminSettings = () => {
                     <option value="notifications">Notification Settings</option>
                     <option value="scheduling">Scheduling Settings</option>
                     <option value="general">General Settings</option>
-                    <option value="advanced">Advanced Settings</option>
                 </select>
             </div>
 
@@ -56,9 +55,6 @@ const AdminSettings = () => {
                         </li>
                         <li>
                             <Link to="general">General Settings</Link>
-                        </li>
-                        <li>
-                            <Link to="advanced">Advanced Settings</Link>
                         </li>
                     </ul>
                 </div>

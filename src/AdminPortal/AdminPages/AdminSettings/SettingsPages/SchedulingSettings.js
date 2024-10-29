@@ -62,8 +62,8 @@ const SchedulingOptions = () => {
       <h2 className="scheduling-settings-header">Scheduling Settings</h2>
 
       {/* Section for General Scheduling settings */}
-      <section className="general-scheduling-settings">
-        <h2 className="general-settings">General Scheduling Settings</h2>
+      <section className="general-scheduling-settings-section">
+        <h2 className="general-scheduling-settings">General Scheduling Settings</h2>
         <label>
           Default Appointment Type:
           <select className="default-apt-select" name="DefaultApptType" value={settings.DefaultApptType} onChange={handleChange}>

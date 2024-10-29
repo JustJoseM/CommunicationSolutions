@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment-timezone';
 import { db } from "../../../../firebaseConfig";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import "../SettingsPagesCSS/GeneralSettings.css";
 
 const GeneralSettings = () => {
   const [timezones, setTimezones] = useState([]);
@@ -10,6 +11,8 @@ const GeneralSettings = () => {
   const [DateFormat, setDateFormat] = useState('MM/DD/YYYY');
   const [TimeFormat, setTimeFormat] = useState('12-hour');
   const [Language, setLanguage] = useState('English');
+
+
 
   useEffect(() => {
     // Fetch the preferences off Firebase
@@ -96,12 +99,11 @@ const GeneralSettings = () => {
   };
 
   return (
-    <div>
-      <h2>General Settings Page</h2>
-      
+    <div className="general-settings-box">
+      <h2 className="general-settings-header-box">General Settings Page</h2>
         <label>
           Default Time Zone:
-          <select value={DefaultTimezone} onChange={handleTimeZoneChange}>
+          <select className="default-timezone" value={DefaultTimezone} onChange={handleTimeZoneChange}>
             {timezones.map((zone) => (
               <option key={zone} value={zone}>
                 {zone} ({moment.tz(zone).format('z')})
@@ -113,7 +115,7 @@ const GeneralSettings = () => {
 
         <label>
           Work Hours:
-          <input
+          <input className="work-hours"
             type="text"
             value={WorkHours}
             onChange={handleWorkHoursChange}
@@ -124,7 +126,7 @@ const GeneralSettings = () => {
 
         <label>
           Date Format:
-          <select value={DateFormat} onChange={handleDateFormatChange}>
+          <select className="date-format" value={DateFormat} onChange={handleDateFormatChange}>
             <option value="MM/DD/YYYY">MM/DD/YYYY</option>
             <option value="DD/MM/YYYY">DD/MM/YYYY</option>
             <option value="YYYY/MM/DD">YYYY/MM/DD</option>
@@ -134,7 +136,7 @@ const GeneralSettings = () => {
 
         <label>
           Time Format:
-          <select value={TimeFormat} onChange={handleTimeFormatChange}>
+          <select className="time-format" value={TimeFormat} onChange={handleTimeFormatChange}>
             <option value="12-hour">12-hour</option>
             <option value="24-hour">24-hour</option>
           </select>
@@ -142,7 +144,7 @@ const GeneralSettings = () => {
 
         <label>
           Language Preferences:
-          <select value={Language} onChange={handleLanguageChange}>
+          <select className="language-preference" value={Language} onChange={handleLanguageChange}>
             <option value="English">English</option>
             <option value="Spanish">Spanish</option>
             <option value="French">French</option>
