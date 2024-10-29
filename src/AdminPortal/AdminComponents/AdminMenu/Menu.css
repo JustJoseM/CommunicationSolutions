@@ -1,3 +1,7 @@
+.AdminApp .menu {
+    height: 100%;
+}
+
 .AdminApp .items {
     display: flex;
     flex-direction: column;

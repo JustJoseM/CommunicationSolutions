@@ -1,22 +1,43 @@
+// src/components/RescheduleAppointment.js
 import React, { useState } from 'react';
 import './RescheduleAppointment.css';
+import { rescheduleAppointment } from './appointmentService';
 
 const RescheduleAppointment = () => {
+  const [appointmentID, setAppointmentID] = useState('');
   const [appointmentDate, setAppointmentDate] = useState('');
   const [appointmentTime, setAppointmentTime] = useState('');
   const [reason, setReason] = useState('');
   const [contact, setContact] = useState('');
   const [reminder, setReminder] = useState('none');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Appointment rescheduled successfully!');
+    try {
+      const newDateTime = `${appointmentDate}T${appointmentTime}`;
+      const result = await rescheduleAppointment(appointmentID, 'userID', newDateTime); // Replace 'userID' with actual user ID if available
+      setMessage(result);
+    } catch (error) {
+      setMessage(`Error: ${error.message}`);
+    }
   };
 
   return (
     <div className="form-container">
       <h2 className="form-title">Reschedule Appointment</h2>
       <form className="reschedule-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="appointmentID">Appointment ID:</label>
+          <input
+            type="text"
+            id="appointmentID"
+            className="form-input"
+            value={appointmentID}
+            onChange={(e) => setAppointmentID(e.target.value)}
+            required
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="date">New Date:</label>
           <input
@@ -82,8 +103,8 @@ const RescheduleAppointment = () => {
         
         <button type="submit" className="primary-btn">Reschedule</button>
       </form>
+      {message && <p>{message}</p>}
     </div>
-    
   );
 };
 
