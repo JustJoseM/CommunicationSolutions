@@ -43,6 +43,8 @@ import NotificationSettings from "./AdminPortal/AdminPages/AdminSettings/Setting
 import ProfileSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/ProfileSettings";
 import SchedulingSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/SchedulingSettings";
 import ProfileSettingsTest from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/ProfileSettingsTest";
+import CancelAppointment from "./Appointment/CancelAppointment";
+import RescheduleAppointment from "./Appointment/RescheduleAppointment";
 
 function App() {
     const MainLayout = () => {
@@ -112,6 +114,14 @@ function App() {
                     /* This route is for any mismatch. Defaults to '/' */
                     path: "*",
                     element: <Navigate to="/" />
+                },
+                {
+                    path: "/Reschedule",
+                    element: <RescheduleAppointment />
+                },
+                {
+                    path: "/Cancel",
+                    element: <CancelAppointment />
                 }
             ]
         },

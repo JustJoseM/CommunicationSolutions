@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { db } from "../../../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
@@ -10,7 +11,7 @@ import apps from "../../AdminAssets/apps.png";
 import setting from "../../AdminAssets/cog.png";
 import notification from "../../AdminAssets/notification.png";
 
-const NotificationPopup = ({ notifications, onClose}) => {
+const NotificationPopup = ({ notifications, onClose }) => {
     return (
         <div className="notification-popup">
             <ul>
@@ -36,31 +37,28 @@ const AdminNavbar = () => {
         'Notification 3',
     ]);
 
+    const navigate = useNavigate();
+
     const toggleNotifPopup = () => {
         setPopupVisible(!isPopupVisible);
-
-        // Mark notifications as viewed when the popup is opened
-        if(!isPopupVisible) {
+        if (!isPopupVisible) {
             setHasViewedNotifications(true);
         }
     };
 
     const toggleUserDropdown = () => {
         setShowUserDropdown(!showUserDropdown);
-    }
+    };
 
     const toggleSettingsDropdown = () => {
         setShowSettingsDropdown(!showSettingsDropdown);
-    }
+    };
 
-    // Function to generate random number of notifications
-    const generateRandomNotifications = () => {
-        const randomCount = Math.floor(Math.random() * 7) + 1; // Generates a number between 1 and 7
-        const newNotifications = Array.from({ length: randomCount }, (_, index) => `Notification ${index + 1}`);
-        return newNotifications;
-    }
+    const generateRandomNotifications = () => {    
+        const randomCount = Math.floor(Math.random() * 7) + 1;
+        return Array.from({ length: randomCount }, (_, index) => `Notification ${index + 1}`);
+    };
 
-    
     useEffect(() => {
         // Read from database
         const fetchUserData = async () => {
@@ -80,14 +78,12 @@ const AdminNavbar = () => {
 
         // Simulate refreshing notifications every 10 seconds, as an API might
         const interval = setInterval(() => {
-            // Generate a random number of notifications
             const randomNotifications = generateRandomNotifications();
             setNotifications(randomNotifications);
-            setHasViewedNotifications(false); // Reset the viewed state
+            setHasViewedNotifications(false);
+        }, 15000);
 
-        }, 15000); // Refresh every 15 seconds
-
-        return () => clearInterval(interval); // Clean up interval on component unmount
+        return () => clearInterval(interval);
     }, []);
 
     // Render user data
@@ -106,17 +102,16 @@ const AdminNavbar = () => {
                     <img src={calendar} alt="calendar icon"/>
                 </a>
                 <a href="/admin">
-                    <img src={apps} alt="apps icon"/>
+                    <img src={apps} alt="apps icon" />
                 </a>
             </div>
             <div className="notification" onClick={toggleNotifPopup} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && toggleNotifPopup()}>
-                    <img src={notification} alt="notification icon"/>
-                    {/* Only show the notification count if notifications has not been viewed */}
-                    {!hasViewedNotifications && notifications.length > 0 && (
-                        <span>{notifications.length}</span>
-                    )}
-                    {isPopupVisible && (
-                        <NotificationPopup notifications={notifications} onClose={toggleNotifPopup} />
+                <img src={notification} alt="notification icon" />
+                {!hasViewedNotifications && notifications.length > 0 && (
+                    <span>{notifications.length}</span>
+                )}
+                {isPopupVisible && (
+                    <NotificationPopup notifications={notifications} onClose={toggleNotifPopup} />
                 )}
             </div>
             <div className="user" onClick={toggleUserDropdown} role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && toggleUserDropdown()}>
@@ -126,7 +121,7 @@ const AdminNavbar = () => {
                     <div className="user-dropdown">
                         <ul>
                         <li><Link to="/admin/settings/profile">Edit Profile</Link></li>
-                            <li>Logout</li> {/* Will later redirect somewhere like /logout */}
+                        <li onClick={handleLogout}>Logout</li>
                         </ul>
                     </div>
                 )}
@@ -146,7 +141,7 @@ const AdminNavbar = () => {
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default AdminNavbar;
