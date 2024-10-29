@@ -1,0 +1,81 @@
+.MainApp .Home {
+    display: flex;
+    /* background-color: white; */
+    background-image: url(../../assets/home_background.jpg);
+    padding-top: 75px;
+    padding-left: 270px;
+    padding-bottom: 220px;
+    gap: 20rem;
+}
+
+.MainApp .home_data{
+    padding-top: 70px;
+}
+
+.MainApp .home_title{
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.MainApp .home_description{
+    margin-bottom: 2.5rem;
+    color: rgba(37, 37, 37, 0.87);
+}
+
+.MainApp .home_buttons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.MainApp .button_service{
+    display: inline-flex;
+    background: black;
+    color: white;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    transition: box-shadow .4s;
+}
+
+.MainApp .button_service:hover{
+    box-shadow: 0 8px 32px lightblue;
+    color: white;
+}
+
+.MainApp .home_images{
+    position: relative;
+    justify-self: center;
+}
+
+.MainApp .home_one{
+    width: 500px;
+    margin-left: 3.5rem;
+}
+
+.MainApp .home_two{
+    width: 300px;
+    border: 5px solid black;
+    position: absolute;
+    left: 0;
+    bottom: -3.5rem;
+}
+
+.MainApp .text_link {
+    text-decoration: none;
+    color: black; /* Set your desired text color */
+    font-size: 25px;
+    font-weight: bolder;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: transform .4s ease;
+  }
+
+  
+  .MainApp .text_link:hover .arrow {
+    margin-left: 5px; /* Space between text and arrow */
+    font-size: 30px;
+    transform: translateX(.25rem);
+  }

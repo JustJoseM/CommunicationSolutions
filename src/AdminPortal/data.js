@@ -24,7 +24,7 @@ export const menu = [
             {
                 id: 1,
                 title: "Appointments",
-                url: "/admin",
+                url: "/admin/appointments",
                 icon: ""
             },
             {
@@ -41,62 +41,38 @@ export const menu = [
         listItems: [
             {
                 id: 1,
-                title: "Schedule",
-                url: "/admin/schedule",
-                icon: ""
-            },
-            {
-                id: 2,
                 title: "Notes",
                 url: "/admin/notes",
                 icon: ""
             },
             {
-                id: 3,
+                id: 2,
                 title: "Forms",
                 url: "/admin",
                 icon: ""
             },
             {
-                id: 4,
+                id: 3,
                 title: "Calendar",
                 url: "/admin",
                 icon: ""
             },
+            {
+                id: 4,
+                title: "Settings",
+                url: "/admin/settings",
+                icon: ""
+            }
         ],
     },
     {
         id: 4,
-        title: "Maintenance",
-        listItems: [
-            {
-                id: 1,
-                title: "Settings",
-                url: "/admin",
-                icon: ""
-            },
-            {
-                id: 2,
-                title: "Backups",
-                url: "/admin",
-                icon: ""
-            },
-        ],
-    },
-    {
-        id: 5,
         title: "Analytics",
         listItems: [
             {
                 id: 1,
                 title: "Charts",
                 url: "/admin/charts",
-                icon: "",
-            },
-            {
-                id: 2,
-                title: "Logs",
-                url: "/admin",
                 icon: "",
             },
         ],
