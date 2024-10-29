@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';
-import { db } from '../firebaseConfig';  // Make sure Firestore is initialized in firebaseConfig
+import { auth } from '../../firebaseConfig';
+import { db } from "../../firebaseConfig";  // Make sure Firestore is initialized in firebaseConfig
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
