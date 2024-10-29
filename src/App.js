@@ -32,6 +32,7 @@ import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
 import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
 import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
+import Notes from "./AdminPortal/AdminPages/AdminNotes/NotesHome";
 import AdminSettings from "./AdminPortal/AdminPages/AdminSettings/AdminSettings";
 
 
@@ -137,6 +138,10 @@ function App() {
                 { /* Route for Appointments & Scheduling*/
                     path:"appointments",
                     element:<AppointmentsHome />
+                },
+                { /* Route for Profile */
+                    path:"notes",
+                    element:<Notes />
                 },
                 { /* Route for Profile */
                     path:"profile",

@@ -14,12 +14,62 @@ function SignIn() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    //Paswword Policy and password visability 
+    const [passwordFeedback, setPasswordFeedback] = useState([]);
+    const [hasTyped, setHasTyped] = useState(false);
+    const [showPassword, setShowPassword] =  useState(false);
     
     const navigate = useNavigate();
 
+        //Password Policy
+        const passwordPolicy = {
+            minlength: 8, 
+            hasUpperCase: /[A-Z]/,
+            hasNumber: /\d/,
+            hasSpecialChar: /[!@#$%^&*]/,
+        }
+        
+        //Validating password 
+        const validatePassword = (password) => {
+            //To provide real time feedback
+            const feedback = []
+            if (password.length < passwordPolicy.minlength) {
+                feedback.push('Password must be at least 8 characters long.')
+            }
+            if (!passwordPolicy.hasUpperCase.test(password)) {
+                feedback.push("Password must contain at least one uppercase letter.");
+            }
+            if (!passwordPolicy.hasNumber.test(password)) {
+                feedback.push("Password must contain at least one number.");
+            }
+            if (!passwordPolicy.hasSpecialChar.test(password)) {
+                feedback.push("Password must contain at least one special character (!, @, #, etc.).");
+            }
+            return feedback;
+        };
+    
+        //Real-time validation 
+        const handlePasswordFeedback = (e) => {
+            //placeholder
+            const newPassword = e.target.value;
+            setPassword(newPassword);
+            setPasswordFeedback(validatePassword(newPassword));
+            if (!hasTyped) setHasTyped(true);
+        };
+    
+        //To toggle view Password
+        const togglePasswordVisibility = () => {
+            setShowPassword((prevState) => !prevState);
+        };
+
     const handleSignUp = async (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
+        //feedback 
+        const feedback = validatePassword(password);
+        if (feedback.length > 0) {
+            setPasswordFeedback(feedback);
+            return;
+        } else if (password !== confirmPassword) {
             setErrorMessage('Passwords do not match');
             return;
         }
@@ -35,6 +85,7 @@ function SignIn() {
 
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
+            setPasswordFeedback([]);
             setShowLoginForm(true);
         } catch (error) {
             setErrorMessage(`Error signing up: ${error.message}`);
@@ -167,14 +218,32 @@ function SignIn() {
                             />
                         </div>
                         <div className="form__input-group">
-                            <input
-                                type="password"
-                                className="form__input"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Password"
-                                required
-                            />
+                            <div className="password-container">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    className="form__input password-input"
+                                    placeholder="Password"
+                                    onChange={handlePasswordFeedback}
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    className="toggle-password-visibility"
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {showPassword ? "Hide" : "Show"}
+                                </button>
+                            </div>
+                        </div>
+                        {/* Feedback in Real time  */}
+                        <div className="form__feedback">
+                            {passwordFeedback.length > 0 ? (
+                                passwordFeedback.map((msg, index) => (
+                                    <div key={index} className="feedback__message error">{msg}</div>
+                                ))
+                            ) : (
+                                hasTyped && <div className="feedback__message success">Password meets all requirements</div> // Only show if hasTyped is true
+                            )}
                         </div>
                         <div className="form__input-group">
                             <input
