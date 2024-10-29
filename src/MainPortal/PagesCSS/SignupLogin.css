@@ -160,3 +160,49 @@
     height: 100vh;
     background-size: cover;
 }
+
+.MainApp .form__feedback {
+    margin-top: 0.5rem;
+}
+
+.MainApp .feedback__message {
+    font-size: 0.85rem;
+    color: red;
+    margin-bottom: 0.25rem;
+}
+
+
+.MainApp .feedback__message.success {
+    color: var(--color-success);
+    color: green;
+}
+
+.MainApp .feedback__message.error {
+    color: var(--color-error);
+    color: red;
+}
+
+.MainApp .password-container {
+    position: relative;
+    width: 100%;
+}
+
+.MainApp .password-input {
+    padding-right: 50px;  
+    padding-right: 45px;
+    box-sizing: border-box;
+}
+
+.MainApp .toggle-password-visibility {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #2486e9;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    line-height: 1;
+}
