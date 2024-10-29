@@ -9,13 +9,13 @@ const NotificationSettings = () => {
   const [notifications, setNotifications] = useState({
     Push: false,
     Email: false,
-    Sms: false,
+    SMS: false,
     Sound: false,
   });
 
   const fetchNotificationSettings = async () => {
     const adminID = "admin1";
-    const docRef = doc(db, "Admins", adminID, "NotificationSettings", "Notifications");
+    const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
     const docSnap = await getDoc(docRef);
 
     if(docSnap.exists()) {
@@ -29,7 +29,7 @@ const NotificationSettings = () => {
   // Function to update notification settings
   const updateNotificationSettings = async () => {
     const adminID = "admin1";
-    const docRef = doc(db, "Admins", adminID, "NotificationSettings", "Notifications");
+    const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
 
     try {
       await setDoc(docRef, notifications);
