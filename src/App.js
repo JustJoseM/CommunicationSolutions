@@ -119,10 +119,10 @@ function App() {
                     path:"/admin/schedule",
                     element:<SchedulingHome/>
                 },
-                { /* Route for Notes*/
-                    path:"/admin/notes",
-                    element:<Notes/>
-                },
+                // { /* Route for Notes*/
+                //     path:"/admin/notes",
+                //     element:<Notes/>
+                // },
                 { /* Route for Profile */
                     path:"/admin/profile",
                     element:<Profile />
