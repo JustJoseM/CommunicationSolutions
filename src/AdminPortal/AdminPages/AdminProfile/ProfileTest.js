@@ -18,7 +18,7 @@ const ProfileTest = () => {
     // Fetch user data from Firestore
     useEffect(() => {
         const fetchUserData = async () => {
-            const adminID = "admin1";
+            const adminID = "admin2";
             const docRef = doc(db, "Admins", adminID);
             const docSnap = await getDoc(docRef);
 

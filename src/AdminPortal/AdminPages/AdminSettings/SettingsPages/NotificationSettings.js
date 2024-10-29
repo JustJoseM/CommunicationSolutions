@@ -14,7 +14,7 @@ const NotificationSettings = () => {
   });
 
   const fetchNotificationSettings = async () => {
-    const adminID = "admin1";
+    const adminID = "admin2";
     const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
     const docSnap = await getDoc(docRef);
 
@@ -28,7 +28,7 @@ const NotificationSettings = () => {
 
   // Function to update notification settings
   const updateNotificationSettings = async () => {
-    const adminID = "admin1";
+    const adminID = "admin2";
     const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
 
     try {
