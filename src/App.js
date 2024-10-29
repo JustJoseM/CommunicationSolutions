@@ -33,16 +33,13 @@ import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
 import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
 import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
 import AdminSettings from "./AdminPortal/AdminPages/AdminSettings/AdminSettings";
-import ProfileTest from "./AdminPortal/AdminPages/AdminProfile/ProfileTest"
 
 
 /* Admin Settings imports */
-import AdvancedSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/AdvancedSettings";
 import GeneralSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/GeneralSettings";
 import NotificationSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/NotificationSettings";
 import ProfileSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/ProfileSettings";
 import SchedulingSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/SchedulingSettings";
-import ProfileSettingsTest from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/ProfileSettingsTest";
 import CancelAppointment from "./Appointment/CancelAppointment";
 import RescheduleAppointment from "./Appointment/RescheduleAppointment";
 
@@ -143,7 +140,7 @@ function App() {
                 },
                 { /* Route for Profile */
                     path:"profile",
-                    element:<ProfileTest />
+                    element:<Profile />
                 },
                 { /* Route for Charts */
                     path: "charts",
@@ -156,7 +153,7 @@ function App() {
                     children: [
                         {
                             path: "profile",
-                            element: <ProfileSettingsTest />
+                            element: <ProfileSettings />
                         },
                         {
                             path: "notifications",
@@ -169,10 +166,6 @@ function App() {
                         {
                             path: "general",
                             element: <GeneralSettings />
-                        },
-                        {
-                            path: "advanced",
-                            element: <AdvancedSettings />
                         },
                     ]
                 },
