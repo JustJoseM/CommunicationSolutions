@@ -11,6 +11,47 @@
     justify-content: space-between;
 }
 
+.scheduling-settings-header {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.general-settings {
+    padding-bottom: 20px;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.default-apt-select, .cancellation-policy, .default-duration,
+.default-meeting-type, .reminder-time {
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 8px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.apt-notif-prefs {
+    padding-bottom: 20px;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
 .save-button {
     background-color: rgba(0, 0, 184, 0.952);
     width: 130px;
