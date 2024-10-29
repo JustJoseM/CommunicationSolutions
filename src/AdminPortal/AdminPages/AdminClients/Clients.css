@@ -1,3 +1,7 @@
+.AdminApp .ClientPage {
+    height: 100vh;
+}
+
 .AdminApp .boxHolder {
     display: grid;
     padding-left: 20px;

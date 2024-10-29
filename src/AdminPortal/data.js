@@ -75,12 +75,6 @@ export const menu = [
                 url: "/admin/charts",
                 icon: "",
             },
-            {
-                id: 2,
-                title: "Logs",
-                url: "/admin",
-                icon: "",
-            },
         ],
     },
 ];

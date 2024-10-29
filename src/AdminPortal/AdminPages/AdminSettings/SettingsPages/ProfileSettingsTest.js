@@ -61,78 +61,78 @@ const ProfileSettingsTest = () => {
     };
 
     return (
-        <div className="ProfileSettings">
-      <div className="profile-container">
-        <h1>User Profile Settings</h1>
-        <div className="profile-main">
+      <div className="ProfileSettings">
+        <div className="profile-info-container">
+          <h1>User Profile Settings</h1>
+          <div className="profile-main">
 
-          {/* Profile Picture Selection */}
-          <div className="profile-picture">
-            <img src={icon} alt="Profile" />
-            <div className="display-info">
-              <h2>Display Information</h2>
-              <p><strong>First Name:</strong> {firstName}</p>
-              <p><strong>Last Name:</strong> {lastName}</p>
-              <p><strong>Email:</strong> {email}</p>
-              <p><strong>Company:</strong> {company}</p>
-              <p><strong>Bio:</strong> {bio}</p>
+            {/* Profile Picture Selection */}
+            <div className="profile-picture">
+              <img src={icon} alt="Profile" />
+              <div className="display-info">
+                <h2>Display Information</h2>
+                <p><strong>First Name:</strong> {firstName}</p>
+                <p><strong>Last Name:</strong> {lastName}</p>
+                <p><strong>Email:</strong> {email}</p>
+                <p><strong>Company:</strong> {company}</p>
+                <p><strong>Bio:</strong> {bio}</p>
+              </div>
+            </div>
+
+            {/* Profile Information Section*/}
+            <div className="profile-info">
+              <label>
+                First Name:
+                <input
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </label>
+              <label>
+                Last Name:
+                <input
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </label>
+              <label>
+                Email:
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+              <label>
+                Company:
+                <input
+                  type="text"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+              </label>
+              <label>
+                User Bio:
+                <input
+                  type="text"
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                  rows="4"
+                />
+              </label>
+
+              {/* Save Changes */}
+              <button onClick={handleProfileChanges}>
+                Save Changes
+              </button>
+
+              {/* Popup Message */}
+              {showPopup && <div className="popup fade-out">Information changed </div>}
             </div>
           </div>
-
-          {/* Profile Information Section*/}
-          <div className="profile-info">
-            <label>
-              First Name:
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </label>
-            <label>
-              Last Name:
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </label>
-            <label>
-              Email:
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <label>
-              Company:
-              <input
-                type="text"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-              />
-            </label>
-            <label>
-              User Bio:
-              <input
-                type="text"
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-                rows="4"
-              />
-            </label>
-
-            {/* Save Changes */}
-            <button onClick={handleProfileChanges}>
-              Save Changes
-            </button>
-
-            {/* Popup Message */}
-            {showPopup && <div className="popup fade-out">Information changed </div>}
-          </div>
         </div>
-      </div>
     </div>
     );
 };

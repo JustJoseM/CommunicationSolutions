@@ -21,26 +21,29 @@ const AdminSettings = () => {
     const isMainSettingsPage = currentLocation.pathname === "/admin/settings";
 
     return (
-        <div>
-            <h1>Settings</h1>
-            <label htmlFor="settings-dropdown">Select a setting to change:</label>
-            <select
-                id="settings-dropdown"
-                value={selectedSetting}
-                onChange={handleDropdownChange}
-            >
-                <option value="">-- Choose an option --</option>
-                <option value="profile">Profile Settings</option>
-                <option value="notifications">Notification Settings</option>
-                <option value="scheduling">Scheduling Settings</option>
-                <option value="general">General Settings</option>
-                <option value="advanced">Advanced Settings</option>
-            </select>
+        <div className="box-container">
+            <div className="settings-container">
+            <h1 className="settings-header">Settings</h1>
+            <div className="dropdown-container">
+                <label htmlFor="settings-dropdown">Select a setting to change:</label>
+                <select
+                    id="settings-dropdown"
+                    value={selectedSetting}
+                    onChange={handleDropdownChange}
+                >
+                    <option value="">-- Choose an option --</option>
+                    <option value="profile">Profile Settings</option>
+                    <option value="notifications">Notification Settings</option>
+                    <option value="scheduling">Scheduling Settings</option>
+                    <option value="general">General Settings</option>
+                    <option value="advanced">Advanced Settings</option>
+                </select>
+            </div>
 
             {/* Direct Navigation options are only available on main settings page */}
             {isMainSettingsPage && (
-                <>
-                    <h2>Navigate Directly:</h2>
+                <div className="manual-selection">
+                    <h2 className="nav-header-container">Navigate Directly:</h2>
                     <ul>
                         <li>
                             <Link to="profile">Profile Settings</Link>
@@ -58,10 +61,10 @@ const AdminSettings = () => {
                             <Link to="advanced">Advanced Settings</Link>
                         </li>
                     </ul>
-                </>
+                </div>
             )}
-            
             <Outlet />
+            </div>
         </div>
     );
 };

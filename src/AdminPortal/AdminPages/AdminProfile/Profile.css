@@ -1,6 +1,7 @@
 .AdminApp .ProfilePage {
     padding-left: 20px;
     padding-right: 20px;
+    height: 100vh;
 }
 
 .AdminApp .profile-container{
