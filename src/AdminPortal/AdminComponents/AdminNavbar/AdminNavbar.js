@@ -86,6 +86,10 @@ const AdminNavbar = () => {
         return () => clearInterval(interval);
     }, []);
 
+    const handleLogout = () => {
+        navigate("/signin");
+    };
+
     // Render user data
     const username = userData ? userData.Username: "Loading ...";
     const firstName = userData ? userData.FirstName: "Loading ...";
