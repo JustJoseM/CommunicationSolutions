@@ -1,0 +1,265 @@
+.MainApp .main_about {
+    height: 300px;
+    background-color: #1d1f20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainApp .who_are_we_container {
+    background-color: black;
+    display: inline-block;
+    color: white;
+    padding: 1rem;
+}
+
+.MainApp .who_text{
+    font-size: 2em;
+    letter-spacing: 10px;
+    font-family: monospace;
+    border-right: 5px solid;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+        typing 3s steps(25),
+        cursor .4s step-end alternate;
+}
+
+@keyframes cursor {
+    50% { border-color: transparent }
+}
+
+@keyframes typing {
+    from { width: 0 }
+}
+
+.MainApp .company_container{
+    background-color: #181a1b;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem;
+}
+
+.MainApp .title-text{
+    font-size: x-large;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18rem;
+    padding-left: 25rem;
+}
+
+.MainApp .company_logo img{
+    width: 300px;
+    border-radius: 30%;
+    object-fit: cover;
+}
+
+.MainApp .company_name {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.MainApp .yelp_container {
+    background-color: #181a1b;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 2rem; 
+    padding-left: 8rem; 
+}
+
+/*For Yelp Service*/
+.MainApp .yelp_service_img {
+    margin-left: 2rem;
+}
+.MainApp .yelp_service_img img{
+    border: 5px solid #141618;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    width: 400px;
+    height: auto;
+    overflow: hidden;
+}
+
+.MainApp .service_one{
+    font-size: x-large;
+    text-align: left;
+    max-width: 800px;
+    padding-right: 150px;
+    margin: 0 auto;
+}
+
+.MainApp .yelp_title {
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.MainApp .campaign_text_right{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+/*For Business Coaching*/
+.MainApp .business_coaching_container {
+    background-color: #1d1f20;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 2rem; 
+    padding-left: 8rem; 
+}
+
+.MainApp .business_service_img {
+    margin-right: 6rem;
+}
+
+.MainApp .business_service_img img{
+    border: 5px solid #181a1b;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    width: 400px;
+    height: auto;
+    overflow: hidden;
+}
+
+.MainApp .service_two{
+    font-size: x-large;
+    text-align: left;
+    max-width: 800px;
+    padding-left: 150px;
+    margin: 0 auto;
+}
+
+.MainApp .coaching_title {
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.MainApp .campaign_text_left{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+/*For Communication Optimization*/
+.MainApp .optimization_container {
+    background-color: #181a1b;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 2rem; 
+    padding-left: 8rem;
+}
+
+.MainApp .optimization_img {
+    margin-left: 2rem;
+}
+.MainApp .optimization_img img{
+    border: 5px solid #141618;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    width: 400px;
+    height: auto;
+    overflow: hidden;
+}
+
+.MainApp .service_three{
+    font-size: x-large;
+    text-align: left;
+    max-width: 800px;
+    padding-right: 150px;
+    margin: 0 auto;
+}
+
+.MainApp .optimization_title {
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+@media all and (max-width: 768px) {
+    .MainApp .company_container {     
+        padding: 0.5rem; /* Reduce padding for mobile */
+        text-align: center; /* Center content */
+        gap: 0px;
+    }
+
+    .MainApp .company_logo img {
+        width: 120px; 
+        margin-left: -650px;
+    }
+
+    .MainApp .company_name{
+        margin-left: -800px;
+        font-size: 1rem;
+    }
+
+    .MainApp .who_text {
+        font-size: 1.2em; /* Adjust font size for mobile */
+        letter-spacing: 2px; /* Reduce letter spacing */
+    }
+
+    .MainApp .yelp_service_img img, 
+    .MainApp .business_service_img img, 
+    .MainApp .optimization_img img {
+        width: 200px; /* Set images to a fixed width for consistency */
+    }
+
+    .MainApp .yelp_title, 
+    .MainApp .coaching_title, 
+    .MainApp .optimization_title {
+        font-size: 1.3rem; /* Adjust title sizes */
+    }
+
+    .MainApp .service_one, 
+    .MainApp .service_two, 
+    .MainApp .service_three {
+        padding: 0 1rem; /* Reduce padding */
+        font-size: 1rem; /* Adjust font size */
+        padding-left: 0px;
+        text-align: center; /* Center text */
+    }
+
+    .MainApp .main_about {
+        padding: 1rem; /* Add padding for mobile */
+    }
+
+    .MainApp .who_are_we_container,
+    .MainApp .yelp_container,
+    .MainApp .business_coaching_container,
+    .MainApp .optimization_container {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center content */
+        text-align: center; /* Center text */
+       
+        padding-left: 0px;
+    }
+
+    .MainApp .yelp_service_img img,
+    .MainApp .business_service_img img,
+    .MainApp .optimization_img img {
+        max-width: 100%; /* Make images responsive */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 10px; /* Space between image and text */
+    }
+}
+
+/*
+*{ border: 2px solid red; }
+*/

@@ -1,18 +1,26 @@
+// src/components/CancelAppointment.js
 import React, { useState } from 'react';
 import './CancelAppointment.css';
+import { cancelAppointment } from './appointmentService';
 
 const CancelAppointment = () => {
   const [appointmentID, setAppointmentID] = useState('');
   const [cancelReason, setCancelReason] = useState('');
   const [confirmPolicy, setConfirmPolicy] = useState(false);
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!confirmPolicy) {
-      alert("Please confirm you agree to the cancellation policy.");
+      setMessage("Please confirm you agree to the cancellation policy.");
       return;
     }
-    alert('Appointment cancelled successfully!');
+    try {
+      const result = await cancelAppointment(appointmentID, 'userID', cancelReason); // Replace 'userID' with actual user ID if available
+      setMessage(result);
+    } catch (error) {
+      setMessage(`Error: ${error.message}`);
+    }
   };
 
   return (
@@ -46,11 +54,17 @@ const CancelAppointment = () => {
           </select>
         </div>
         <div className="form-group">
-          
-          
+          <input
+            type="checkbox"
+            id="confirmPolicy"
+            checked={confirmPolicy}
+            onChange={(e) => setConfirmPolicy(e.target.checked)}
+          />
+          <label htmlFor="confirmPolicy">I agree to the cancellation policy</label>
         </div>
         <button type="submit" className="primary-btn">Cancel Appointment</button>
       </form>
+      {message && <p>{message}</p>}
     </div>
   );
 };
