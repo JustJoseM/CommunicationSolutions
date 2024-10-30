@@ -76,3 +76,29 @@
 .MainApp .phone-method a:hover, .email-method a:hover {
     text-decoration: underline;
 }
+
+@media screen and (max-width: 768px){
+    .MainApp .hero-content h1{
+        font-size: 1.5rem;
+    }
+
+    .MainApp .contact-methods h2{
+        font-size: 1rem;
+    }
+
+    .MainApp .hero-content p{
+        font-size: 0.8rem;
+    }
+
+    .MainApp .phone-method h4, .email-method h4, .office-method h4{
+        font-size: 1.2rem;
+    }
+
+    .MainApp .phone-method p, .email-method p, .office-method p, .MainApp .phone-method a, .email-method a{
+        font-size: 0.9rem;
+    }
+
+    .MainApp .divider{
+        height: 2.5px;
+    }
+}
