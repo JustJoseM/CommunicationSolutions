@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { auth } from '../firebaseConfig';  // Adjust the import path as needed
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+<<<<<<< Updated upstream:src/Pages/SignIn.js
 import '../PagesCSS/SignupLogin.css'; // Ensure the path is correct
+=======
+import { collection, addDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import '../PagesCSS/SignupLogin.css';
+import bcrypt from 'bcryptjs';
+>>>>>>> Stashed changes:src/MainPortal/Pages/SignIn.js
 
 function SignIn() {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -19,7 +26,20 @@ function SignIn() {
             return;
         }
         try {
+            const hashedPassword = bcrypt.hashSync(password, 10);
+
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+<<<<<<< Updated upstream:src/Pages/SignIn.js
+=======
+
+            // Save user data to Firestore
+            await addDoc(collection(db, "users"), {
+                uid: userCredential.user.uid,
+                email: email,
+                password: hashedPassword  // For real-world applications, never store plain passwords. Use Firebase Authentication instead.
+            });
+
+>>>>>>> Stashed changes:src/MainPortal/Pages/SignIn.js
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
             setShowLoginForm(true); // Switch back to login form after successful sign-up
