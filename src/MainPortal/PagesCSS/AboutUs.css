@@ -194,18 +194,18 @@
 
 @media all and (max-width: 768px) {
     .MainApp .company_container {     
-        padding: 1rem; /* Reduce padding for mobile */
+        padding: 0.5rem; /* Reduce padding for mobile */
         text-align: center; /* Center content */
-        
+        gap: 0px;
     }
 
     .MainApp .company_logo img {
         width: 120px; 
-        margin-left: -700px;
+        margin-left: -650px;
     }
 
     .MainApp .company_name{
-        margin-left: -700px;
+        margin-left: -800px;
         font-size: 1rem;
     }
 
@@ -232,8 +232,7 @@
         padding: 0 1rem; /* Reduce padding */
         font-size: 1rem; /* Adjust font size */
         padding-left: 0px;
-        text-align: left; /* Center text */
-        
+        text-align: center; /* Center text */
     }
 
     .MainApp .main_about {
