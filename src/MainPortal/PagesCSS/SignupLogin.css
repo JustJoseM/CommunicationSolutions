@@ -163,10 +163,14 @@ body {
     background: #e2e4e7;
 }
 
+
 .MainApp .background {
-    /* background-image: url('../assets/liger.png'); */
+    background-image: url('../../assets/liger.png'); 
     height: 100vh;
     background-size: cover;
+    background-position: center;
+    
+    background-repeat: no-repeat;
 }
 
 .MainApp .form__feedback {
@@ -232,7 +236,6 @@ body {
         background-repeat: no-repeat; /* Prevent image from repeating */
         
     }
-
   
     .MainApp .header {
       font-size: 30px; /* Adjust header size */
