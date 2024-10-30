@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';  // Adjust the import path as needed
+import { auth, db } from '../firebaseConfig';  // Adjust the import path as needed
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import '../PagesCSS/SignupLogin.css'; // Ensure the path is correct
+import { Helmet } from 'react-helmet';
+import { doc, getDoc, setDoc, updateDoc} from 'firebase/firestore';
 
 function SignIn() {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -11,6 +13,12 @@ function SignIn() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const maxFailedAttempts = 3;  // Define the maximum failed attempts
+    const lockDuration = 1 * 60 * 1000; // 10 minutes in milliseconds
+    const isPasswordExpired = (passwordLastSet) => { // Helper function to check if password has expired
+    const expirationPeriod = 90 * 24 * 60 * 60 * 1000; // 90 days in milliseconds
+            return Date.now() - passwordLastSet.toMillis() > expirationPeriod;
+        };
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -20,6 +28,16 @@ function SignIn() {
         }
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const userRef = doc(db, 'users', userCredential.user.uid);
+
+            // Set passwordLastSet and initialize lockedUntil and failedAttempts
+            await setDoc(userRef, {
+                email: email,
+                passwordLastSet: new Date(), // Set passwordLastSet to now
+                lockedUntil: null,           // Initially unlocked
+                failedAttempts: 0            // Initial failed attempts
+            });
+
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
             setShowLoginForm(true); // Switch back to login form after successful sign-up
@@ -29,15 +47,77 @@ function SignIn() {
         }
     };
 
+
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth, email, password);
-            setSuccessMessage('Sign-in successful! Welcome back.');
-            setErrorMessage('');
-            // Optionally redirect to another page
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            const userRef = doc(db, 'users', user.uid);
+            const userDoc = await getDoc(userRef);
+
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+
+                // Check if account is locked
+                if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
+                    setErrorMessage('Account is temporarily locked. Please try again later.');
+                    return;
+                }
+
+                // Check if password is expired
+                if (userData.passwordLastSet && isPasswordExpired(userData.passwordLastSet)) {
+                    setErrorMessage('Your password has expired. Please reset your password.');
+                    await sendPasswordResetEmail(auth, email);
+                    setSuccessMessage('Password reset email sent. Please check your inbox.');
+                    return; // Stop the function to prevent signing in
+                }
+
+                // Update `passwordLastSet` to current time on successful login
+                await updateDoc(userRef, {
+                    passwordLastSet: new Date(),
+                    failedAttempts: 0
+                });
+            
+
+                // Reset failed attempts on successful login
+                await updateDoc(userRef, {
+                    failedAttempts: 0
+                });
+
+                setSuccessMessage('Sign-in successful! Welcome back.');
+                setErrorMessage('');
+            } else {
+                setErrorMessage('No user data found in Firestore.');
+                return;
+            }
         } catch (error) {
-            setErrorMessage(`Error signing in: ${error.message}`);
+            // Handle failed login attempts
+            const userRef = doc(db, 'users', auth.currentUser?.uid);
+            const userDoc = await getDoc(userRef);
+
+            if (userDoc.exists()) {
+                const failedAttempts = userDoc.data().failedAttempts || 0;
+
+                if (failedAttempts + 1 >= maxFailedAttempts) {
+                    // Lock the account
+                    const lockedUntil = new Date(Date.now() + lockDuration);
+                    await updateDoc(userRef, {
+                        lockedUntil: lockedUntil,
+                        failedAttempts: 0 // Reset failed attempts after lockout
+                    });
+                    setErrorMessage('Too many failed attempts. Account locked for 10 minutes.');
+                } else {
+                    // Increment failed attempts
+                    await updateDoc(userRef, {
+                        failedAttempts: failedAttempts + 1
+                    });
+                    setErrorMessage(`Error signing in:  if you fail more than 3 attempts, account gets locked for 10 minutes.`);
+                }
+            } else {
+                setErrorMessage('Error signing in: Account not found.');
+            }
             setSuccessMessage('');
         }
     };
@@ -45,25 +125,30 @@ function SignIn() {
     const handleForgotPassword = async (e) => {
         e.preventDefault();
         try {
-            // Attempt to send password reset email
             await sendPasswordResetEmail(auth, email);
-            setSuccessMessage('If you are registered user, password reset email will be sent soon.');
+            setSuccessMessage('If you are a registered user, a password reset email will be sent soon.');
             setErrorMessage('');
-            setShowForgotPasswordForm(false); // Hide the form after request
-            setShowLoginForm(true); // Switch back to login form after sending reset email
+            setShowForgotPasswordForm(false);
+            setShowLoginForm(true);
         } catch (error) {
-            // Check for specific error codes
-            if (error.code === 'auth/user-not-found') {
-                setErrorMessage("User doesn't exist.");
-            } else {
-                setErrorMessage(`Error resetting password: ${error.message}`);
-            }
+            setErrorMessage(`Error resetting password: ${error.message}`);
             setSuccessMessage('');
         }
     };
     
 
     return (
+
+    <>
+        <Helmet>
+        <title>Sign In - Communications Solution</title>
+        
+        <meta
+               name="description"
+               content="Sign in to your Communication Solutsions account to access personalized business coaching and support."
+           />
+   </Helmet>
+
         <div className='background'>
             <div className="login__container">
                 {showForgotPasswordForm ? (
@@ -193,9 +278,12 @@ function SignIn() {
                 )}
             </div>
         </div>
+        </>
     );
 }
 
 export default SignIn;
+
+
 
 

@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import '../PagesCSS/TestimonialTest.css';
 import { clientTestimonials } from "../Data/clientsTestimonial";
 
+import { Helmet } from 'react-helmet';
+
 const Testimonial = () => {
     const settings = {
         accessibility: true,
@@ -37,6 +39,14 @@ const Testimonial = () => {
     };
 
     return (
+        <>
+        <Helmet>
+            <title>Client Testimonial - Communication Solutions</title>
+            <meta
+                name="description"
+                content="See how our clients have benefited from our tailored business solutions. Read testimonials from trusted partners and businesses we've helped grow."
+            />
+        </Helmet>
         <div className="testimonial-section">
             <div className="testimonial-container">
                 <h1 className="testimonial-header">Who We've Worked With</h1>
@@ -60,6 +70,7 @@ const Testimonial = () => {
                 </Slider>
             </div>
         </div>
+        </>
     );
 }
 
