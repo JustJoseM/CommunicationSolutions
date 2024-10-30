@@ -194,18 +194,18 @@
 
 @media all and (max-width: 768px) {
     .MainApp .company_container {     
-        padding: 1rem; /* Reduce padding for mobile */
+        padding: 0.5rem; /* Reduce padding for mobile */
         text-align: center; /* Center content */
-        
+        gap: 0px;
     }
 
     .MainApp .company_logo img {
         width: 120px; 
-        margin-left: -700px;
+        margin-left: -650px;
     }
 
     .MainApp .company_name{
-        margin-left: -700px;
+        margin-left: -800px;
         font-size: 1rem;
     }
 
@@ -249,7 +249,7 @@
         align-items: center; /* Center content */
         text-align: center; /* Center text */
        
-        padding-left: 0px;
+        padding-left: 30px;
     }
 
     .MainApp .yelp_service_img img,
@@ -261,5 +261,6 @@
     }
 }
 
-
+/*
 *{ border: 2px solid red; }
+*/
