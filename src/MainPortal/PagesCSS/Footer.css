@@ -1,0 +1,137 @@
+.MainApp .section__padding{
+    padding: 20px;
+}
+
+.MainApp .footer{
+    background-color: #0f1011;
+    
+}
+
+.MainApp .sb__footer{
+    display: flex;
+    flex-direction: column;
+}
+
+.MainApp .sb__footer-links{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.MainApp .sb__footer-links_div{
+    width: 150px;
+    margin: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: white;
+}
+
+.MainApp .a{
+    color: rgb(175, 175, 179);
+    text-decoration: none;
+}
+
+.MainApp .socialmedia{
+    display: flex;
+    flex-direction: row;
+}
+
+.MainApp .socialmedia img{
+    width: 100%;
+}
+
+.MainApp .sb__footer-links_div h4{
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 0.9rem;
+}
+
+.MainApp .sb__footer-links_div p{
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
+.MainApp .sb__footer-below{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+}
+
+.MainApp .sb__footer-below-links{
+    display: flex;
+    flex-direction: row;
+}
+
+.MainApp .sb__footer-below-links p{
+    font-size: 13px;
+    line-height: 15px;
+    margin-left: 2rem;
+    color: white;
+    font-weight: 600;
+}
+
+.MainApp hr{
+    color: white !important;
+    width: 100%;
+}
+
+.MainApp .sb__footer-copyright p{
+    font-size: 13px;
+    line-height: 15px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+@media screen and (max-width: 850px){
+    .MainApp .sb__footer-heading h1{
+        font-size: 44px;
+        line-height: 50px;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .MainApp .sb__footer-heading h1{
+        font-size: 34px;
+        line-height: 42px;
+    }
+
+    .MainApp .sb__footer-links div{
+        margin: 1rem 0;
+    }
+
+    .MainApp .sb__footer-btn p{
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .MainApp .sb__footer-below{
+        flex-direction: column;
+        justify-content: left;
+    }
+
+    .MainApp .sb__footer-below-links{
+        flex-direction: column;
+    }
+
+    .MainApp .sb__footer-below-links p{
+        margin-left: 0rem;
+        margin-top: 1rem;
+    }
+}
+
+
+@media screen and (max-width: 400px){
+    .MainApp .sb__footer-heading h1{
+        font-size: 27px;
+        line-height: 38px;
+    }
+}

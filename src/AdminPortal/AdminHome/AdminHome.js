@@ -1,6 +1,6 @@
 import React from "react";
 import './AdminHome.css';
-import TopBox from "../AdminComponents/TopBox/TopBox";
+import ClientBox from "../AdminComponents/ClientBox/ClientBox";
 import ConsultationChart from "../AdminComponents/AdminCharts/ConsultationChart";
 import RevenueChart from "../AdminComponents/AdminCharts/RevenueChart";
 import ClientSatisfactionChart from "../AdminComponents/AdminCharts/ClientSatisfactionChart";
@@ -10,7 +10,7 @@ const AdminHome = () => {
     return(
         <div className="AdminHome">
             <div className="box box1">
-                <TopBox />
+                <ClientBox />
             </div>
             <div className="box box2">
                 <ConsultationChart timePeriod="lastMonth" />
