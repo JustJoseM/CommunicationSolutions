@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import './Clients.css';
+import "./ClientBox.css"
 import { db } from '../../../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
-const Clients = () => {
+const ClientBox = () => {
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
@@ -21,21 +21,25 @@ const Clients = () => {
         fetchClients();
     }, []);
 
-    return (
-        <div className="ClientPage">
-            <h1 className="clientInfo">Client Information</h1>
-            <div className="boxHolder">
-                {clients.map(client => (
-                    <div key={client.id} className={`clientBox box${client.id}`}>
-                        <img src={client.Photo} alt={client.name} className="clientImg"/>
-                        <h2 className="clientName">{client.CompanyName}</h2>
-                        <p className="clientEmail">Email: {client.Email}</p>
-                        <p className="clientPhone">Phone Number: {client.Contact}</p>
+    return (    
+        <div className="clientHoldingBox">
+            <h1>Recent Clients</h1>
+            <div className="list">
+                {clients.map(recentClients=>(
+                    <div className="clientBoxlistItem" key={recentClients.id}>
+                        <div className="client">
+                            <img src={recentClients.Photo} alt=""/>
+                            <div className="clientTexts">
+                                <span className="name">{recentClients.CompanyName}</span>
+                                <span className="email">{recentClients.Email}</span>
+                            </div>
+                        </div>
+                        
                     </div>
                 ))}
             </div>
-        </div>
-    );
+        </div> 
+    )
 };
 
-export default Clients;
+export default ClientBox;
