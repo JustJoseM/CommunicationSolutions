@@ -1,8 +1,15 @@
+import { Navigate } from "react-router-dom";
+import {issign} from "../../../src/App";
+
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const sgMail = require('@sendgrid/mail'); // For sending emails
 
-admin.initializeApp();
+if(!issign){
+  Navigate("SignIn.js")
+}
+else{
+  admin.initializeApp();
 const db = admin.firestore();
 
 // Set your SendGrid API key
@@ -89,3 +96,5 @@ exports.createAppointment = functions.https.onRequest(async (req, res) => {
     }
   }
   
+}
+
