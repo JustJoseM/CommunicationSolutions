@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswor
 import { collection, addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import '../PagesCSS/SignupLogin.css';
+import bcrypt from 'bcryptjs';
 
 function SignIn() {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -74,6 +75,8 @@ function SignIn() {
             return;
         }
         try {
+            const hashedPassword = bcrypt.hashSync(password, 10);
+
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
             // Save user data to Firestore
