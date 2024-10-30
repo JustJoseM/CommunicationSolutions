@@ -107,6 +107,8 @@ function SignIn() {
             setErrorMessage(`Error signing in: ${error.message}`);
             setSuccessMessage('');
         }
+
+        issign = true;
     };
 
     const handleForgotPassword = async (e) => {

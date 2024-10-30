@@ -30,7 +30,7 @@ const Clients = () => {
                         <img src={client.Photo} alt={client.name} className="clientImg"/>
                         <h2 className="clientName">{client.CompanyName}</h2>
                         <p className="clientEmail">Email: {client.Email}</p>
-                        <p className="clientPhone">Phone Number: {client.Contact}</p>
+                        <p className="clientPhone">Phone #: {client.Contact}</p>
                     </div>
                 ))}
             </div>
