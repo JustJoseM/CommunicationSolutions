@@ -23,7 +23,7 @@ function SignIn() {
     const lockDuration = 0.01 * 60 * 1000; // 10 minutes in milliseconds
     const expirationPeriod = 90 * 24 * 60 * 60 * 1000; // 90 days in milliseconds
     const navigate = useNavigate();
-    
+
 
     // Password Policy
     const passwordPolicy = {
