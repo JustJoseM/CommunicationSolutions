@@ -1,4 +1,4 @@
-.scheduling-settings {
+.AdminApp .scheduling-settings {
     background: white;
     display: flex;
     flex-direction: column;
@@ -11,24 +11,24 @@
     justify-content: space-between;
 }
 
-.scheduling-settings-header {
+.AdminApp .scheduling-settings-header {
     text-align: center;
     padding-bottom: 20px;
     font-size: 1.5em;
 }
 
-.general-scheduling-settings {
+.AdminApp .general-scheduling-settings {
     padding-bottom: 20px;
     font-size: 1.2em;
     text-decoration: underline;
 }
 
-section {
+.AdminApp section {
     margin-bottom: 20px;
     padding: 15px;
 }
 
-label {
+.AdminApp label {
     display: block;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -42,17 +42,17 @@ label {
     padding: 8px;
 }
 
-input[type="checkbox"] {
+.AdminApp input[type="checkbox"] {
     margin-right: 10px;
 }
 
-.apt-notif-prefs {
+.AdminApp .apt-notif-prefs {
     padding-bottom: 20px;
     font-size: 1.2em;
     text-decoration: underline;
 }
 
-.save-button {
+.AdminApp .save-button {
     background-color: rgba(0, 0, 184, 0.952);
     width: 130px;
     color: white;
@@ -63,6 +63,6 @@ input[type="checkbox"] {
     margin-top: 10px;
 }
 
-.save-button:hover {
+.AdminApp .save-button:hover {
     background-color: rgb(59, 59, 255);
 }

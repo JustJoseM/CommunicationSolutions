@@ -32,7 +32,7 @@
     margin: 5px 0;
   }
   
-button {
+.AdminApp button {
     padding: 8px 15px;
     margin-right: 10px;
     border: none;
@@ -40,20 +40,20 @@ button {
     cursor: pointer;
   }
   
-button:hover {
+.AdminApp button:hover {
     opacity: 0.8;
   }
   
-button:active {
+.AdminApp button:active {
     opacity: 0.6;
   }
   
-button.cancel-button {
+.AdminApp button.cancel-button {
     background-color: #e74c3c;
     color: white;
   }
   
-button.reschedule-button {
+.AdminApp button.reschedule-button {
     background-color: #3498db;
     color: white;
   }

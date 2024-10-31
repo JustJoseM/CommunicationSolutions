@@ -1,4 +1,4 @@
-body {
+.MainApp body {
     --color-background: #ffffff;
     --color-primary: #9facbb;
     --color-border: #4b98f0;
@@ -8,7 +8,7 @@ body {
     --border-radius: 4px;
 
     margin: auto;
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
