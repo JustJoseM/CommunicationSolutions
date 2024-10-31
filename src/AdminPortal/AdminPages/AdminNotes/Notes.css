@@ -1,6 +1,8 @@
 .AdminApp .NotesPage {
     padding-left: 20px;
     padding-right: 20px;
+    height: 100vh;
+
 }
 
 .AdminApp .notes-container {
@@ -32,13 +34,13 @@
     background-color: #67d7cc;
 }
 
-#new-note-text{
+.AdminApp #new-note-text{
     border: none;
     resize: none;
     background-color: #67d7cc;
 }
 
-textarea:focus{
+.AdminApp textarea:focus{
     outline: none;
 }
 
@@ -50,7 +52,7 @@ textarea:focus{
     padding: 5px 10px 5px 10px;
 }
 
-.delete-button:hover{
+.AdminApp .delete-button:hover{
     background-color: red;
     cursor: pointer;
 }
@@ -62,7 +64,7 @@ textarea:focus{
     padding: 5px 10px 5px 10px;
 }
 
-.save:hover{
+.AdminApp .save:hover{
     background-color: #ededed;
     cursor: pointer;
 }
