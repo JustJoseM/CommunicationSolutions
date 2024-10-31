@@ -17,11 +17,13 @@ function SignIn() {
     const [passwordFeedback, setPasswordFeedback] = useState([]);
     const [hasTyped, setHasTyped] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [issign, setIssign] = useState(false);
 
     const maxFailedAttempts = 3;
     const lockDuration = 0.01 * 60 * 1000; // 10 minutes in milliseconds
     const expirationPeriod = 90 * 24 * 60 * 60 * 1000; // 90 days in milliseconds
     const navigate = useNavigate();
+    
 
     // Password Policy
     const passwordPolicy = {
@@ -145,7 +147,7 @@ function SignIn() {
             setSuccessMessage('');
         }
 
-        issign = true;
+        setIssign(true);
     };
 
     // Forgot Password handler
