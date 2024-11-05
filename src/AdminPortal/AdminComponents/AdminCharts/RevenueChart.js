@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend } from 'chart.js';
-import { fetchRevenueData } from './fetchRevenueData';
-import processRevenueData from './processRevenueData';
+import { fetchRevenueData } from '././FetchingData/fetchRevenueData';
+import processRevenueData from '././ProcessingData/processRevenueData';
 
 // Register required components
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);

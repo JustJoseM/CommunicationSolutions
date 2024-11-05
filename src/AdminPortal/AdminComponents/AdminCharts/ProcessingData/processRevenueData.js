@@ -2,7 +2,7 @@ const processRevenueData = (revenue, timePeriod) => {
     const revenueData = [];
     let labels = [];
 
-    if(timePeriod == 'lastQuarter') {
+    if(timePeriod === 'lastQuarter') {
         labels = ['Month 1', 'Month 2', 'Month 3'];
         const monthlyRevenue = Array(3).fill(0);
 

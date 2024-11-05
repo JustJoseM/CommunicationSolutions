@@ -1,8 +1,8 @@
 import {collection, query, where, getDocs, Timestamp } from "firebase/firestore";
-import { db } from '../../../firebaseConfig';
+import { db } from '../../../../firebaseConfig';
 
-export const fetchRevenueData = async (timePeriod) => {
-    const revenueRef = collection(db, 'Consultations');
+export const fetchConsultationsData = async (timePeriod) => {
+    const consultationsRef = collection(db, 'Consultations');
     const now = Timestamp.now();
     let startDate;
 
@@ -24,13 +24,13 @@ export const fetchRevenueData = async (timePeriod) => {
             break;
     }
 
-    const revenueQuery = query(
-        revenueRef,
+    const consultationsQuery = query(
+        consultationsRef,
         where('date', '>=', Timestamp.fromDate(startDate))
     );
 
-    const querySnapshot = await getDocs(revenueQuery);
-    const revenue = querySnapshot.docs.map(doc => doc.data());
+    const querySnapshot = await getDocs(consultationsQuery);
+    const consultations = querySnapshot.docs.map(doc => doc.data());
 
-    return revenue;
-}
+    return consultations;
+};

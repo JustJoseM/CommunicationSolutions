@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
-import { fetchSatisfactionData } from './fetchSatisfactionData';
-import processSatisfactionData from './processSatisfactionData';
+import { fetchSatisfactionData } from '././FetchingData/fetchSatisfactionData';
+import processSatisfactionData from '././ProcessingData/processSatisfactionData';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
