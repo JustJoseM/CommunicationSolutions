@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ConsultationChartDB from '../../AdminComponents/AdminCharts/ConsultationChartDB';
+import ConsultationChart from '../../AdminComponents/AdminCharts/ConsultationChart';
 import RevenueChart from '../../AdminComponents/AdminCharts/RevenueChart';
 import ClientSatisfactionChart from '../../AdminComponents/AdminCharts/ClientSatisfactionChart';
 import './ChartsPage.css';
@@ -19,13 +19,13 @@ const ChartsPage = () => {
     const renderChart = () => {
         switch(selectedChart) {
             case 'consultations':
-                return <ConsultationChartDB timePeriod={timePeriod} />
+                return <ConsultationChart timePeriod={timePeriod} />
             case 'revenue':
                 return <RevenueChart timePeriod={timePeriod} />
             case 'clientSatisfaction':
                 return <ClientSatisfactionChart timePeriod={timePeriod} />
             default:
-                return <ConsultationChartDB timePeriod={timePeriod} />
+                return <ConsultationChart timePeriod={timePeriod} />
         }
     };
 

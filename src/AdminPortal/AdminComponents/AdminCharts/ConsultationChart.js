@@ -1,28 +1,26 @@
-import React from 'react'; // React import
+import React, { useEffect, useState } from 'react'; // React import
 import { Line } from 'react-chartjs-2'; // Chart.js import
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend } from 'chart.js'; // Additional Chart.js imports
-import chartData from './chartData'; // Local data import
+import { fetchConsultationsData } from './fetchConsultationsData';
+import processConsultationsData from './processConsultationsData';
 
 // Register required components
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
-const ConsultationChart = ( { timePeriod = 'lastMonth' }) => {    
-    // Load the data into the chart
-    const data = {
-        labels: chartData[timePeriod].labels,
-        datasets: [
-            {
-                label: 'Consultations',
-                data: chartData[timePeriod].consultations,
-                fill: false,
-                backgroundColor: 'rgba(157, 190, 187, 0.2)',
-                borderColor: 'rgba(157, 190, 187, 1)',
-                borderWidth: 4,
-            },
-        ],
-    };
+const ConsultationChart = ({ timePeriod }) => {
+    const [chartData, setChartData] = useState({});
 
-    // Chart options
+    useEffect(() => {
+        const getData = async () => {
+            const consultations = await fetchConsultationsData(timePeriod);
+            const processedData = processConsultationsData(consultations, timePeriod);
+            setChartData(processedData);
+        };
+
+        getData();
+    }, [timePeriod]);
+
+    // Chart options:
     const options = {
         responsive: true,
         scales: {
@@ -41,11 +39,10 @@ const ConsultationChart = ( { timePeriod = 'lastMonth' }) => {
             },
         },
     };
-
     return (
         <div>
-            <h3>Consultations Over the Selected Time Period</h3>
-            <Line data={data} options={options} />
+            <h3>Consultations Over the Last Month</h3>
+            <Line data={{ labels: chartData.labels, datasets: [{ label: 'Consultations', data: chartData.consultations }] }} options={options} />
         </div>
     );
 };
