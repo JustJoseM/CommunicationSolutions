@@ -21,7 +21,7 @@ const ClientSatisfactionChartDB = ({ timePeriod = 'lastMonth'}) => {
         fetchData();
     }, [timePeriod]);
 
-    if(!chartData) {
+    if(!chartData.labels) {
         return <div>Loading ...</div>
     }
 
