@@ -20,6 +20,10 @@ const ConsultationChart = ({ timePeriod }) => {
         getData();
     }, [timePeriod]);
 
+    if(!chartData) {
+        return<div>Loading ...</div>
+    }
+
     // Chart options:
     const options = {
         responsive: true,
