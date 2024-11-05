@@ -1,18 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend } from 'chart.js';
-import chartData from './chartData';
+import { fetchRevenueData } from './fetchRevenueData';
+import processRevenueData from './processRevenueData';
 
 // Register required components
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
-const RevenueChart = ( {timePeriod = 'lastMonth'}) => {
+const RevenueChart = ({ timePeriod = 'lastMonth' }) => {
+    const [chartData, setChartData] = useState({});
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const revenueData = await fetchRevenueData(timePeriod);
+            const processedData = processRevenueData(revenueData, timePeriod);
+
+            // Prepare data for chart
+            setChartData(processedData);
+        };
+
+        fetchData();
+    }, [timePeriod]);
+
+    if(!chartData.labels) {
+        return <div>Loading ...</div>
+    }
+
     const data = {
-        labels: chartData[timePeriod].labels,
+        labels: chartData.labels,
         datasets: [
             {
                 label: 'Revenue',
-                data: chartData[timePeriod].revenue,
+                data: chartData.revenue,
                 fill: false,
                 backgroundColor: 'rgba(9, 58, 62, 0.2)',
                 borderColor: 'rgba(9, 58, 62, 0.5)',
@@ -38,21 +57,21 @@ const RevenueChart = ( {timePeriod = 'lastMonth'}) => {
                 beginAtZero: true,
             },
         },
-        plugins: {
+        plugin: {
             tooltip: {
-                callbacks: {
+                callback: {
                     label: (context) => {
-                        const value = context.raw; // Get the raw value
-                        return `$${value}`; // Return the value formatted with $ before it
-                    }
-                }
-            }
-        }
+                        const value = context.raw;
+                        return `$${value.toFixed(2)}`;
+                    },
+                },
+            },
+        },
     };
-
+    
     return (
         <div>
-            <h3>Revenue over the Selected Time Period</h3>
+            <h3>Revenue over Selected Time Period</h3>
             <Line data={data} options={options} />
         </div>
     );

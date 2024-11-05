@@ -3,7 +3,6 @@ import './AdminHome.css';
 import ClientBox from "../AdminComponents/ClientBox/ClientBox";
 import ConsultationChart from "../AdminComponents/AdminCharts/ConsultationChart";
 import RevenueChart from "../AdminComponents/AdminCharts/RevenueChart";
-import RevenueChartDB from "../AdminComponents/AdminCharts/RevenueChartDB";
 import ClientSatisfactionChart from "../AdminComponents/AdminCharts/ClientSatisfactionChart";
 const AdminHome = () => {
 
@@ -16,7 +15,7 @@ const AdminHome = () => {
                 <ConsultationChart timePeriod="lastMonth" />
             </div>
             <div className="box box3">
-                <RevenueChartDB timePeriod="lastMonth" />
+                <RevenueChart timePeriod="lastMonth" />
             </div>
             <div className="box box4">Upcoming Appointments</div>
             <div className="box box5">
