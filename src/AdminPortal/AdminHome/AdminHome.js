@@ -4,8 +4,6 @@ import ClientBox from "../AdminComponents/ClientBox/ClientBox";
 import ConsultationChart from "../AdminComponents/AdminCharts/ConsultationChart";
 import RevenueChart from "../AdminComponents/AdminCharts/RevenueChart";
 import ClientSatisfactionChart from "../AdminComponents/AdminCharts/ClientSatisfactionChart";
-import ClientSatisfactionChartDB from "../AdminComponents/AdminCharts/ClientSatisfactionChartDB";
-
 const AdminHome = () => {
 
     return(
