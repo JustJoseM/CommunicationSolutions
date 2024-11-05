@@ -49,7 +49,7 @@ const ConsultationChart = ({ timePeriod }) => {
     };
     return (
         <div>
-            <h3>Consultations Over the Last Month</h3>
+            <h3>Consultations Over Selected Time Period</h3>
             <Line data={{ labels: chartData.labels, datasets: [{ label: 'Consultations', data: chartData.consultations }] }} options={options} />
         </div>
     );
