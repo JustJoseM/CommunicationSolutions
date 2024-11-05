@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ConsultationChart from '../../AdminComponents/AdminCharts/ConsultationChart';
+import ConsultationChartDB from '../../AdminComponents/AdminCharts/ConsultationChartDB';
 import RevenueChart from '../../AdminComponents/AdminCharts/RevenueChart';
 import ClientSatisfactionChart from '../../AdminComponents/AdminCharts/ClientSatisfactionChart';
 import './ChartsPage.css';
@@ -19,13 +19,13 @@ const ChartsPage = () => {
     const renderChart = () => {
         switch(selectedChart) {
             case 'consultations':
-                return <ConsultationChart timePeriod={timePeriod} />
+                return <ConsultationChartDB timePeriod={timePeriod} />
             case 'revenue':
                 return <RevenueChart timePeriod={timePeriod} />
             case 'clientSatisfaction':
                 return <ClientSatisfactionChart timePeriod={timePeriod} />
             default:
-                return <ConsultationChart timePeriod={timePeriod} />
+                return <ConsultationChartDB timePeriod={timePeriod} />
         }
     };
 
@@ -33,12 +33,12 @@ const ChartsPage = () => {
         <div className="chartsPage">
             <h2>Charts Page</h2>
             <div className="tabs">
-                <select onChange={handleChartChange}>
+                <select onChange={handleChartChange} value={selectedChart}>
                     <option value="consultations">Consultations</option>
                     <option value="revenue">Revenue</option>
                     <option value="clientSatisfaction">Client Satisfaction</option>
                 </select>
-                <select onChange={handleTimePeriodChange}>
+                <select onChange={handleTimePeriodChange} value={timePeriod}>
                     <option value="lastMonth">Last Month</option>
                     <option value="lastQuarter">Last Quarter</option>
                     <option value="lastYear">Last Year</option>
