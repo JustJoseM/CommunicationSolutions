@@ -13,7 +13,7 @@ const ConsultationChartDB = ({ timePeriod }) => {
     useEffect(() => {
         const getData = async () => {
             const consultations = await fetchConsultationsData(timePeriod);
-            const processedData = processConsultationsData(consultations);
+            const processedData = processConsultationsData(consultations, timePeriod);
             setChartData(processedData);
         };
 
