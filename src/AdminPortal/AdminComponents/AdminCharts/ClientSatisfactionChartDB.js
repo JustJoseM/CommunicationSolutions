@@ -7,12 +7,12 @@ import processSatisfactionData from './processSatisfactionData';
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const ClientSatisfactionChartDB = ({ timePeriod = 'lastMonth'}) => {
-    const [chartData, setChartData] = useState({ labels: [], ratings: [] });
+    const [chartData, setChartData] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
-            const consultations = await fetchConsultationsData(timePeriod);
-            const processedData = processConsultationsData(consultations, timePeriod);
+            const satisfaction = await fetchSatisfactionData(timePeriod);
+            const processedData = processSatisfactionData(satisfaction, timePeriod);
             
             // Prepare data for chart
             setChartData(processedData);
@@ -30,7 +30,7 @@ const ClientSatisfactionChartDB = ({ timePeriod = 'lastMonth'}) => {
         datasets: [
             {
                 label: 'Number of Clients',
-                data: chartData.consultations,
+                data: chartData.satisfaction,
                 backgroundColor: 'rgba(106, 91, 110, 0.6)',
                 borderColor: 'rgba(106, 91, 110, 1)',
                 borderWidth: 1,
@@ -54,6 +54,10 @@ const ClientSatisfactionChartDB = ({ timePeriod = 'lastMonth'}) => {
                     text: 'Number of Ratings',
                 },
                 beginAtZero: true,
+                ticks : {
+                    stepSize: 1,
+                    callback: (value) => Number.isInteger(value) ? value : '',
+                }
             },
         },
     };

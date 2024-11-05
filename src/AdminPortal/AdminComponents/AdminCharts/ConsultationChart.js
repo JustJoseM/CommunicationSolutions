@@ -40,6 +40,10 @@ const ConsultationChart = ({ timePeriod }) => {
                     text: 'Number of Consultations',
                 },
                 beginAtZero: true,
+                ticks : {
+                    stepSize: 1,
+                    callback: (value) => Number.isInteger(value) ? value : '',
+                }
             },
         },
     };

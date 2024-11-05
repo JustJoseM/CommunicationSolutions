@@ -19,6 +19,9 @@ export const fetchConsultationsData = async (timePeriod) => {
             startDate = new Date();
             startDate.setMonth(now.toDate().getMonth() - 1) // 1 month back
             break;
+        default:
+            startDate = new Date();
+            break;
     }
 
     const consultationsQuery = query(
