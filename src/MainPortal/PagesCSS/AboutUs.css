@@ -63,6 +63,7 @@
 .MainApp .company_name {
     font-weight: bold;
     font-size: 2rem;
+    color: whitesmoke;
 }
 
 .MainApp .yelp_container {
