@@ -44,12 +44,12 @@
 
 .MainApp .toggle-btn {
     font-size: 20px;
-    padding: 10px 15px;
+    padding: 0px 0px;
     cursor: pointer;
     background-color: #111;
     color: white;
     border: none;
-    position: absolute;
+    /* position: absolute; */
     top: 35px;
     right: 75px;
     transition: 0.3s;

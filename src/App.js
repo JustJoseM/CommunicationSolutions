@@ -13,7 +13,6 @@ import './MainPortal/PagesCSS/Footer.css';
 
 /* Regular Site imports */
 import Navbar from "./MainPortal/Components/Navbar";
-import Sidebar from './MainPortal/Components/Sidebar';
 import Home from './MainPortal/Pages/Home';
 import Footer from './MainPortal/Components/Footer';
 
@@ -49,7 +48,7 @@ function App() {
         return (
             <div className="MainApp">
                 <Navbar />
-                <Sidebar />
+                {/* <Sidebar /> */}
                 <Outlet />
                 <Footer />
             </div>
