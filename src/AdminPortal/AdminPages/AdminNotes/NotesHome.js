@@ -17,7 +17,7 @@ const NotesHome = () => {
 	useEffect(() => {
 		const fetchNotes = async () => {
             // const adminId = "admin2"
-			const querySnapshot = await getDocs(collection(db, 'Admins/admin2/Notes'));
+			const querySnapshot = await getDocs(collection(db, 'Admins/admin1/Notes'));
 			const fetchedNotes = querySnapshot.docs.map((doc) => ({
 				id: doc.id,
 				...doc.data(),
@@ -36,13 +36,13 @@ const NotesHome = () => {
             date: date.toLocaleDateString()
         }
         // const adminId = "admin2";
-        const docRef = await addDoc(collection(db, "Admins/admin2/Notes"), newNotes);
+        const docRef = await addDoc(collection(db, "Admins/admin1/Notes"), newNotes);
 	    setNotes((prevNotes) => [...prevNotes, { id: docRef.id, ...newNotes }]);
     };
 
     const deleteNote = async (id) => {
         // const adminId = "admin2";
-        await deleteDoc(doc(db, "Admins/admin2/Notes", id));
+        await deleteDoc(doc(db, "Admins/admin1/Notes", id));
         setNotes(notes.filter((note) => note.id !== id));
     }
 
