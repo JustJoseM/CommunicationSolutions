@@ -7,6 +7,7 @@ import '../PagesCSS/Testimonial.css';
 
 import { db } from '../../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
+import { Helmet } from 'react-helmet';
 
 
 const Testimonial = () => {
@@ -56,6 +57,14 @@ const Testimonial = () => {
     };
 
     return (
+        <>
+        <Helmet>
+        <title>Client Testimonial - Communication Solutions</title>
+         <meta
+            name="description"
+            content="See how our clients have benefited from our tailored business solutions. Read testimonials from trusted partners and businesses we've helped grow."
+         />
+        </Helmet>
         <div className="testimonial-section">
             <div className="testimonial-container">
                 <h1 className="testimonial-header">Our clients</h1>
@@ -79,6 +88,7 @@ const Testimonial = () => {
                 </Slider>
             </div>
         </div>
+        </>
     );
 }
 
