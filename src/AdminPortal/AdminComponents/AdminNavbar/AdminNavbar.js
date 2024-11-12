@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { getAuth } from "firebase/auth";
 import { db } from "../../../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 
@@ -28,6 +29,10 @@ const AdminNavbar = () => {
     const [showUserDropdown, setShowUserDropdown] = useState(false);
     const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
     const [userData, setUserData] = useState(null);
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const adminID =  user.uid;
 
     // Sample notifications
     const [notifications, setNotifications] = useState([
@@ -61,7 +66,7 @@ const AdminNavbar = () => {
     useEffect(() => {
         // Read from database
         const fetchUserData = async () => {
-            const adminID = "admin1";
+            if(!adminID) return;
             const docRef = doc(db, "Admins", adminID);
             const docSnap = await getDoc(docRef);
             
@@ -83,7 +88,7 @@ const AdminNavbar = () => {
         }, 15000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [adminID]);
 
     const handleLogout = () => {
         navigate("/signin");

@@ -1,4 +1,4 @@
-.advanced-settings {
+.AdminApp .advanced-settings {
     background: white;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     justify-content: space-between;
 }
 
-.notification-settings-header {
+.AdminApp .notification-settings-header {
     text-align: center;
     padding-bottom: 20px;
 }

@@ -13,7 +13,6 @@ import './MainPortal/PagesCSS/Footer.css';
 
 /* Regular Site imports */
 import Navbar from "./MainPortal/Components/Navbar";
-import Sidebar from './MainPortal/Components/Sidebar';
 import Home from './MainPortal/Pages/Home';
 import Footer from './MainPortal/Components/Footer';
 
@@ -22,7 +21,8 @@ import AboutUs from "./MainPortal/Pages/AboutUs";
 import Testimonial from "./MainPortal/Pages/Testimonial";
 import Contact from "./MainPortal/Pages/Contact";
 import ScheduleAppt from "./MainPortal/Pages/ScheduleAppt";
-
+import ProtectedRoute from "./MainPortal/Pages/ProtectedRoute";
+import { AuthProvider, useAuth } from "./MainPortal/Pages/AuthProvider";
 /* Admin imports */
 import AdminHome from './AdminPortal/AdminHome/AdminHome';
 import Clients from "./AdminPortal/AdminPages/AdminClients/Clients";
@@ -32,6 +32,7 @@ import AdminNavbar from './AdminPortal/AdminComponents/AdminNavbar/AdminNavbar';
 import Menu from './AdminPortal/AdminComponents/AdminMenu/Menu';
 import Profile from "./AdminPortal/AdminPages/AdminProfile/Profile";
 import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
+import Notes from "./AdminPortal/AdminPages/AdminNotes/NotesHome";
 import AdminSettings from "./AdminPortal/AdminPages/AdminSettings/AdminSettings";
 
 
@@ -44,11 +45,12 @@ import CancelAppointment from "./Appointment/CancelAppointment";
 import RescheduleAppointment from "./Appointment/RescheduleAppointment";
 
 function App() {
+    // const issign = false;
     const MainLayout = () => {
         return (
+            
             <div className="MainApp">
                 <Navbar />
-                <Sidebar />
                 <Outlet />
                 <Footer />
             </div>
@@ -56,6 +58,13 @@ function App() {
     }
 
     const AdminLayout = () => {
+        const { currentUser } = useAuth();
+    
+        if (currentUser === undefined) {
+            // Display a loading state until currentUser is available
+            return <div>Loading...</div>;
+        }
+    
         return (
             <div className="AdminApp">
                 <AdminNavbar />
@@ -69,112 +78,97 @@ function App() {
                 </div>
                 <AdminFooter />
             </div>
-        )
-    }
+        );
+    };
+    
+    
+    const AdminProtectedRoute = () => {
+        return (
+                <ProtectedRoute>
+                <AdminLayout />
+                </ProtectedRoute>
+        );
+    };
+    
+    
+    
+    
 
     const router = createBrowserRouter([
         {
             path: "/",
             element: <MainLayout />,
             children: [
-                {
-                    /* This route is for the 'Home' component */
-                    index: true,
-                    element: <Home />
-                },
-                {
-                    /* This route is for the 'Schdule Appointment' component */
-                    path: "/schedule",
-                    element: <ScheduleAppt />
-                },
-                {
-                    /* This route is for the 'Sign-In' component */
-                    path: "/signin",
-                    element: <SignIn />
-                },
-                {
-                    /* This route is for the 'About' component */
-                    path: "/about",
-                    element: <AboutUs />
-                },
-                {
-                    /* This route is for the 'Testimonial' component */
-                    path: "/testimonial",
-                    element: <Testimonial />
-                },
-                {
-                    /* This route is for the 'Contact' component */
-                    path: "/contact",
-                    element: <Contact />
-                },
-                {
-                    /* This route is for any mismatch. Defaults to '/' */
-                    path: "*",
-                    element: <Navigate to="/" />
-                },
-                {
-                    path: "/Reschedule",
-                    element: <RescheduleAppointment />
-                },
-                {
-                    path: "/Cancel",
-                    element: <CancelAppointment />
-                }
+                { index: true, element: <Home /> },
+                { path: "/schedule", element: <ScheduleAppt /> },
+                { path: "/signin", element: <SignIn /> },
+                { path: "/about", element: <AboutUs /> },
+                { path: "/testimonial", element: <Testimonial /> },
+                { path: "/contact", element: <Contact /> },
+                { path: "*", element: <Navigate to="/" /> },
+                { path: "/Reschedule", element: <RescheduleAppointment /> },
+                { path: "/Cancel", element: <CancelAppointment /> },
             ]
         },
         {
             path: "/admin",
-            element: <AdminLayout />,
+            element: <AdminProtectedRoute />,  
             children: [
-                { /* Route for Home*/
-                    index: true,
-                    element:<AdminHome/>
+                { 
+                    index: true, 
+                    element: <AdminHome /> 
                 },
-                { /* Route for Clients*/
-                    path:"clients",
-                    element:<Clients/>
+                { 
+                    path: "clients", 
+                    element: <Clients /> 
                 },
-                { /* Route for Appointments & Scheduling*/
-                    path:"appointments",
-                    element:<AppointmentsHome />
+                { 
+                    path: "appointments", 
+                    element: <AppointmentsHome /> 
                 },
-                { /* Route for Profile */
-                    path:"profile",
-                    element:<Profile />
+                { 
+                    path: "notes", 
+                    element: <Notes /> 
                 },
-                { /* Route for Charts */
-                    path: "charts",
-                    element: <ChartsPage />
+                { 
+                    path: "profile", 
+                    element: <Profile /> 
+                },
+                { 
+                    path: "charts", 
+                    element: <ChartsPage /> 
                 },
                 {
-                    /* Route for Settings */
-                    path:"settings",
+                    path: "settings",
                     element: <AdminSettings />,
                     children: [
-                        {
-                            path: "profile",
-                            element: <ProfileSettings />
+                        { 
+                            path: "profile", 
+                            element: <ProfileSettings /> 
                         },
-                        {
-                            path: "notifications",
-                            element: <NotificationSettings />
+                        { 
+                            path: "notifications", 
+                            element: <NotificationSettings /> 
                         },
-                        {
-                            path: "scheduling",
-                            element: <SchedulingSettings />
+                        { 
+                            path: "scheduling", 
+                            element: <SchedulingSettings /> 
                         },
-                        {
-                            path: "general",
-                            element: <GeneralSettings />
+                        { 
+                            path: "general", 
+                            element: <GeneralSettings /> 
                         },
                     ]
                 },
             ]
         }
     ]);
+    
 
     return (
+        <AuthProvider>
         <RouterProvider router={router} />
+        </AuthProvider>
     );
 }
 

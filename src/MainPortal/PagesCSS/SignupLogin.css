@@ -1,4 +1,4 @@
-body {
+.MainApp body {
     --color-background: #ffffff;
     --color-primary: #9facbb;
     --color-border: #4b98f0;
@@ -8,7 +8,7 @@ body {
     --border-radius: 4px;
 
     margin: auto;
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -173,7 +173,51 @@ body {
     background-repeat: no-repeat;
 }
 
+.MainApp .form__feedback {
+    margin-top: 0.5rem;
+}
 
+.MainApp .feedback__message {
+    font-size: 0.85rem;
+    color: red;
+    margin-bottom: 0.25rem;
+}
+
+
+.MainApp .feedback__message.success {
+    color: var(--color-success);
+    color: green;
+}
+
+.MainApp .feedback__message.error {
+    color: var(--color-error);
+    color: red;
+}
+
+.MainApp .password-container {
+    position: relative;
+    width: 100%;
+}
+
+.MainApp .password-input {
+    padding-right: 50px;  
+    padding-right: 45px;
+    box-sizing: border-box;
+}
+
+.MainApp .toggle-password-visibility {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #2486e9;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    line-height: 1;
+}
   
   /* Mobile View (768px and below) */
   @media all and (max-width: 768px) {

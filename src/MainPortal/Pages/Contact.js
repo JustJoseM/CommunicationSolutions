@@ -1,9 +1,19 @@
 import React from "react";
 import contactImage from '../../assets/hero.jpeg';
 import '../PagesCSS/Contact.css';
+import { Helmet } from 'react-helmet';
 
 const Contact = () => {
     return (
+        <>
+        <Helmet>
+             <title>Contact Info - Communications Solution</title>
+             
+             <meta
+                    name="description"
+                    content="Get in touch with Communication Solutions for expert business coaching and support. Find our contact information to start growing your business today."
+                />
+        </Helmet>
         <div className="contact-pg">
             {/* Hero Section */}
             <div className="hero-section">
@@ -36,6 +46,7 @@ const Contact = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 
