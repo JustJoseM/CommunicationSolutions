@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { auth, db } from '../../firebaseConfig'; // Adjust the import path as needed
+import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, collection, addDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '../PagesCSS/SignupLogin.css';
 
-function SignIn() {
+const SignIn = () => {
     const [showLoginForm, setShowLoginForm] = useState(true);
     const [showForgotPasswordForm, setShowForgotPasswordForm] = useState(false);
     const [email, setEmail] = useState('');
@@ -17,13 +17,12 @@ function SignIn() {
     const [passwordFeedback, setPasswordFeedback] = useState([]);
     const [hasTyped, setHasTyped] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-
-    const maxFailedAttempts = 3;
-    const lockDuration = 1 * 60 * 1000; // 10 minutes in milliseconds
-    const expirationPeriod = 90 * 24 * 60 * 60 * 1000; // 90 days in milliseconds
     const navigate = useNavigate();
 
-    // Password Policy
+    const maxFailedAttempts = 3;
+    const lockDuration = 10 * 60 * 1000;
+    const expirationPeriod = 90 * 24 * 60 * 60 * 1000;
+
     const passwordPolicy = {
         minlength: 8,
         hasUpperCase: /[A-Z]/,
@@ -31,20 +30,17 @@ function SignIn() {
         hasSpecialChar: /[!@#$%^&*]/,
     };
 
-    // Validate Password
     const validatePassword = (password) => {
         const feedback = [];
         if (password.length < passwordPolicy.minlength) feedback.push('Password must be at least 8 characters long.');
-        if (!passwordPolicy.hasUpperCase.test(password)) feedback.push("Password must contain at least one uppercase letter.");
-        if (!passwordPolicy.hasNumber.test(password)) feedback.push("Password must contain at least one number.");
-        if (!passwordPolicy.hasSpecialChar.test(password)) feedback.push("Password must contain at least one special character (!, @, #, etc.).");
+        if (!passwordPolicy.hasUpperCase.test(password)) feedback.push('Password must contain at least one uppercase letter.');
+        if (!passwordPolicy.hasNumber.test(password)) feedback.push('Password must contain at least one number.');
+        if (!passwordPolicy.hasSpecialChar.test(password)) feedback.push('Password must contain at least one special character (!, @, #, etc.).');
         return feedback;
     };
 
-    // Toggle Password Visibility
     const togglePasswordVisibility = () => setShowPassword((prevState) => !prevState);
 
-    // Real-time password validation feedback
     const handlePasswordFeedback = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
@@ -52,12 +48,10 @@ function SignIn() {
         if (!hasTyped) setHasTyped(true);
     };
 
-    // Check if password is expired
     const isPasswordExpired = (passwordLastSet) => {
         return Date.now() - passwordLastSet.toMillis() > expirationPeriod;
     };
 
-    // Sign-up handler
     const handleSignUp = async (e) => {
         e.preventDefault();
         const feedback = validatePassword(password);
@@ -71,15 +65,12 @@ function SignIn() {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const userRef = doc(db, 'users', userCredential.user.uid);
-
-            // Initialize user document in Firestore
             await setDoc(userRef, {
-                email: email,
+                email,
                 passwordLastSet: new Date(),
                 lockedUntil: null,
-                failedAttempts: 0
+                failedAttempts: 0,
             });
-
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
             setPasswordFeedback([]);
@@ -90,7 +81,6 @@ function SignIn() {
         }
     };
 
-    // Sign-in handler
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
@@ -100,22 +90,16 @@ function SignIn() {
 
             if (userDoc.exists()) {
                 const userData = userDoc.data();
-
-                // Check if account is locked
                 if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
                     setErrorMessage('Account is temporarily locked. Please try again later.');
                     return;
                 }
-
-                // Check if password is expired
                 if (userData.passwordLastSet && isPasswordExpired(userData.passwordLastSet)) {
                     setErrorMessage('Your password has expired. Please reset your password.');
                     await sendPasswordResetEmail(auth, email);
                     setSuccessMessage('Password reset email sent. Please check your inbox.');
                     return;
                 }
-
-                // Reset failed attempts and update password last set date on successful login
                 await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
                 setSuccessMessage('Sign-in successful! Welcome back.');
                 setErrorMessage('');
@@ -124,16 +108,13 @@ function SignIn() {
                 setErrorMessage('No user data found in Firestore.');
             }
         } catch (error) {
-            // Handle failed login attempts
             const userRef = doc(db, 'users', auth.currentUser?.uid);
             const userDoc = await getDoc(userRef);
-
             if (userDoc.exists()) {
                 const failedAttempts = userDoc.data().failedAttempts || 0;
-
                 if (failedAttempts + 1 >= maxFailedAttempts) {
                     const lockedUntil = new Date(Date.now() + lockDuration);
-                    await updateDoc(userRef, { lockedUntil: lockedUntil, failedAttempts: 0 });
+                    await updateDoc(userRef, { lockedUntil, failedAttempts: 0 });
                     setErrorMessage('Too many failed attempts. Account locked for 10 minutes.');
                 } else {
                     await updateDoc(userRef, { failedAttempts: failedAttempts + 1 });
@@ -146,7 +127,6 @@ function SignIn() {
         }
     };
 
-    // Forgot Password handler
     const handleForgotPassword = async (e) => {
         e.preventDefault();
         try {
@@ -166,22 +146,19 @@ function SignIn() {
                 <title>Sign In - Communications Solution</title>
                 <meta name="description" content="Sign in to your Communication Solutions account to access personalized business coaching and support." />
             </Helmet>
-
             <div className='background'>
                 <div className="login__container">
                     {showForgotPasswordForm ? (
                         <form className="form" id="forgotPassword" onSubmit={handleForgotPassword}>
                             <h1 className="header">Reset Password</h1>
-                            <div className="form__input-group">
-                                <input
-                                    type="email"
-                                    className="form__input"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Enter your email"
-                                    required
-                                />
-                            </div>
+                            <input
+                                type="email"
+                                className="form__input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Enter your email"
+                                required
+                            />
                             <button className="form__button" type="submit">Send Request Email</button>
                             <p className="form__text__login">
                                 <button type="button" className="form__link" onClick={() => { setShowForgotPasswordForm(false); setShowLoginForm(true); }}>
@@ -194,12 +171,8 @@ function SignIn() {
                     ) : showLoginForm ? (
                         <form className="form" id="login" onSubmit={handleSignIn}>
                             <h1 className="header">Sign in</h1>
-                            <div className="form__input-group">
-                                <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
-                            </div>
-                            <div className="form__input-group">
-                                <input type="password" className="form__input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-                            </div>
+                            <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
+                            <input type="password" className="form__input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
                             <button className="form__button" type="submit">Continue</button>
                             <p className="form__text__forgot">
                                 <button type="button" className="form__link" onClick={() => { setShowForgotPasswordForm(true); setShowLoginForm(false); }}>Forgot password?</button>
@@ -213,25 +186,19 @@ function SignIn() {
                     ) : (
                         <form className="form" id="createAccount" onSubmit={handleSignUp}>
                             <h1 className="header">Create Account</h1>
-                            <div className="form__input-group">
-                                <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+                            <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+                            <div className="password-container">
+                                <input type={showPassword ? "text" : "password"} className="form__input" value={password} onChange={handlePasswordFeedback} placeholder="Password" required />
+                                <button type="button" className="toggle-password-visibility" onClick={togglePasswordVisibility}>{showPassword ? "Hide" : "Show"}</button>
                             </div>
-                            <div className="form__input-group">
-                                <div className="password-container">
-                                    <input type={showPassword ? "text" : "password"} className="form__input password-input" placeholder="Password" onChange={handlePasswordFeedback} required />
-                                    <button type="button" className="toggle-password-visibility" onClick={togglePasswordVisibility}>{showPassword ? "Hide" : "Show"}</button>
+                            {passwordFeedback.length > 0 && hasTyped && (
+                                <div className="form__feedback">
+                                    {passwordFeedback.map((msg, index) => (
+                                        <div key={index} className="feedback__message error">{msg}</div>
+                                    ))}
                                 </div>
-                            </div>
-                            <div className="form__feedback">
-                                {passwordFeedback.length > 0 ? (
-                                    passwordFeedback.map((msg, index) => <div key={index} className="feedback__message error">{msg}</div>)
-                                ) : (
-                                    hasTyped && <div className="feedback__message success">Password meets all requirements</div>
-                                )}
-                            </div>
-                            <div className="form__input-group">
-                                <input type="password" className="form__input" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" required />
-                            </div>
+                            )}
+                            <input type="password" className="form__input" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" required />
                             <button className="form__button" type="submit">Continue</button>
                             <p className="form__text__login">
                                 Already have an account?
@@ -245,6 +212,6 @@ function SignIn() {
             </div>
         </>
     );
-}
+};
 
 export default SignIn;
