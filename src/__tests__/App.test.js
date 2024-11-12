@@ -64,5 +64,8 @@ describe('App Routing and Layouts', () => {
     render(
       <App />
     );
+    
+    // Expect to navigate to signin page
+    expect(screen.getByText('Sign In Page')).toBeInTheDocument();
   });
 });
