@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen } from '@testing-library/react';
+import { useNavigate, useLocation } from "react-router-dom";
 import App from '../App';
 
 // Mock Firebase imports to prevent initialization during tests
@@ -27,6 +28,15 @@ jest.mock('../AdminPortal/AdminPages/AdminClients/Clients', () => () => <div>Cli
 jest.mock('../AdminPortal/AdminComponents/AdminNavbar/AdminNavbar', () => () => <div>Admin Navbar</div>);
 jest.mock('../AdminPortal/AdminComponents/AdminFooter/AdminFooter', () => () => <div>Admin Footer</div>);
 
+// Mock with useNavigate and useLocation to simulate route changes
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: jest.fn(),
+  useLocation: jest.fn(() => ({
+    pathname: "/"
+  }))
+}));
+
 describe('App Routing and Layouts', () => {
   test('renders the main layout components', () => {
     render(
@@ -38,4 +48,21 @@ describe('App Routing and Layouts', () => {
     expect(screen.getByText('Sidebar')).toBeInTheDocument();
     expect(screen.getByText('Footer')).toBeInTheDocument();
   });
-})
+
+  test('renders the home page', () => {
+    useLocation.mockReturnValue({ pathname: "/" });
+    render(
+      <App />
+    );
+
+    // Expect home page component
+    expect(screen.getByText('Home Page')).toBeInTheDocument();
+  });
+
+  test('navigates to signin page', () => {
+    useLocation.mockReturnValue({ pathname: "/signin" });
+    render(
+      <App />
+    );
+  });
+});
