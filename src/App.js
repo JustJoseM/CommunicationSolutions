@@ -13,7 +13,6 @@ import './MainPortal/PagesCSS/Footer.css';
 
 /* Regular Site imports */
 import Navbar from "./MainPortal/Components/Navbar";
-import Sidebar from './MainPortal/Components/Sidebar';
 import Home from './MainPortal/Pages/Home';
 import Footer from './MainPortal/Components/Footer';
 
@@ -46,13 +45,12 @@ import CancelAppointment from "./Appointment/CancelAppointment";
 import RescheduleAppointment from "./Appointment/RescheduleAppointment";
 
 function App() {
-    const issign = false;
+    // const issign = false;
     const MainLayout = () => {
         return (
             
             <div className="MainApp">
                 <Navbar />
-                <Sidebar />
                 <Outlet />
                 <Footer />
             </div>

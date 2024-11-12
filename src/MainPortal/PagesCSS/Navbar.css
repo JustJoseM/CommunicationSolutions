@@ -2,22 +2,34 @@
     background-color: #0f1011;
     color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-    padding: 2rem;
-    padding-top: 40px;
-    padding-left: 2rem;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 100px;
 }
 
-.MainApp .title {
-    font-size: 40px;
-    padding-left: 75px;
+.MainApp .nav-left {
+    display: flex;
+    align-items: center;
 }
 
-.MainApp .sample{
-    font-size: 30px;
-    padding-right: 20rem;
+.MainApp .title h4 {
+    font-size: 35px;
+    margin-right: 10px;
+  }
+
+
+.MainApp .nav-right {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+}
+
+.MainApp .sb-button {
+    padding: 1px 5px;
+    background-color: #0f1011;
 }
 
 .MainApp .button{
@@ -26,37 +38,89 @@
     padding: 1rem;
     font-size: medium;
     border-radius: 5px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+} 
+
+.MainApp .nav-right.shift-left .button {
+  transform: translateX(-100px); /* Move left with sidebar */
 }
+
+/* SidebarCss */
+
+/* Sidebar default hidden state */
+.MainApp .Sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+}
+
+/* Open state when sidebar is visible */
+.MainApp .Sidebar.open {
+    width: 270px;
+}
+
+.MainApp .close-btn {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+.MainApp .SidebarList .row {
+    padding: 20px 10px;
+    text-decoration: none;
+    font-size: 23px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.MainApp .SidebarList .row:hover {
+    background-color: #575757;
+}
+
+.MainApp #active {
+    background-color: #575757;
+}
+
+.MainApp .toggle-btn {
+    font-size: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    /* position: absolute; */
+    top: 35px;
+    right: 75px;
+    transition: 0.3s;
+}
+
+.MainApp .toggle-btn:hover {
+    background-color: #575757;
+}
+
+.MainApp .toggle-btn span {
+    display: block;
+    width: 40px;
+    height: 4px;
+    background-color: white;
+    margin: 7px 0;
+}
+
 
  /* Media Queries for Mobile */
 @media all and (max-width: 768px) {
     .MainApp .menu-icon {
         display: block; /* Show menu icon on mobile */
-    }
-
-    .MainApp .sample {
-        /* Instead of hiding it completely, you can use flexbox to align items */
-        display: flex; /* Keep it displayed */
-        justify-content: center;  
-        padding: 10px 0; /* Add some padding for spacing */
-        font-size: 24px; 
-        width: 50px;
-        position: relative;
-        right: 70px;
-    }
-
-    .MainApp .sample.active {
-        display: flex; 
-    }
-
-    .MainApp .title {
-        font-size: 1.5rem; 
-        padding-left: 0; /* Remove extra padding */
-    }
-
-    .MainApp .button {
-        width: 100%; 
-        padding: 1rem; 
-        font-size: 0.5rem; 
     }
 }
