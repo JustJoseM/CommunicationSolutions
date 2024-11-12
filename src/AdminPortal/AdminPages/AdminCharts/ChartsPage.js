@@ -33,12 +33,12 @@ const ChartsPage = () => {
         <div className="chartsPage">
             <h2>Charts Page</h2>
             <div className="tabs">
-                <select onChange={handleChartChange}>
+                <select onChange={handleChartChange} value={selectedChart}>
                     <option value="consultations">Consultations</option>
                     <option value="revenue">Revenue</option>
                     <option value="clientSatisfaction">Client Satisfaction</option>
                 </select>
-                <select onChange={handleTimePeriodChange}>
+                <select onChange={handleTimePeriodChange} value={timePeriod}>
                     <option value="lastMonth">Last Month</option>
                     <option value="lastQuarter">Last Quarter</option>
                     <option value="lastYear">Last Year</option>

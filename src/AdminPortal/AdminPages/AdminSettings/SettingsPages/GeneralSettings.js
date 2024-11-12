@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment-timezone';
 import { db } from "../../../../firebaseConfig";
+import { getAuth } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import "../SettingsPagesCSS/GeneralSettings.css";
 
@@ -12,12 +13,14 @@ const GeneralSettings = () => {
   const [TimeFormat, setTimeFormat] = useState('12-hour');
   const [Language, setLanguage] = useState('English');
 
-
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const adminID = user.uid;
 
   useEffect(() => {
     // Fetch the preferences off Firebase
     const fetchSettings = async () => {
-      const adminID = "admin2";
+      if(!adminID) return;
       const docRef = doc(db, "Admins", adminID, "Settings", "userPreferences");
 
       try{
@@ -70,7 +73,7 @@ const GeneralSettings = () => {
     }
 
     fetchSettings();
-  }, []);
+  }, [adminID]);
 
   const handleTimeZoneChange = (e) => setDefaultTimezone(e.target.value);
   const handleWorkHoursChange = (e) => setWorkHours(e.target.value);
@@ -80,7 +83,7 @@ const GeneralSettings = () => {
 
   // Save updated settings to Firebase
   const saveSettings = async () => {
-    const adminID = "admin2";
+    if(!adminID) return;
     const docRef = doc(db, "Admins", adminID, "Settings", "userPreferences");
 
     try {

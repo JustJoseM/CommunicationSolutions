@@ -3,12 +3,22 @@ import '../PagesCSS/Home.css';
 import { Link } from "react-router-dom";
 import one from '../../assets/home_one.png';
 import two from '../../assets/home_two.png';
+import { Helmet } from 'react-helmet'; 
+
 // import lines from '../assets/home-lines-bg.svg';
 
 
 function Home() {
     return (
         <div className="Home">
+            
+            <Helmet>
+                <title>Home - Communication Solutions</title>
+                <meta
+                    name="description"
+                    content="Achieve your business goals with our tailored coaching, communication strategies, and online reputation management to help you create the dream business you want."
+                    />
+            </Helmet>
             {/* <img src={lines} alt="" className="home_lines"/> */}
             <div className="home_data">
                 <h1 className="home_title">

@@ -7,9 +7,10 @@
 .AdminApp .profile-container{
     padding: 20px;
     border-radius: 10px;
-    border: 2px solid #384256;
-    background-color: #e0f1ff;
-    color: #596277;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

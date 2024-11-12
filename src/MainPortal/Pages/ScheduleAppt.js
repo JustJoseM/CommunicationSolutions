@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../PagesCSS/ScheduleAppt.css';
 import { db } from '../../firebaseConfig.js';
 import { collection, doc, setDoc, getDoc, query, where, getDocs, addDoc, deleteDoc } from "firebase/firestore";
+import { Helmet } from 'react-helmet';
 
 function ScheduleAppt() {
   // State for form input values
@@ -78,6 +79,15 @@ function ScheduleAppt() {
 
   // JSX returned by the component
   return (
+  <>
+    <Helmet>
+    <title>Schedule Appointment - Communications Solution</title>
+    
+    <meta
+           name="description"
+           content="Schedule an appointment with Communication Solutions for tailored business coaching and strategy sessions. Book your consultation to drive growth and success."
+       />
+</Helmet>
     <div className='appoint_background'>
     <div className="schedule-appt-container">
       <form onSubmit={addAppointment}>
@@ -124,6 +134,7 @@ function ScheduleAppt() {
       </div>
     </div>
     </div>
+    </>
   );
 }
 
