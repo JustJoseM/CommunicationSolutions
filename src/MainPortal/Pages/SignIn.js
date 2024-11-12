@@ -73,6 +73,7 @@ const SignIn = () => {
                 passwordLastSet: new Date(),
                 lockedUntil: null,
                 failedAttempts: 0,
+                Role: "user",
             });
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
@@ -88,8 +89,9 @@ const SignIn = () => {
         e.preventDefault();
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const userRef = doc(db, 'users', userCredential.user.uid);
+            const userRef = doc(db,'users', userCredential.user.uid);
             const userDoc = await getDoc(userRef);
+            const userRole = userDoc.data().Role;
 
             if (userDoc.exists()) {
                 const userData = userDoc.data();
@@ -106,7 +108,12 @@ const SignIn = () => {
                 await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
                 setSuccessMessage('Sign-in successful! Welcome back.');
                 setErrorMessage('');
-                navigate('/admin');
+                if(userRole === "user"){
+                    navigate('/home');
+                }
+                else{
+                    navigate('/admin');
+                }
             } else {
                 setErrorMessage('No user data found in Firestore.');
             }
