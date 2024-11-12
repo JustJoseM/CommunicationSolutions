@@ -128,11 +128,8 @@ const SignIn = () => {
             }
             setSuccessMessage('');
         }
-<<<<<<< HEAD
-=======
 
         setIssign(true);
->>>>>>> main
     };
 
     const handleForgotPassword = async (e) => {
