@@ -1,23 +1,28 @@
-import React from "react";
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
 import { db } from '../../../firebaseConfig'
 import './Notes.css';
 import NoteList from "./NoteList";
 
 const NotesHome = () => {
-    const [notes, setNotes] = useState([
-        // {
-        // id: `${Date.now()}-${Math.random()}`,
-        // text: "Company Name: TechGear Solutions Contact Person: Sarah Wilson Marketing Goal: Boost brand visibility and increase product sales for Q4 2024",
-        // date: "10/02/2023"
-        // },
-    ]);
+    const [notes, setNotes] = useState([ ]);
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const adminId =  user.uid;
+
+    // if (user) {
+    //     console.log("Current user UID:", adminId);
+    // } else {
+    //     console.log("No user is currently signed in.");
+    // }
+
 
 	useEffect(() => {
 		const fetchNotes = async () => {
-            // const adminId = "admin2"
-			const querySnapshot = await getDocs(collection(db, 'Admins/admin1/Notes'));
+            if (!adminId) return;
+			const querySnapshot = await getDocs(collection(db, `Admins/${adminId}/Notes`));
 			const fetchedNotes = querySnapshot.docs.map((doc) => ({
 				id: doc.id,
 				...doc.data(),
@@ -26,23 +31,24 @@ const NotesHome = () => {
 		};
 
 		fetchNotes();
-	}, []);
+	}, [adminId]);
 
 
     const addNote = async (text) => {
+        if(!adminId) return;
         const date = new Date();
         const newNotes = {
             text,
             date: date.toLocaleDateString()
         }
         // const adminId = "admin2";
-        const docRef = await addDoc(collection(db, "Admins/admin1/Notes"), newNotes);
+        const docRef = await addDoc(collection(db, `Admins/${adminId}/Notes`), newNotes);
 	    setNotes((prevNotes) => [...prevNotes, { id: docRef.id, ...newNotes }]);
     };
 
     const deleteNote = async (id) => {
-        // const adminId = "admin2";
-        await deleteDoc(doc(db, "Admins/admin1/Notes", id));
+        if(!adminId) return;
+        await deleteDoc(doc(db, `Admins/${adminId}/Notes`, id));
         setNotes(notes.filter((note) => note.id !== id));
     }
 

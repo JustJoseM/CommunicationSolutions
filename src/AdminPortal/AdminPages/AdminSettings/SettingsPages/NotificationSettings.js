@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { getAuth } from "firebase/auth";
 import { db } from "../../../../firebaseConfig";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import "../SettingsPagesCSS/NotificationSettings.css";
@@ -13,22 +14,31 @@ const NotificationSettings = () => {
     Sound: false,
   });
 
-  const fetchNotificationSettings = async () => {
-    const adminID = "admin2";
-    const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
-    const docSnap = await getDoc(docRef);
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const adminID = user.uid;
 
-    if(docSnap.exists()) {
-      setNotifications(docSnap.data());
-    }
-    else {
-      console.log("No such document");
-    }
-  };
+
+  useEffect(() => {
+    const fetchNotificationSettings = async () => {
+      if (!adminID) return;
+      const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
+      const docSnap = await getDoc(docRef);
+  
+      if(docSnap.exists()) {
+        setNotifications(docSnap.data());
+      }
+      else {
+        console.log("No such document");
+      }
+    };
+
+    fetchNotificationSettings();
+  }, [adminID]);
 
   // Function to update notification settings
   const updateNotificationSettings = async () => {
-    const adminID = "admin2";
+    if(!adminID) return;
     const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
 
     try {
@@ -41,8 +51,21 @@ const NotificationSettings = () => {
   };
 
   useEffect(() => {
+    const fetchNotificationSettings = async () => {
+      if (!adminID) return;
+      const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
+      const docSnap = await getDoc(docRef);
+  
+      if(docSnap.exists()) {
+        setNotifications(docSnap.data());
+      }
+      else {
+        console.log("No such document");
+      }
+    };
+
     fetchNotificationSettings();
-  }, []);
+  }, [adminID]);
 
   // Function to handle checkbox changes
   const handleChange = (event) => {

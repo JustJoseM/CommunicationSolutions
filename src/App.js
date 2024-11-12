@@ -48,7 +48,6 @@ function App() {
         return (
             <div className="MainApp">
                 <Navbar />
-                {/* <Sidebar /> */}
                 <Outlet />
                 <Footer />
             </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { getAuth } from "firebase/auth";
 import { db } from "../../../../firebaseConfig";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import '../SettingsPagesCSS/ProfileSettings.css';
@@ -11,33 +12,37 @@ const ProfileSettings = () => {
     const [bio, setBio] = useState('');
     const [icon, setIcon] = useState('');
 
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const adminId = user.uid;
+
     useEffect(() => {
         const fetchUserData = async () => {
-            const adminID = "admin2";
-            const docRef = doc(db, "Admins", adminID);
-            const docSnap = await getDoc(docRef);
+          if (!adminId) return;
+          const docRef = doc(db, "Admins", adminId);
+          const docSnap = await getDoc(docRef);
 
-            if(docSnap.exists()) {
-                const data = docSnap.data();
-                setFirstName(data.FirstName);
-                setLastName(data.LastName);
-                setEmail(data.Email);
-                setCompany(data.Company);
-                setBio(data.UserBio);
-                setIcon(data.Icon);
-            }
-            else {
-                console.log("No such document");
-            }
+          if(docSnap.exists()) {
+              const data = docSnap.data();
+              setFirstName(data.FirstName);
+              setLastName(data.LastName);
+              setEmail(data.Email);
+              setCompany(data.Company);
+              setBio(data.UserBio);
+              setIcon(data.Icon);
+          }
+          else {
+              console.log("No such document");
+          }
         };
 
         fetchUserData();
-    }, []);
+    }, [adminId]);
 
     // Save button handler
     const handleProfileChanges = async () => {
-        const adminID = "admin2";
-        const docRef = doc(db, "Admins", adminID);
+        if (!adminId) return;
+        const docRef = doc(db, "Admins", adminId);
 
         // Update with the new values
         await setDoc(docRef, {
