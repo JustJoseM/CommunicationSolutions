@@ -58,11 +58,6 @@
     border-radius: 5px;
 }
 
-.AdminApp .profile-info input[readOnly], .profile-info textarea[readOnly] {
-    background-color: #f5f5f5;
-    cursor: not-allowed;
-  }
-
 .AdminApp .profile-info button{
     background-color: rgba(0, 0, 184, 0.952);
     color: white;

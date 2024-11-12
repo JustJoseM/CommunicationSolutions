@@ -1,4 +1,4 @@
-.form-container {
+.MainApp .form-container {
     max-width: 500px;
     margin: 50px auto;
     padding: 40px;
@@ -8,11 +8,11 @@
     transition: transform 0.3s ease-in-out;
   }
   
-  .form-container:hover {
+  .MainApp .form-container:hover {
     transform: translateY(-10px);
   }
   
-  .form-title {
+  .MainApp .form-title {
     font-size: 1.8rem;
     color: #333;
     text-align: center;
@@ -20,20 +20,20 @@
     font-weight: 600;
   }
   
-  .form-group {
+  .MainApp .form-group {
     margin-bottom: 20px;
   }
   
-  .form-group label {
+  .MainApp .form-group label {
     display: block;
     font-size: 1.1rem;
     color: #555;
     margin-bottom: 8px;
   }
   
-  .form-input,
-  .form-textarea,
-  .form-select {
+  .MainApp .form-input,
+  .MainApp .form-textarea,
+  .MainApp .form-select {
     width: 100%;
     padding: 12px 15px;
     border-radius: 8px;
@@ -45,20 +45,20 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .form-input:focus,
-  .form-textarea:focus,
-  .form-select:focus {
+  .MainApp .form-input:focus,
+  .MainApp .form-textarea:focus,
+  .MainApp .form-select:focus {
     border-color: #007bff;
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
     outline: none;
   }
   
-  .form-select {
+  .MainApp .form-select {
     appearance: none;
     background-color: #fff;
   }
   
-  .primary-btn {
+  .MainApp .primary-btn {
     width: 100%;
     padding: 15px;
     font-size: 1.2rem;
@@ -72,31 +72,31 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   }
   
-  .primary-btn:hover {
+  .MainApp .primary-btn:hover {
     background: linear-gradient(90deg, #218838 0%, #1e7e34 100%);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
   }
   
-  .primary-btn:active {
+  .MainApp .primary-btn:active {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .form-group input[type="checkbox"] {
+  .MainApp .form-group input[type="checkbox"] {
     margin-right: 10px;
   }
   
   @media (max-width: 768px) {
-    .form-container {
+    .MainApp .form-container {
       padding: 30px;
     }
   
-    .form-title {
+    .MainApp .form-title {
       font-size: 1.5rem;
     }
   
-    .primary-btn {
+    .MainApp .primary-btn {
       padding: 12px;
       font-size: 1rem;
     }

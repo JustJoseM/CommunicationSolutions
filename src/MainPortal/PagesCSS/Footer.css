@@ -4,7 +4,6 @@
 
 .MainApp .footer{
     background-color: #0f1011;
-    
 }
 
 .MainApp .sb__footer{
@@ -15,6 +14,7 @@
 .MainApp .sb__footer-links{
     display: flex;
     justify-content: space-between;
+    text-decoration: none;
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
@@ -24,6 +24,7 @@
 }
 
 .MainApp .sb__footer-links_div{
+    text-decoration: none;
     width: 150px;
     margin: 1rem;
     display: flex;
@@ -32,19 +33,14 @@
     color: white;
 }
 
-.MainApp .a{
-    color: rgb(175, 175, 179);
-    text-decoration: none;
-}
-
-.MainApp .socialmedia{
+/* .MainApp .socialmedia{
     display: flex;
     flex-direction: row;
 }
 
 .MainApp .socialmedia img{
     width: 100%;
-}
+} */
 
 .MainApp .sb__footer-links_div h4{
     font-size: 14px;
@@ -52,8 +48,13 @@
     margin-bottom: 0.9rem;
 }
 
+.MainApp .sb__footer-links_div a {
+    text-decoration: none;
+}
+
 .MainApp .sb__footer-links_div p{
     font-size: 12px;
+    color: whitesmoke;
     line-height: 15px;
     margin: 0.5rem 0;
     cursor: pointer;
@@ -77,6 +78,10 @@
     margin-left: 2rem;
     color: white;
     font-weight: 600;
+}
+
+.MainApp .sb__footer-below-links a{
+    text-decoration: none;
 }
 
 .MainApp hr{

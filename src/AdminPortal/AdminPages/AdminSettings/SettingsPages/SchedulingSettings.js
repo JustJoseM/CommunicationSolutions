@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from "../../../../firebaseConfig";
+import { getAuth } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import "../SettingsPagesCSS/SchedulingSettings.css";
 
@@ -16,24 +17,31 @@ const SchedulingOptions = () => {
     NotifyChanges: false,
   });
 
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const adminID = user.uid;
 
-  // Fetch the preferences off Firebase
-  const fetchSettings = async () => {
-    const adminID = "admin2";
-    const docRef = doc(db, "Admins", adminID, "Settings", "schedulingPreferences");
-    const docSnap = await getDoc(docRef);
 
-    if(docSnap.exists()) {
-      setSettings(docSnap.data());
-    }
-    else {
-      console.log("No such document");
-    }
-  };
+  useEffect(() =>{
+    const fetchSettings = async () => {
+      if (!adminID) return;
+      const docRef = doc(db, "Admins", adminID, "Settings", "schedulingPreferences");
+      const docSnap = await getDoc(docRef);
+  
+      if(docSnap.exists()) {
+        setSettings(docSnap.data());
+      }
+      else {
+        console.log("No such document");
+      }
+    };
+
+    fetchSettings();
+  }, [adminID])
 
   // Function to update scheduling settings
   const updateSchedulingSettings = async () => {
-    const adminID = "admin2";
+    if (!adminID) return;
     const docRef = doc(db, "Admins", adminID, "Settings", "schedulingPreferences");
 
     try {
@@ -52,10 +60,6 @@ const SchedulingOptions = () => {
       [name]: type === 'checkbox' ? checked : event.target.value,
     }));
   };
-
-  useEffect(() =>{
-    fetchSettings();
-  }, [])
 
   return(
     <div className="scheduling-settings">

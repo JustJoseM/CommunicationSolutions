@@ -1,14 +1,17 @@
 .AdminApp .NotesPage {
     padding-left: 20px;
     padding-right: 20px;
+    height: 100vh;
+
 }
 
 .AdminApp .notes-container {
     padding: 20px;
     border-radius: 10px;
-    border: 2px solid #384256;
-    background-color: #e0f1ff;
-    color: #596277;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: black;
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
@@ -29,16 +32,16 @@
 }
 
 .AdminApp .note.new{
-    background-color: #67d7cc;
+    background-color:#c4c4c4; 
 }
 
-#new-note-text{
+.AdminApp #new-note-text{
     border: none;
     resize: none;
-    background-color: #67d7cc;
+    background-color: #c4c4c4;
 }
 
-textarea:focus{
+.AdminApp textarea:focus{
     outline: none;
 }
 
@@ -50,7 +53,7 @@ textarea:focus{
     padding: 5px 10px 5px 10px;
 }
 
-.delete-button:hover{
+.AdminApp .delete-button:hover{
     background-color: red;
     cursor: pointer;
 }
@@ -62,13 +65,13 @@ textarea:focus{
     padding: 5px 10px 5px 10px;
 }
 
-.save:hover{
+.AdminApp .save:hover{
     background-color: #ededed;
     cursor: pointer;
 }
 
 .AdminApp .note{
-    background-color: #fef68a;
+    background-color: whitesmoke;
     border-radius: 10px;
     padding: 1rem;
     min-height: 250px;

@@ -1,4 +1,4 @@
-.general-settings-box {
+.AdminApp .general-settings-box {
     background: white;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     justify-content: space-between;
 }
 
-.general-settings-header-box {
+.AdminApp .general-settings-header-box {
     text-align: center;
     padding-bottom: 20px;
     font-size: 1.5em;
@@ -24,11 +24,11 @@
     padding: 8px;
 }
 
-.work-hours {
+.AdminApp .work-hours {
     margin-left: 10px;
 }
 
-.save-button {
+.AdminApp .save-button {
     background-color: rgba(0, 0, 184, 0.952);
     width: 130px;
     color: white;
@@ -39,6 +39,6 @@
     margin-top: 10px;
 }
 
-.save-button:hover {
+.AdminApp .save-button:hover {
     background-color: rgb(59, 59, 255);
 }
