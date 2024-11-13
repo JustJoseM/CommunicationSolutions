@@ -17,8 +17,6 @@ const SignIn = () => {
     const [passwordFeedback, setPasswordFeedback] = useState([]);
     const [hasTyped, setHasTyped] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const [issign, setIssign] = useState(false);
-    const [useremail,setUseremail] = useState(false);
     const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
     const [loading, setLoading] = useState(false); // Add loading state
 
@@ -59,7 +57,8 @@ const SignIn = () => {
     }, [password, hasTyped]);
 
     const isPasswordExpired = (passwordLastSet) => {
-        return Date.now() - passwordLastSet.toMillis() > expirationPeriod;
+        const lastSet = passwordLastSet.toMillis ? passwordLastSet.toMillis() : new Date(passwordLastSet).getTime();
+        return Date.now() - lastSet > expirationPeriod;
     };
 
     const handleSignUp = async (e) => {
@@ -95,42 +94,24 @@ const SignIn = () => {
     const handleSignIn = async (e) => {
         e.preventDefault();
         setLoading(true);
-
+    
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const userRef = doc(db, 'users', userCredential.user.uid);
-            let role = localStorage.getItem('userRole');
-
-            if (!role) {
-                const userDoc = await getDoc(userRef);
-                if (userDoc.exists()) {
-                    role = userDoc.data().Role;
-                    localStorage.setItem('userRole', role);
-                    setUserRole(role);
-                } else {
-                    setErrorMessage('No user data found in Firestore.');
-                    setLoading(false);
-                    return;
-                }
-
-                await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
-                setSuccessMessage('Sign-in successful! Welcome back.');
-                setUseremail(userCredential.user.email);
-                setErrorMessage('');
-                if(userRole === "user"){
-                    navigate('/home');
-                }
-                else{
-                    navigate('/admin');
-                }
-
+            const userDoc = await getDoc(userRef);
+            if (!userDoc.exists()) {
+                setErrorMessage('No user data found in Firestore.');
+                return;
             }
 
-            // Check if account is locked or password expired
-            const userData = (await getDoc(userRef)).data();
+            const userData = userDoc.data();
+            const role = userData.Role;
+
+            localStorage.setItem('userRole', role);
+            setUserRole(role);
+
             if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
                 setErrorMessage('Account is temporarily locked. Please try again later.');
-                setLoading(false);
                 return;
             }
 
@@ -138,41 +119,25 @@ const SignIn = () => {
                 setErrorMessage('Your password has expired. Please reset your password.');
                 await sendPasswordResetEmail(auth, email);
                 setSuccessMessage('Password reset email sent. Please check your inbox.');
-                setLoading(false);
                 return;
             }
 
             await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
             setSuccessMessage('Sign-in successful! Welcome back.');
             setErrorMessage('');
-            setLoading(false);
 
             if (role === 'user') {
                 navigate('/home');
-
             } else {
                 navigate('/admin');
             }
         } catch (error) {
-            // Check for Firebase Authentication error codes and update the error message accordingly
-            switch (error.code) {
-                case 'auth/user-not-found':
-                    setErrorMessage('No account found with this email. Please sign up.');
-                    break;
-                case 'auth/wrong-password':
-                    setErrorMessage('Incorrect password. Please try again.');
-                    break;
-                case 'auth/too-many-requests':
-                    setErrorMessage('Too many failed attempts. Please try again later or reset your password.');
-                    break;
-                default:
-                    setErrorMessage(`Error signing in: ${error.message}`);
-                    break;
-            }
+            const customErrorMessage = mapFirebaseError(error);
+            setErrorMessage(customErrorMessage);
             setSuccessMessage('');
+        } finally {
             setLoading(false);
         }
-        setIssign(true);
     };
 
     const handleForgotPassword = async (e) => {
@@ -200,6 +165,19 @@ const SignIn = () => {
         setUserRole(null);
     };
 
+    const mapFirebaseError = (error) => {
+        switch (error.code) {
+            case 'auth/user-not-found':
+                return 'No account found with this email. Please sign up.';
+            case 'auth/wrong-password':
+                return 'Incorrect password. Please try again.';
+            case 'auth/too-many-requests':
+                return 'Too many failed attempts. Please try again later or reset your password.';
+            default:
+                return `Error signing in: ${error.message}`;
+        }
+    };
+
     return (
         <>
             <Helmet>
@@ -219,20 +197,36 @@ const SignIn = () => {
                                 placeholder="Enter your email"
                                 required
                             />
-                            <button className="form__button" type="submit">Send Request Email</button>
+                            <button className="form__button" type="submit" disabled={loading}>
+                                {loading ? 'Sending Request...' : 'Send Request Email'}
+                            </button>
                             <p className="form__text__login">
                                 <button type="button" className="form__link" onClick={() => { setShowForgotPasswordForm(false); setShowLoginForm(true); }}>
                                     Back to login
                                 </button>
                             </p>
-                            {successMessage && <div className="form__message form__message-success">{successMessage}</div>}
-                            {errorMessage && <div className="form__message form__message-error">{errorMessage}</div>}
+                            {successMessage && <div className="form__message form__message-success" aria-live="polite">{successMessage}</div>}
+                            {errorMessage && <div className="form__message form__message-error" aria-live="assertive">{errorMessage}</div>}
                         </form>
                     ) : showLoginForm ? (
                         <form className="form" id="login" onSubmit={handleSignIn}>
                             <h1 className="header">Sign in</h1>
-                            <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
-                            <input type="password" className="form__input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                            <input
+                                type="email"
+                                className="form__input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Enter your email"
+                                required
+                            />
+                            <input
+                                type="password"
+                                className="form__input"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                required
+                            />
                             <button className="form__button" type="submit" disabled={loading}>
                                 {loading ? 'Signing in...' : 'Continue'}
                             </button>
@@ -244,32 +238,60 @@ const SignIn = () => {
                             <p className="form__text__createAcc">
                                 <button type="button" className="form__link" onClick={() => setShowLoginForm(false)}>Create account</button>
                             </p>
-                            {successMessage && <div className="form__message form__message-success">{successMessage}</div>}
-                            {errorMessage && <div className="form__message form__message-error">{errorMessage}</div>}
+                            {successMessage && <div className="form__message form__message-success" aria-live="polite">{successMessage}</div>}
+                            {errorMessage && <div className="form__message form__message-error" aria-live="assertive">{errorMessage}</div>}
                         </form>
                     ) : (
                         <form className="form" id="createAccount" onSubmit={handleSignUp}>
                             <h1 className="header">Create Account</h1>
-                            <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+                            <input
+                                type="email"
+                                className="form__input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Email"
+                                required
+                            />
                             <div className="password-container">
-                                <input type={showPassword ? "text" : "password"} className="form__input" value={password} onChange={handlePasswordChange} placeholder="Password" required />
-                                <button type="button" className="toggle-password-visibility" onClick={togglePasswordVisibility}>{showPassword ? "Hide" : "Show"}</button>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    className="form__input"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    placeholder="Password"
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    className="toggle-password-visibility"
+                                    onClick={togglePasswordVisibility}>
+                                    {showPassword ? "Hide" : "Show"}
+                                </button>
                             </div>
                             {passwordFeedback.length > 0 && hasTyped && (
-                                <div className="form__feedback">
+                                <div className="form__feedback" aria-live="polite">
                                     {passwordFeedback.map((msg, index) => (
                                         <div key={index} className="feedback__message error">{msg}</div>
                                     ))}
                                 </div>
                             )}
-                            <input type="password" className="form__input" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password" required />
-                            <button className="form__button" type="submit">Continue</button>
+                            <input
+                                type="password"
+                                className="form__input"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                placeholder="Confirm Password"
+                                required
+                            />
+                            <button className="form__button" type="submit">
+                                Continue
+                            </button>
                             <p className="form__text__login">
                                 Already have an account?
                                 <button type="button" className="form__link" onClick={() => setShowLoginForm(true)}>Log in</button>
                             </p>
-                            {successMessage && <div className="form__message form__message-success">{successMessage}</div>}
-                            {errorMessage && <div className="form__message form__message-error">{errorMessage}</div>}
+                            {successMessage && <div className="form__message form__message-success" aria-live="polite">{successMessage}</div>}
+                            {errorMessage && <div className="form__message form__message-error" aria-live="assertive">{errorMessage}</div>}
                         </form>
                     )}
                 </div>
