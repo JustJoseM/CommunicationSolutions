@@ -80,10 +80,10 @@ describe('Testimonial Page', () => {
         // Wait for testimonials to be rendered
         await waitFor(() => {
             // Check if the testimonial content is displayed
-            mockTestimonials.forEach((testimonial) => {
-                const reviewText = findByText(testimonial.Review);
+            mockTestimonials.forEach(async (testimonial) => {
+                const reviewText = await findByText(testimonial.Review);
                 expect(reviewText).toBeInTheDocument();
-                expect(findByText(testimonial.CompanyName)).toBeInTheDocument();
+                expect(await findByText(testimonial.CompanyName)).toBeInTheDocument();
 
                 // Check that the src attribute matches the mock photo URL
                 const image = container.querySelector(`img[alt="${testimonial.CompanyName}"]`);
@@ -148,9 +148,6 @@ describe('Testimonial Carousel - Mouse Controls', () => {
 });
 
 describe('Testimonial Carousel - Keyboard Controls', () => {
-    // Testing note: Keyboard functionality is managed internally through 'accessibility: true' setting on the Carousel, therefore we test
-    // that the functionality is not called, as it is handled by Slick itself
-    
     it('advances the carousel when the right arrow key is pressed', () => {
         const mockNext = jest.fn();
         const mockPrev = jest.fn();
