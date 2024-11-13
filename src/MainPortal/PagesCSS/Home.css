@@ -101,14 +101,40 @@
         gap: 0.5rem; 
     }
 
-    .MainApp .home_one, .MainApp .home_two {
+    .MainApp .home_one {
         max-width: 100%; 
         width: auto; /* Let the images resize dynamically */
         margin-left: 0; /* Center align images on mobile */
     }
 
     .MainApp .home_two {
+        max-width: 60%;
         margin-top: 1.5rem; 
         border-width: 2px; 
+    }
+}
+
+@media all and (max-width: 440px) {
+    /* Additional adjustments for very small screens */
+    .MainApp .Home {
+        padding-left: 5px; /* Further reduce padding for very small screens */
+        padding-right: 5px; 
+    }
+
+    .MainApp .home_title {
+        font-size: 22px; /* Further reduce title font size */
+    }
+
+    .MainApp .home_description {
+        font-size: 12px; /* Further reduce description font size */
+    }
+
+    .MainApp .home_buttons {
+        gap: 0.3rem; /* Further reduce gap between buttons */
+    }
+
+    .MainApp .home_images{
+        transform: scale(0.37);
+        right: 182px; 
     }
 }

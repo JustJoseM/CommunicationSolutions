@@ -59,6 +59,7 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 50px;
+    z-index: 1000;
 }
 
 /* Open state when sidebar is visible */
@@ -121,6 +122,37 @@
  /* Media Queries for Mobile */
 @media all and (max-width: 768px) {
     .MainApp .menu-icon {
-        display: block; /* Show menu icon on mobile */
+        display: block; 
+    }
+    .MainApp .nav-left{
+        transform: scale(0.8);
+        position: relative;
+        right: 80px;
+    }
+
+    .MainApp .button{
+        transform: scale(0.8);
+    }
+}
+
+@media all and (max-width: 440px) {
+    .MainApp .nav-left{
+        transform: scale(0.6);
+        position: relative;
+        right: 140px;
+    }
+
+    .MainApp .nav-right{
+        position: relative;
+        right: 230px;
+    }
+
+    .MainApp .toggle-btn{
+        transform: scale(0.6);
+        right: 10px;
+    }
+
+    .MainApp .button{
+        transform: scale(0.6);        
     }
 }
