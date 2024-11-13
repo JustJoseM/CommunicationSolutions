@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, runTransaction } from 'firebase/firestore';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '../PagesCSS/SignupLogin.css';
+import bcrypt from 'bcryptjs';
 
 const SignIn = () => {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -66,7 +67,8 @@ const SignIn = () => {
             return;
         }
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const hashedPassword = bcrypt.hashSync(password, 10);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, hashedPassword);
             const userRef = doc(db, 'users', userCredential.user.uid);
             await setDoc(userRef, {
                 email,
