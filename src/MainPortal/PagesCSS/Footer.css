@@ -96,47 +96,39 @@
     font-weight: 600;
 }
 
-@media screen and (max-width: 850px){
-    .MainApp .sb__footer-heading h1{
-        font-size: 44px;
-        line-height: 50px;
-    }
-}
 
-@media screen and (max-width: 550px){
-    .MainApp .sb__footer-heading h1{
-        font-size: 34px;
-        line-height: 42px;
+
+@media screen and (max-width: 550px) {
+    .MainApp .sb__footer-links, .sb__footer-below, .section__padding{
+        max-width: 50%;
+    }
+    .MainApp .sb__footer-links div {
+        margin: 1rem 0; /* Reduce margin between footer items */
+        width: 100%; /* Allow footer divs to take full width on smaller screens */
     }
 
-    .MainApp .sb__footer-links div{
-        margin: 1rem 0;
-    }
-
-    .MainApp .sb__footer-btn p{
+    .MainApp .sb__footer-btn p {
         font-size: 14px;
         line-height: 20px;
     }
 
-    .MainApp .sb__footer-below{
+    .MainApp .sb__footer-below {
         flex-direction: column;
-        justify-content: left;
+        justify-content: flex-start;
+        width: 100%; /* Ensure the below section doesn't overflow */
     }
 
-    .MainApp .sb__footer-below-links{
+    .MainApp .sb__footer-below-links {
         flex-direction: column;
+        width: 100%; /* Ensure the below links don't overflow */
     }
 
-    .MainApp .sb__footer-below-links p{
+    .MainApp .sb__footer-below-links p {
         margin-left: 0rem;
         margin-top: 1rem;
     }
 }
 
-
-@media screen and (max-width: 400px){
-    .MainApp .sb__footer-heading h1{
-        font-size: 27px;
-        line-height: 38px;
-    }
-}
+/*{
+    border: 2px solid red;
+}*/

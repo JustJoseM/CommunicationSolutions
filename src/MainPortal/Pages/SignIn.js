@@ -73,7 +73,7 @@ const SignIn = () => {
                 passwordLastSet: new Date(),
                 lockedUntil: null,
                 failedAttempts: 0,
-                Role: "user",
+                Role: "user"
             });
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
