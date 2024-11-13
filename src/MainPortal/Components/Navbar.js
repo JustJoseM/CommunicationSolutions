@@ -19,7 +19,7 @@ function Navbar() {
         </div>
         <div className={`nav-right ${sidebarOpen ? 'shift-left' : ''}`}>
           <Link to="/schedule">
-            <button className="button">Schedule Appointment</button>
+            <button className="button">Appointments</button>
           </Link>
           <button className="toggle-btn" onClick={toggleSidebar}>
             {/* Sidebar toggle button */}
