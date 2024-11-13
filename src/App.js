@@ -35,7 +35,6 @@ import ChartsPage from "./AdminPortal/AdminPages/AdminCharts/ChartsPage";
 import Notes from "./AdminPortal/AdminPages/AdminNotes/NotesHome";
 import AdminSettings from "./AdminPortal/AdminPages/AdminSettings/AdminSettings";
 
-
 /* Admin Settings imports */
 import GeneralSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/GeneralSettings";
 import NotificationSettings from "./AdminPortal/AdminPages/AdminSettings/SettingsPages/NotificationSettings";
