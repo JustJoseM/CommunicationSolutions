@@ -17,7 +17,7 @@ jest.mock("firebase/firestore", () => ({
 
 // Mock components
 jest.mock('../MainPortal/Components/Navbar', () => () => <div>Navbar</div>);
-jest.mock('../MainPortal/Components/Sidebar', () => () => <div>Sidebar</div>);
+jest.mock('../MainPortal/Components/SidebarData', () => () => <div>Sidebar</div>);
 jest.mock('../MainPortal/Components/Footer', () => () => <div>Footer</div>);
 jest.mock('../MainPortal/Pages/Home', () => () => <div>Home Page</div>);
 jest.mock('../MainPortal/Pages/SignIn', () => () => <div>Sign In Page</div>);
