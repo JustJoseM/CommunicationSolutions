@@ -18,6 +18,7 @@ const SignIn = () => {
     const [hasTyped, setHasTyped] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [issign, setIssign] = useState(false);
+    const [useremail,setUseremail] = useState(false);
     const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
     const [loading, setLoading] = useState(false); // Add loading state
 
@@ -25,8 +26,7 @@ const SignIn = () => {
     const lockDuration = 0.01 * 60 * 1000; // 10 minutes in milliseconds
     const expirationPeriod = 90 * 24 * 60 * 60 * 1000; // 90 days in milliseconds
     const navigate = useNavigate();
-
-
+    
     // Password Policy
     const passwordPolicy = {
         minlength: 8,
@@ -80,7 +80,7 @@ const SignIn = () => {
                 passwordLastSet: new Date(),
                 lockedUntil: null,
                 failedAttempts: 0,
-                Role: "user",
+                Role: "user"
             });
             setSuccessMessage('Sign-up successful! You can now log in.');
             setErrorMessage('');
@@ -112,6 +112,18 @@ const SignIn = () => {
                     setLoading(false);
                     return;
                 }
+
+                await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
+                setSuccessMessage('Sign-in successful! Welcome back.');
+                setUseremail(userCredential.user.email);
+                setErrorMessage('');
+                if(userRole === "user"){
+                    navigate('/home');
+                }
+                else{
+                    navigate('/admin');
+                }
+
             }
 
             // Check if account is locked or password expired
@@ -137,6 +149,7 @@ const SignIn = () => {
 
             if (role === 'user') {
                 navigate('/home');
+
             } else {
                 navigate('/admin');
             }
@@ -159,6 +172,7 @@ const SignIn = () => {
             setSuccessMessage('');
             setLoading(false);
         }
+        setIssign(true);
     };
 
     const handleForgotPassword = async (e) => {

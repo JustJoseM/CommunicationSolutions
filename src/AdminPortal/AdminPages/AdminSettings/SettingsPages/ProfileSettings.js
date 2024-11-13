@@ -57,7 +57,7 @@ const ProfileSettings = () => {
         console.log('Profile updated:', { firstName, lastName, email, company, bio});
 
         // Show Alert Message
-        alert("Information changed successfully.");
+        alert("Information changed successfully. Please relog to view the change in Navbar.");
     };
 
     return (

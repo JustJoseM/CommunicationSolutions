@@ -20,6 +20,6 @@ export const SidebarData = [
     {
         title: "Contact Info",
         link: "/contact"
-    },
+    }
 
 ]

@@ -11,7 +11,7 @@ const AboutUs = () => {
 		<div className="aboutus_page">
             <div className="aboutus_section">
                 <div className="company_logo">
-                    <img src={logo} alt=""/>             
+                    <img src={logo} alt="main_buisness_logo"/>             
                 </div>
                 <div className="aboutus_text">
                     <h3>Who are we?</h3>
@@ -50,7 +50,7 @@ const AboutUs = () => {
                         <div className="service_card_text">
                             <h3>Business Coaching</h3>
                             <div className="service_description">
-                                <p>We believe in the transformative power of personalized business coaching to unlock the true potential of every client. 
+                                <p>We believe in the transformative power of personalized business counseling to unlock the true potential of every client. 
                                 Our approach is rooted in understanding your unique goals and aligning our strategies to serve your best interests.</p>
                                 <p>With a focus on empowering growth, we offer tailored coaching that equips you with the tools, insights, and 
                                     guidance needed to navigate challenges, seize opportunities, and drive lasting success.</p>
