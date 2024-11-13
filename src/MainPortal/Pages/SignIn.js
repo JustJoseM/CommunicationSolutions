@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, runTransaction } from 'firebase/firestore';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '../PagesCSS/SignupLogin.css';
@@ -19,6 +19,9 @@ const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [issign, setIssign] = useState(false);
     const [useremail,setUseremail] = useState(false);
+    const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
+    const [loading, setLoading] = useState(false); // Add loading state
+
     const maxFailedAttempts = 3;
     const lockDuration = 0.01 * 60 * 1000; // 10 minutes in milliseconds
     const expirationPeriod = 90 * 24 * 60 * 60 * 1000; // 90 days in milliseconds
@@ -43,12 +46,17 @@ const SignIn = () => {
 
     const togglePasswordVisibility = () => setShowPassword((prevState) => !prevState);
 
-    const handlePasswordFeedback = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
-        setPasswordFeedback(validatePassword(newPassword));
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
         if (!hasTyped) setHasTyped(true);
     };
+
+    // useEffect hook to handle real-time password validation and feedback
+    useEffect(() => {
+        if (hasTyped) {
+            setPasswordFeedback(validatePassword(password));
+        }
+    }, [password, hasTyped]);
 
     const isPasswordExpired = (passwordLastSet) => {
         return Date.now() - passwordLastSet.toMillis() > expirationPeriod;
@@ -86,24 +94,25 @@ const SignIn = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault();
+        setLoading(true);
+
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const userRef = doc(db,'users', userCredential.user.uid);
-            const userDoc = await getDoc(userRef);
-            const userRole = userDoc.data().Role;
+            const userRef = doc(db, 'users', userCredential.user.uid);
+            let role = localStorage.getItem('userRole');
 
-            if (userDoc.exists()) {
-                const userData = userDoc.data();
-                if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
-                    setErrorMessage('Account is temporarily locked. Please try again later.');
+            if (!role) {
+                const userDoc = await getDoc(userRef);
+                if (userDoc.exists()) {
+                    role = userDoc.data().Role;
+                    localStorage.setItem('userRole', role);
+                    setUserRole(role);
+                } else {
+                    setErrorMessage('No user data found in Firestore.');
+                    setLoading(false);
                     return;
                 }
-                if (userData.passwordLastSet && isPasswordExpired(userData.passwordLastSet)) {
-                    setErrorMessage('Your password has expired. Please reset your password.');
-                    await sendPasswordResetEmail(auth, email);
-                    setSuccessMessage('Password reset email sent. Please check your inbox.');
-                    return;
-                }
+
                 await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
                 setSuccessMessage('Sign-in successful! Welcome back.');
                 setUseremail(userCredential.user.email);
@@ -114,43 +123,81 @@ const SignIn = () => {
                 else{
                     navigate('/admin');
                 }
+
+            }
+
+            // Check if account is locked or password expired
+            const userData = (await getDoc(userRef)).data();
+            if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
+                setErrorMessage('Account is temporarily locked. Please try again later.');
+                setLoading(false);
+                return;
+            }
+
+            if (userData.passwordLastSet && isPasswordExpired(userData.passwordLastSet)) {
+                setErrorMessage('Your password has expired. Please reset your password.');
+                await sendPasswordResetEmail(auth, email);
+                setSuccessMessage('Password reset email sent. Please check your inbox.');
+                setLoading(false);
+                return;
+            }
+
+            await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
+            setSuccessMessage('Sign-in successful! Welcome back.');
+            setErrorMessage('');
+            setLoading(false);
+
+            if (role === 'user') {
+                navigate('/home');
+
             } else {
-                setErrorMessage('No user data found in Firestore.');
+                navigate('/admin');
             }
         } catch (error) {
-            const userRef = doc(db, 'users', auth.currentUser?.uid);
-            const userDoc = await getDoc(userRef);
-            if (userDoc.exists()) {
-                const failedAttempts = userDoc.data().failedAttempts || 0;
-                if (failedAttempts + 1 >= maxFailedAttempts) {
-                    const lockedUntil = new Date(Date.now() + lockDuration);
-                    await updateDoc(userRef, { lockedUntil, failedAttempts: 0 });
-                    setErrorMessage('Too many failed attempts. Account locked for 10 minutes.');
-                } else {
-                    await updateDoc(userRef, { failedAttempts: failedAttempts + 1 });
-                    setErrorMessage('Error signing in: If you fail more than 3 attempts, the account gets locked for 10 minutes.');
-                }
-            } else {
-                setErrorMessage('Error signing in: Account not found.');
+            // Check for Firebase Authentication error codes and update the error message accordingly
+            switch (error.code) {
+                case 'auth/user-not-found':
+                    setErrorMessage('No account found with this email. Please sign up.');
+                    break;
+                case 'auth/wrong-password':
+                    setErrorMessage('Incorrect password. Please try again.');
+                    break;
+                case 'auth/too-many-requests':
+                    setErrorMessage('Too many failed attempts. Please try again later or reset your password.');
+                    break;
+                default:
+                    setErrorMessage(`Error signing in: ${error.message}`);
+                    break;
             }
             setSuccessMessage('');
+            setLoading(false);
         }
-
         setIssign(true);
-        
     };
 
     const handleForgotPassword = async (e) => {
         e.preventDefault();
+        if (!email) {
+            setErrorMessage('Please enter a valid email.');
+            return;
+        }
+        
         try {
+            setLoading(true);
             await sendPasswordResetEmail(auth, email);
-            setSuccessMessage('If you are a registered user, a password reset email will be sent soon.');
+            setSuccessMessage('Password reset email sent if the account exists.');
             setErrorMessage('');
-            setShowForgotPasswordForm(false);
-            setShowLoginForm(true);
+            setLoading(false);
         } catch (error) {
             setErrorMessage(`Error resetting password: ${error.message}`);
+            setLoading(false);
         }
+    };
+
+    //Operation to be implemented once signout feature is available
+    const handleSignOut = () => {
+        localStorage.removeItem('userRole');
+        setUserRole(null);
     };
 
     return (
@@ -186,9 +233,13 @@ const SignIn = () => {
                             <h1 className="header">Sign in</h1>
                             <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
                             <input type="password" className="form__input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-                            <button className="form__button" type="submit">Continue</button>
+                            <button className="form__button" type="submit" disabled={loading}>
+                                {loading ? 'Signing in...' : 'Continue'}
+                            </button>
                             <p className="form__text__forgot">
-                                <button type="button" className="form__link" onClick={() => { setShowForgotPasswordForm(true); setShowLoginForm(false); }}>Forgot password?</button>
+                                <button type="button" className="form__link" onClick={() => { setShowForgotPasswordForm(true); setShowLoginForm(false); }}>
+                                    Forgot password?
+                                </button>
                             </p>
                             <p className="form__text__createAcc">
                                 <button type="button" className="form__link" onClick={() => setShowLoginForm(false)}>Create account</button>
@@ -201,7 +252,7 @@ const SignIn = () => {
                             <h1 className="header">Create Account</h1>
                             <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
                             <div className="password-container">
-                                <input type={showPassword ? "text" : "password"} className="form__input" value={password} onChange={handlePasswordFeedback} placeholder="Password" required />
+                                <input type={showPassword ? "text" : "password"} className="form__input" value={password} onChange={handlePasswordChange} placeholder="Password" required />
                                 <button type="button" className="toggle-password-visibility" onClick={togglePasswordVisibility}>{showPassword ? "Hide" : "Show"}</button>
                             </div>
                             {passwordFeedback.length > 0 && hasTyped && (
