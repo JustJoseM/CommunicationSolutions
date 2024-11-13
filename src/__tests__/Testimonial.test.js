@@ -27,15 +27,17 @@ jest.mock('react-slick', () => {
     ));
 });
 
+beforeEach(() => {
+    jest.clearAllMocks(); // Reset mocks before each test
+});
+
 describe('Testimonial Page', () => {
     it('renders the root div elements', () => {
-        const { container } = render(
-            <Testimonial />
-        );
-
+        const { container } = render(<Testimonial />);
         // Expect the root element by checking its tag
         expect(container.querySelector('div')).toBeInTheDocument();
     });
+
     it('renders mocked testimonial content', async () => {
         // Mock Firebase Firestore info to return mock data
         const mockTestimonials = [
@@ -59,7 +61,7 @@ describe('Testimonial Page', () => {
             },
             { 
                 id: '4', 
-                review: 'This is a Review', 
+                Review: 'This is a Review', 
                 CompanyName: 'Placeholder',
                 Photo: "https://example.com/photo4.jpg"
             },
@@ -68,21 +70,20 @@ describe('Testimonial Page', () => {
         // Mock the getDocs method to return mock data
         require('firebase/firestore').getDocs.mockResolvedValue({
             docs: mockTestimonials.map(testimonial => ({
+                id: testimonial.id,
                 data: () => testimonial,
             })),
         });
 
-        const { findByText, container } = render(
-            <Testimonial />
-        );
+        const { findByText, container } = render(<Testimonial />);
 
         // Wait for testimonials to be rendered
         await waitFor(() => {
             // Check if the testimonial content is displayed
-            mockTestimonials.forEach(async (testimonial) => {
-                const reviewText = await findByText(testimonial.Review);
+            mockTestimonials.forEach((testimonial) => {
+                const reviewText = findByText(testimonial.Review);
                 expect(reviewText).toBeInTheDocument();
-                expect(await findByText(testimonial.CompanyName)).toBeInTheDocument();
+                expect(findByText(testimonial.CompanyName)).toBeInTheDocument();
 
                 // Check that the src attribute matches the mock photo URL
                 const image = container.querySelector(`img[alt="${testimonial.CompanyName}"]`);
@@ -147,6 +148,9 @@ describe('Testimonial Carousel - Mouse Controls', () => {
 });
 
 describe('Testimonial Carousel - Keyboard Controls', () => {
+    // Testing note: Keyboard functionality is managed internally through 'accessibility: true' setting on the Carousel, therefore we test
+    // that the functionality is not called, as it is handled by Slick itself
+    
     it('advances the carousel when the right arrow key is pressed', () => {
         const mockNext = jest.fn();
         const mockPrev = jest.fn();
