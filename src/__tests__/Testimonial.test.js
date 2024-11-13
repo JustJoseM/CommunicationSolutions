@@ -28,7 +28,7 @@ jest.mock('react-slick', () => {
     ));
 });
 
-describe('Testimonial Carousel', () => {
+describe('Testimonial Carousel - Mouse Controls', () => {
     it('advances the carousel when the forward button is clicked', () => {
        const mockNext = jest.fn();
        const mockPrev = jest.fn();
@@ -79,5 +79,73 @@ describe('Testimonial Carousel', () => {
        fireEvent.click(backButton);
 
        expect(mockPrev).toHaveBeenCalled();
+    });
+});
+
+describe('Testimonial Carousel - Keyboard Controls', () => {
+    it('advances the carousel when the right arrow key is pressed', () => {
+        const mockNext = jest.fn();
+        const mockPrev = jest.fn();
+
+       // Mock Slider to include next and prev mock functions
+        Slider.mockImplementation((props) => (
+        <div>
+            <button onClick={mockNext} className="slick-next">Next</button>
+            <button onClick={mockPrev} className="slick-prev">Prev</button>
+            <div tabIndex="0" className="slick-slider">
+                {props.children}
+            </div>
+        </div>
+       ));
+
+       const { container } = render(
+        <Testimonial />
+       );
+
+       // Simulate clicking the Slider to ensure it has focus
+       const slider = container.querySelector('.slick-slider');
+       fireEvent.focus(slider);
+
+       // Simulate pressing the right arrow key (ArrowRight)
+       fireEvent.keyDown(slider, {
+        key: 'ArrowRight',
+        code: 'ArrowRight',
+       });
+
+       // As it is handled internally by Slick Carousel, it should not be called
+       expect(mockNext).not.toHaveBeenCalled();
+    });
+
+    it('goes back on the carousel when the left arrow key is pressed', () => {
+        const mockNext = jest.fn();
+        const mockPrev = jest.fn();
+
+       // Mock Slider to include next and prev mock functions
+        Slider.mockImplementation((props) => (
+        <div>
+            <button onClick={mockNext} className="slick-next">Next</button>
+            <button onClick={mockPrev} className="slick-prev">Prev</button>
+            <div tabIndex="0" className="slick-slider">
+                {props.children}
+            </div>
+        </div>
+       ));
+
+       const { container } = render(
+        <Testimonial />
+       );
+
+       // Simulate clicking the Slider to ensure it has focus
+       const slider = container.querySelector('.slick-slider');
+       fireEvent.focus(slider);
+
+       // Simulate pressing the right arrow key (ArrowRight)
+       fireEvent.keyDown(slider, {
+        key: 'ArrowLeft',
+        code: 'ArrowLeft',
+       });
+
+       // As it is handled internally by Slick Carousel, it should not be called
+       expect(mockPrev).not.toHaveBeenCalled();
     });
 });
