@@ -19,6 +19,7 @@ const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [issign, setIssign] = useState(false);
     const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
+    const [loading, setLoading] = useState(false); // Add loading state
 
     const maxFailedAttempts = 3;
     const lockDuration = 0.01 * 60 * 1000; // 10 minutes in milliseconds
@@ -93,6 +94,8 @@ const SignIn = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault();
+        setLoading(true);
+
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const userRef = doc(db, 'users', userCredential.user.uid);
@@ -106,6 +109,7 @@ const SignIn = () => {
                     setUserRole(role);
                 } else {
                     setErrorMessage('No user data found in Firestore.');
+                    setLoading(false);
                     return;
                 }
             }
@@ -114,6 +118,7 @@ const SignIn = () => {
             const userData = (await getDoc(userRef)).data();
             if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
                 setErrorMessage('Account is temporarily locked. Please try again later.');
+                setLoading(false);
                 return;
             }
 
@@ -121,12 +126,14 @@ const SignIn = () => {
                 setErrorMessage('Your password has expired. Please reset your password.');
                 await sendPasswordResetEmail(auth, email);
                 setSuccessMessage('Password reset email sent. Please check your inbox.');
+                setLoading(false);
                 return;
             }
 
             await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
             setSuccessMessage('Sign-in successful! Welcome back.');
             setErrorMessage('');
+            setLoading(false);
 
             if (role === 'user') {
                 navigate('/home');
@@ -150,19 +157,26 @@ const SignIn = () => {
                     break;
             }
             setSuccessMessage('');
+            setLoading(false);
         }
     };
 
     const handleForgotPassword = async (e) => {
         e.preventDefault();
+        if (!email) {
+            setErrorMessage('Please enter a valid email.');
+            return;
+        }
+        
         try {
+            setLoading(true);
             await sendPasswordResetEmail(auth, email);
-            setSuccessMessage('If you are a registered user, a password reset email will be sent soon.');
+            setSuccessMessage('Password reset email sent if the account exists.');
             setErrorMessage('');
-            setShowForgotPasswordForm(false);
-            setShowLoginForm(true);
+            setLoading(false);
         } catch (error) {
             setErrorMessage(`Error resetting password: ${error.message}`);
+            setLoading(false);
         }
     };
 
@@ -205,9 +219,13 @@ const SignIn = () => {
                             <h1 className="header">Sign in</h1>
                             <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
                             <input type="password" className="form__input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-                            <button className="form__button" type="submit">Continue</button>
+                            <button className="form__button" type="submit" disabled={loading}>
+                                {loading ? 'Signing in...' : 'Continue'}
+                            </button>
                             <p className="form__text__forgot">
-                                <button type="button" className="form__link" onClick={() => { setShowForgotPasswordForm(true); setShowLoginForm(false); }}>Forgot password?</button>
+                                <button type="button" className="form__link" onClick={() => { setShowForgotPasswordForm(true); setShowLoginForm(false); }}>
+                                    Forgot password?
+                                </button>
                             </p>
                             <p className="form__text__createAcc">
                                 <button type="button" className="form__link" onClick={() => setShowLoginForm(false)}>Create account</button>
