@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { doc, getDoc, setDoc, updateDoc, runTransaction } from 'firebase/firestore';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '../PagesCSS/SignupLogin.css';
-import bcrypt from 'bcryptjs';
 
 const SignIn = () => {
     const [showLoginForm, setShowLoginForm] = useState(true);
@@ -45,12 +44,18 @@ const SignIn = () => {
 
     const togglePasswordVisibility = () => setShowPassword((prevState) => !prevState);
 
-    const handlePasswordFeedback = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
-        setPasswordFeedback(validatePassword(newPassword));
+    // Handle password input change and set `hasTyped` to true
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
         if (!hasTyped) setHasTyped(true);
     };
+
+    // useEffect hook to handle real-time password validation and feedback
+    useEffect(() => {
+        if (hasTyped) {
+            setPasswordFeedback(validatePassword(password));
+        }
+    }, [password, hasTyped]);  // Runs when `password` or `hasTyped` changes
 
     const isPasswordExpired = (passwordLastSet) => {
         return Date.now() - passwordLastSet.toMillis() > expirationPeriod;
@@ -67,8 +72,7 @@ const SignIn = () => {
             return;
         }
         try {
-            const hashedPassword = bcrypt.hashSync(password, 10);
-            const userCredential = await createUserWithEmailAndPassword(auth, email, hashedPassword);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const userRef = doc(db, 'users', userCredential.user.uid);
             await setDoc(userRef, {
                 email,
@@ -121,24 +125,28 @@ const SignIn = () => {
             }
         } catch (error) {
             const userRef = doc(db, 'users', auth.currentUser?.uid);
-            const userDoc = await getDoc(userRef);
-            if (userDoc.exists()) {
-                const failedAttempts = userDoc.data().failedAttempts || 0;
-                if (failedAttempts + 1 >= maxFailedAttempts) {
-                    const lockedUntil = new Date(Date.now() + lockDuration);
-                    await updateDoc(userRef, { lockedUntil, failedAttempts: 0 });
-                    setErrorMessage('Too many failed attempts. Account locked for 10 minutes.');
+            await runTransaction(db, async (transaction) => {
+                const userDoc = await transaction.get(userRef);
+            
+                if (userDoc.exists()) {
+                    const failedAttempts = userDoc.data().failedAttempts || 0;
+                    if (failedAttempts + 1 >= maxFailedAttempts) {
+                        const lockedUntil = new Date(Date.now() + lockDuration);
+                        transaction.update(userRef, { lockedUntil, failedAttempts: 0 });
+                        setErrorMessage('Too many failed attempts. Account locked for 10 minutes.');
+                    } else {
+                        transaction.update(userRef, { failedAttempts: failedAttempts + 1 });
+                        setErrorMessage('Error signing in: If you fail more than 3 attempts, the account gets locked for 10 minutes.');
+                    }
                 } else {
-                    await updateDoc(userRef, { failedAttempts: failedAttempts + 1 });
-                    setErrorMessage('Error signing in: If you fail more than 3 attempts, the account gets locked for 10 minutes.');
+                    setErrorMessage('Error signing in: Account not found.');
                 }
-            } else {
-                setErrorMessage('Error signing in: Account not found.');
-            }
-            setSuccessMessage('');
-        }
+                setSuccessMessage('');
+        
 
-        setIssign(true);
+            setIssign(true);
+            });
+        }
     };
 
     const handleForgotPassword = async (e) => {
@@ -202,7 +210,7 @@ const SignIn = () => {
                             <h1 className="header">Create Account</h1>
                             <input type="email" className="form__input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
                             <div className="password-container">
-                                <input type={showPassword ? "text" : "password"} className="form__input" value={password} onChange={handlePasswordFeedback} placeholder="Password" required />
+                                <input type={showPassword ? "text" : "password"} className="form__input" value={password} onChange={handlePasswordChange} placeholder="Password" required />
                                 <button type="button" className="toggle-password-visibility" onClick={togglePasswordVisibility}>{showPassword ? "Hide" : "Show"}</button>
                             </div>
                             {passwordFeedback.length > 0 && hasTyped && (
