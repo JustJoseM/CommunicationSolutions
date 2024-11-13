@@ -5,13 +5,9 @@ import one from '../../assets/home_one.png';
 import two from '../../assets/home_two.png';
 import { Helmet } from 'react-helmet'; 
 
-// import lines from '../assets/home-lines-bg.svg';
-
-
 function Home() {
     return (
         <div className="Home">
-            
             <Helmet>
                 <title>Home - Communication Solutions</title>
                 <meta
@@ -27,7 +23,7 @@ function Home() {
                     You Want Here
                 </h1>
                 <p className="home_description">
-                    We provide the best buisness coaching, plan of action, and <br />
+                    We provide the best business coaching, plan of action, and <br />
                     customer service to help make your dream a reality.
                 </p>
 
@@ -42,19 +38,9 @@ function Home() {
                 </div>
             </div>
             <div className="home_images">
-                <img src={one} alt="" className="home_one"/>
-                <img src={two} alt="" className="home_two"/>
+                <img src={one} alt="one-alt" className="home_one"/>
+                <img src={two} alt="two-alt" className="home_two"/>
             </div>
-
-            {/* <div className="home_info">
-                <div>
-                    <h3 className="home_info-title"></h3>
-                    <p className="home_info-description"></p>
-                </div>
-                <div>
-                    <h3 className="home_info-title"></h3>
-                    <p className="home_info-description"></p>
-                </div> */}
         </div>
     );
 }

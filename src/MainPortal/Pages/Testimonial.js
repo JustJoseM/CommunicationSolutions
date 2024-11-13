@@ -21,7 +21,7 @@ const Testimonial = () => {
                 const clientData = clientSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data()}));
                 setClients(clientData);
             } catch(error) {
-                console.error('Error fetcgubg clients:', error);
+                console.error('Error fetching clients:', error);
             }
         };
         
