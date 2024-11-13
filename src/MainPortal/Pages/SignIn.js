@@ -18,6 +18,7 @@ const SignIn = () => {
     const [hasTyped, setHasTyped] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [issign, setIssign] = useState(false);
+    const [userRole, setUserRole] = useState(localStorage.getItem('userRole'));
 
     const maxFailedAttempts = 3;
     const lockDuration = 0.01 * 60 * 1000; // 10 minutes in milliseconds
@@ -44,7 +45,6 @@ const SignIn = () => {
 
     const togglePasswordVisibility = () => setShowPassword((prevState) => !prevState);
 
-    // Handle password input change and set `hasTyped` to true
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
         if (!hasTyped) setHasTyped(true);
@@ -55,7 +55,7 @@ const SignIn = () => {
         if (hasTyped) {
             setPasswordFeedback(validatePassword(password));
         }
-    }, [password, hasTyped]);  // Runs when `password` or `hasTyped` changes
+    }, [password, hasTyped]);
 
     const isPasswordExpired = (passwordLastSet) => {
         return Date.now() - passwordLastSet.toMillis() > expirationPeriod;
@@ -95,57 +95,61 @@ const SignIn = () => {
         e.preventDefault();
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const userRef = doc(db,'users', userCredential.user.uid);
-            const userDoc = await getDoc(userRef);
-            const userRole = userDoc.data().Role;
+            const userRef = doc(db, 'users', userCredential.user.uid);
+            let role = localStorage.getItem('userRole');
 
-            if (userDoc.exists()) {
-                const userData = userDoc.data();
-                if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
-                    setErrorMessage('Account is temporarily locked. Please try again later.');
+            if (!role) {
+                const userDoc = await getDoc(userRef);
+                if (userDoc.exists()) {
+                    role = userDoc.data().Role;
+                    localStorage.setItem('userRole', role);
+                    setUserRole(role);
+                } else {
+                    setErrorMessage('No user data found in Firestore.');
                     return;
                 }
-                if (userData.passwordLastSet && isPasswordExpired(userData.passwordLastSet)) {
-                    setErrorMessage('Your password has expired. Please reset your password.');
-                    await sendPasswordResetEmail(auth, email);
-                    setSuccessMessage('Password reset email sent. Please check your inbox.');
-                    return;
-                }
-                await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
-                setSuccessMessage('Sign-in successful! Welcome back.');
-                setErrorMessage('');
-                if(userRole === "user"){
-                    navigate('/home');
-                }
-                else{
-                    navigate('/admin');
-                }
+            }
+
+            // Check if account is locked or password expired
+            const userData = (await getDoc(userRef)).data();
+            if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
+                setErrorMessage('Account is temporarily locked. Please try again later.');
+                return;
+            }
+
+            if (userData.passwordLastSet && isPasswordExpired(userData.passwordLastSet)) {
+                setErrorMessage('Your password has expired. Please reset your password.');
+                await sendPasswordResetEmail(auth, email);
+                setSuccessMessage('Password reset email sent. Please check your inbox.');
+                return;
+            }
+
+            await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
+            setSuccessMessage('Sign-in successful! Welcome back.');
+            setErrorMessage('');
+
+            if (role === 'user') {
+                navigate('/home');
             } else {
-                setErrorMessage('No user data found in Firestore.');
+                navigate('/admin');
             }
         } catch (error) {
-            const userRef = doc(db, 'users', auth.currentUser?.uid);
-            await runTransaction(db, async (transaction) => {
-                const userDoc = await transaction.get(userRef);
-            
-                if (userDoc.exists()) {
-                    const failedAttempts = userDoc.data().failedAttempts || 0;
-                    if (failedAttempts + 1 >= maxFailedAttempts) {
-                        const lockedUntil = new Date(Date.now() + lockDuration);
-                        transaction.update(userRef, { lockedUntil, failedAttempts: 0 });
-                        setErrorMessage('Too many failed attempts. Account locked for 10 minutes.');
-                    } else {
-                        transaction.update(userRef, { failedAttempts: failedAttempts + 1 });
-                        setErrorMessage('Error signing in: If you fail more than 3 attempts, the account gets locked for 10 minutes.');
-                    }
-                } else {
-                    setErrorMessage('Error signing in: Account not found.');
-                }
-                setSuccessMessage('');
-        
-
-            setIssign(true);
-            });
+            // Check for Firebase Authentication error codes and update the error message accordingly
+            switch (error.code) {
+                case 'auth/user-not-found':
+                    setErrorMessage('No account found with this email. Please sign up.');
+                    break;
+                case 'auth/wrong-password':
+                    setErrorMessage('Incorrect password. Please try again.');
+                    break;
+                case 'auth/too-many-requests':
+                    setErrorMessage('Too many failed attempts. Please try again later or reset your password.');
+                    break;
+                default:
+                    setErrorMessage(`Error signing in: ${error.message}`);
+                    break;
+            }
+            setSuccessMessage('');
         }
     };
 
@@ -160,6 +164,12 @@ const SignIn = () => {
         } catch (error) {
             setErrorMessage(`Error resetting password: ${error.message}`);
         }
+    };
+
+    //Operation to be implemented once signout feature is available
+    const handleSignOut = () => {
+        localStorage.removeItem('userRole');
+        setUserRole(null);
     };
 
     return (
