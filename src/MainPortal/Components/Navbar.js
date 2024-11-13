@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../PagesCSS/Navbar.css';
 import {Link} from 'react-router-dom';
 import { SidebarData } from './SidebarData';
+import {useremail} from '../Pages/SignIn';
 
 function Navbar() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -15,6 +16,7 @@ function Navbar() {
         <div className="nav-left">
           <div className="title">
             <h4>Communication Solutions</h4>
+            <h2>User Signed In:</h2>
           </div>
         </div>
         <div className={`nav-right ${sidebarOpen ? 'shift-left' : ''}`}>

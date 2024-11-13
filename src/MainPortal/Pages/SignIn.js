@@ -18,7 +18,7 @@ const SignIn = () => {
     const [hasTyped, setHasTyped] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [issign, setIssign] = useState(false);
-    const [userDoc] = useState(false);
+    const [useremail,setUseremail] = useState(false);
     const maxFailedAttempts = 3;
     const lockDuration = 0.01 * 60 * 1000; // 10 minutes in milliseconds
     const expirationPeriod = 90 * 24 * 60 * 60 * 1000; // 90 days in milliseconds
@@ -106,6 +106,7 @@ const SignIn = () => {
                 }
                 await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
                 setSuccessMessage('Sign-in successful! Welcome back.');
+                setUseremail(userCredential.user.email);
                 setErrorMessage('');
                 if(userRole === "user"){
                     navigate('/home');

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../PagesCSS/ScheduleAppt.css';
-import { db } from '../../firebaseConfig.js';
+import { auth, db } from '../../firebaseConfig.js';
 import { collection, doc, setDoc, getDoc, query, where, getDocs, addDoc, deleteDoc } from "firebase/firestore";
 import { Helmet } from 'react-helmet';
 
@@ -62,7 +62,10 @@ function ScheduleAppt() {
       const querySnapshot = await getDocs(collection(db, 'Appointments'));
       const appointmentList = [];
       querySnapshot.forEach((doc) => {
-        appointmentList.push({ ...doc.data(), id: doc.id })
+        const appointmentData = { ...doc.data(), id: doc.id };
+        if (appointmentData.contact === auth.currentUser.email) {
+          appointmentList.push(appointmentData);
+        }
       
       });
       setAppointments(appointmentList);
