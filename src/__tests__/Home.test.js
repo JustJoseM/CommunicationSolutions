@@ -30,8 +30,8 @@ describe('Home Component', () => {
                 <Home />
             </Router>
         );
-        const imageOne = screen.getByAltText('image-one-alt');
-        const imageTwo = screen.getByAltText('image-two-alt');
+        const imageOne = screen.getByAltText('one-alt');
+        const imageTwo = screen.getByAltText('two-alt');
 
         expect(imageOne).toBeInTheDocument();
         expect(imageTwo).toBeInTheDocument();

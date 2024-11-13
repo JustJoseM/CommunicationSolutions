@@ -38,8 +38,8 @@ function Home() {
                 </div>
             </div>
             <div className="home_images">
-                <img src={one} alt="image-one-alt" className="home_one"/>
-                <img src={two} alt="image-two-alt" className="home_two"/>
+                <img src={one} alt="one-alt" className="home_one"/>
+                <img src={two} alt="two-alt" className="home_two"/>
             </div>
         </div>
     );
