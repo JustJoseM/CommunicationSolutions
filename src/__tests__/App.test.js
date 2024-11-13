@@ -3,6 +3,11 @@ import { render, screen } from '@testing-library/react';
 import { useNavigate, useLocation } from "react-router-dom";
 import App from '../App';
 
+jest.mock("../MainPortal/Pages/AuthProvider", () => ({
+    AuthProvider: ({ children }) => <div>{children}</div>, 
+    useAuth: jest.fn(() => ({ currentUser: { id: "testUser" } })),
+}));
+
 // Mock Firebase imports to prevent initialization during tests
 jest.mock("firebase/app", () => ({
   initializeApp: jest.fn(),
