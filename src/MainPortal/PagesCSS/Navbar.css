@@ -8,6 +8,7 @@
     padding-left: 100px;
     padding-right: 100px;
     height: 100px;
+    z-index: 1000;
 }
 
 .MainApp .nav-left {
