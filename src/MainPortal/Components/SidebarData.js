@@ -21,5 +21,8 @@ export const SidebarData = [
         title: "Contact Info",
         link: "/contact"
     },
+    {
+        title: "Reschedule/Cancel Appointments"
+    }
 
 ]
