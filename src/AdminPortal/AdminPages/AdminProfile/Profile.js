@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import './Profile.css';
 
 const ProfileTest = () => {
@@ -15,11 +16,15 @@ const ProfileTest = () => {
     const [bio, setBio] = useState('');
     const [icon, setIcon] = useState('');
 
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const adminId =  user.uid;
+
     // Fetch user data from Firestore
     useEffect(() => {
         const fetchUserData = async () => {
-            const adminID = "admin2";
-            const docRef = doc(db, "Admins", adminID);
+            if (!adminId) return;
+            const docRef = doc(db, "Admins", adminId);
             const docSnap = await getDoc(docRef);
 
             if(docSnap.exists()) {
