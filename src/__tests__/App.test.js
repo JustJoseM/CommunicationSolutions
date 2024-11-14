@@ -4,6 +4,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import App from '../App';
 
 jest.mock("../MainPortal/Pages/AuthProvider", () => ({
+  AuthProvider: ({ children }) => <div>{children}</div>, 
+  useAuth: jest.fn(() => ({ currentUser: { id: "testUser" } })),
+}));
+
+jest.mock("../MainPortal/Pages/AuthProvider", () => ({
     AuthProvider: ({ children }) => <div>{children}</div>, 
     useAuth: jest.fn(() => ({ currentUser: { id: "testUser" } })),
 }));
