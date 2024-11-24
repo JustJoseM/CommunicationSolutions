@@ -14,6 +14,7 @@
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.4",
     "firebase": "^10.14.0",
+    "firebase-tools": "^13.27.0",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.46",
     "react": "^18.2.0",

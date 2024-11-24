@@ -113,10 +113,8 @@ describe('Testimonial Carousel - Mouse Controls', () => {
 
        // Find the forward button
        const forwardButton = container.querySelector('.slick-next');
-       
        // Click the forward button
        fireEvent.click(forwardButton);
-
        expect(mockNext).toHaveBeenCalled();
     });
 
@@ -139,10 +137,8 @@ describe('Testimonial Carousel - Mouse Controls', () => {
 
        // Find the back button
        const backButton = container.querySelector('.slick-prev');
-
        // Click the back button
        fireEvent.click(backButton);
-
        expect(mockPrev).toHaveBeenCalled();
     });
 });
