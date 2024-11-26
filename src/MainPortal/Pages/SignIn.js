@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, runTransaction } from 'firebase/firestore';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '../PagesCSS/SignupLogin.css';
 
-/* eslint-disable */
 const SignIn = () => {
     const [showLoginForm, setShowLoginForm] = useState(true);
     const [showForgotPasswordForm, setShowForgotPasswordForm] = useState(false);
@@ -300,5 +299,5 @@ const SignIn = () => {
         </>
     );
 };
-/* eslint-enable */
+
 export default SignIn;

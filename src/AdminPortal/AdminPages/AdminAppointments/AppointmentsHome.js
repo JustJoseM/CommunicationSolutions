@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { db } from '../../../firebaseConfig.js';
-import { collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import './AppointmentsHome.css';
-/* eslint-disable */
+
 function SchedulingHome() {
     const [appointments, setAppointments] = useState([]);
     const [editingAppointment, setEditingAppointment] = useState(null);
@@ -50,9 +50,7 @@ function SchedulingHome() {
     const rescheduleAppointment = async () => {
       if (!editingAppointment) return;
       
-      /* eslint-disable no-unused-vars */
       const updatedAppointment = { ...editingAppointment, date: newDate, time: newTime };
-      /* eslint-enable no-unused-vars */
   
       try {
         await updateDoc(doc(db, 'Appointments', editingAppointment.id), {
@@ -119,5 +117,5 @@ function SchedulingHome() {
       </div>
     );
   }
-  /* eslint-enable */
+  
   export default SchedulingHome;
