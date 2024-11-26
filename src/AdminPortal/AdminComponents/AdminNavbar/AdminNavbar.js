@@ -27,7 +27,6 @@ const AdminNavbar = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [hasViewedNotifications, setHasViewedNotifications] = useState(false);
     const [showUserDropdown, setShowUserDropdown] = useState(false);
-    const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
     const [userData, setUserData] = useState(null);
 
     const auth = getAuth();
