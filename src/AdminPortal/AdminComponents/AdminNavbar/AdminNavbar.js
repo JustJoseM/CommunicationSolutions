@@ -54,10 +54,6 @@ const AdminNavbar = () => {
         setShowUserDropdown(!showUserDropdown);
     };
 
-    const toggleSettingsDropdown = () => {
-        setShowSettingsDropdown(!showSettingsDropdown);
-    };
-
     const generateRandomNotifications = () => {    
         const randomCount = Math.floor(Math.random() * 7) + 1;
         return Array.from({ length: randomCount }, (_, index) => `Notification ${index + 1}`);
