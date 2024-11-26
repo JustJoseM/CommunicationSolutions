@@ -50,7 +50,9 @@ function SchedulingHome() {
     const rescheduleAppointment = async () => {
       if (!editingAppointment) return;
       
+      /* eslint-disable no-unused-vars */
       const updatedAppointment = { ...editingAppointment, date: newDate, time: newTime };
+      /* eslint-enable no-unused-vars */
   
       try {
         await updateDoc(doc(db, 'Appointments', editingAppointment.id), {

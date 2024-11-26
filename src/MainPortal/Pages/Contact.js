@@ -1,5 +1,4 @@
 import React from "react";
-import contactImage from '../../assets/hero.jpeg';
 import '../PagesCSS/Contact.css';
 import { Helmet } from 'react-helmet';
 

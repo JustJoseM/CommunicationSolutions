@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../PagesCSS/ScheduleAppt.css';
 import { auth, db } from '../../firebaseConfig.js';
-import { collection, doc, setDoc, getDoc, query, where, getDocs, addDoc, deleteDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs, addDoc, deleteDoc } from "firebase/firestore";
 import { Helmet } from 'react-helmet';
 
 function ScheduleAppt() {
