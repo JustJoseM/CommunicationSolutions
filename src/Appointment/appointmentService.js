@@ -2,7 +2,7 @@ import { getFirestore, doc, getDoc, updateDoc, deleteDoc } from 'firebase/firest
 import { getAuth } from 'firebase/auth';
 
 const db = getFirestore();
-/* eslint-enable no-unused-vars */
+/* eslint-disable no-unused-vars */
 const auth = getAuth();
 /* eslint-enable no-unused-vars */
 

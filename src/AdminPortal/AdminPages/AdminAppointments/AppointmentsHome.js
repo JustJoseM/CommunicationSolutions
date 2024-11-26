@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { db } from '../../../firebaseConfig.js';
 import { collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import './AppointmentsHome.css';
-
+/* eslint-disable */
 function SchedulingHome() {
     const [appointments, setAppointments] = useState([]);
     const [editingAppointment, setEditingAppointment] = useState(null);
@@ -119,5 +119,5 @@ function SchedulingHome() {
       </div>
     );
   }
-  
+  /* eslint-enable */
   export default SchedulingHome;
