@@ -128,6 +128,7 @@ const SignIn = () => {
 
             if (role === 'user') {
                 navigate('/home');
+                window.location.reload();
             } else {
                 navigate('/admin');
             }

@@ -1,14 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../PagesCSS/Navbar.css';
 import {Link} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { SidebarData } from './SidebarData';
-import {useremail} from '../Pages/SignIn';
+import { auth } from '../../firebaseConfig';
+import { signOut } from 'firebase/auth';
 
-function Navbar() {
+const Navbar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [userEmail, setUserEmail] = useState(null);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          setUserEmail(user.email); 
+        } else {
+         setUserEmail(null); 
+        }
+    });
+
+    // Cleanup subscription
+    return () => unsubscribe();
+  }, []);
+    
   
     const toggleSidebar = () => {
       setSidebarOpen(!sidebarOpen);
+    };
+
+    const handleLogout = async () => {
+      try {
+        await signOut(auth); 
+        console.log('User signed out');
+        navigate("/signin"); 
+        window.location.reload();  
+      } catch (error) {
+        console.error('Error signing out:', error.message);
+      }
     };
   
     return (
@@ -16,7 +46,7 @@ function Navbar() {
         <div className="nav-left">
           <div className="title">
             <h4>Communication Solutions</h4>
-            <h2>User Signed In:</h2>
+            {userEmail && <p className="user-email">User: {userEmail}</p>} {/* Display user's email */}
           </div>
         </div>
         <div className={`nav-right ${sidebarOpen ? 'shift-left' : ''}`}>
@@ -48,7 +78,10 @@ function Navbar() {
                             </li>
                         );
                     })}
-                </ul>
+              </ul>
+              {userEmail && (
+                <button className="log_out_user" onClick={handleLogout}>Log Out</button>
+              )}
           </div>
         </div>
       </div>
