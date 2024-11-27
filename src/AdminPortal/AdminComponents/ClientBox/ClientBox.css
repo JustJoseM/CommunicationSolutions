@@ -2,7 +2,8 @@
 h1 {
     margin-bottom: 20px;
     color: black;
-    text-align: center;
+    font-size: x-large;
+    /* text-align: center; */
 }
 
 .clientBoxlistItem {

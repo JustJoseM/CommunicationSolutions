@@ -46,18 +46,6 @@ export const menu = [
                 icon: ""
             },
             {
-                id: 2,
-                title: "Forms",
-                url: "/admin",
-                icon: ""
-            },
-            {
-                id: 3,
-                title: "Calendar",
-                url: "/admin",
-                icon: ""
-            },
-            {
                 id: 4,
                 title: "Settings",
                 url: "/admin/settings",

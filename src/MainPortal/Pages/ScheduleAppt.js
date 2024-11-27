@@ -17,6 +17,8 @@ function ScheduleAppt() {
   const [rescheduleAppointment, setRescheduleAppointment] = useState(null); // Appointment being rescheduled
   const [newDate, setNewDate] = useState('');
   const [newTime, setNewTime] = useState('');
+  //For dealing with users tying to schedule without being signed in
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     // Get appointments when component mounts
@@ -26,6 +28,13 @@ function ScheduleAppt() {
   // Function to add a new appointment
   const addAppointment = async (e) => {
     e.preventDefault();
+
+    if (!auth.currentUser) {
+      setErrorMessage('You must be signed in to schedule an appointment.');
+      return;
+    }
+
+    setErrorMessage(''); // Clear any existing error messages
 
     // Create a new appointment object from form values
     const newAppointment = {
@@ -147,6 +156,7 @@ function ScheduleAppt() {
               <textarea value={note} onChange={(e) => setNote(e.target.value)} required></textarea>
             </div>
             <button className="submit_button">Add Appointment</button>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
           </form>
 
           {rescheduleAppointment && (
