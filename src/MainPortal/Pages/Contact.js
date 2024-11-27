@@ -20,6 +20,7 @@ const Contact = () => {
                 <div className="hero-content">
                     <h1>Get in touch with us</h1>
                     <p>We're here to help. Reach out to us through the method that works best for you.</p>
+                    <p>Disclaimer: This is a school project and all of the provided information is not real. Please do not reach out.</p>
                 </div>
             </div>
             <div className="divider"></div>
@@ -31,12 +32,12 @@ const Contact = () => {
                     <div className="phone-method">
                         <h4>Phone Support</h4>
                         <p>Call us for immediate support at:</p>
-                        <a href="tel:+111-2222">111-2222</a>
+                        <a href="">Placeholder!</a>
                     </div>
                     <div className="email-method">
                         <h4>Email Support</h4>
                         <p>For general inquiries, email us at:</p>
-                        <a href="mailto:businessinfo@business.com">businessinfo@business.com</a>
+                        <a href="">Placeholder!</a>
                     </div>
                     <div className="office-method">
                         <h4>Our Office</h4>
