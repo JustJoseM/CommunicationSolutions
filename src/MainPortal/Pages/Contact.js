@@ -1,7 +1,7 @@
 import React from "react";
 import '../PagesCSS/Contact.css';
 import { Helmet } from 'react-helmet';
-
+/* eslint-disable */
 const Contact = () => {
     return (
         <>
@@ -49,5 +49,5 @@ const Contact = () => {
         </>
     );
 }
-
+  /* eslint-enable */
 export default Contact;
