@@ -9,9 +9,19 @@ describe('AboutUs Component', () => {
     expect(logoImage).toBeInTheDocument();
   });
 
+  test('does not render the incorrect logo', () => {
+    render(<AboutUs />);
+    expect(screen.queryByAltText('alt_business_logo')).not.toBeInTheDocument();
+  });
+
   test('renders the "Who are we?" section', () => {
     render(<AboutUs />);
     expect(screen.getByText(/Who are we\?/i)).toBeInTheDocument();
+  });
+
+  test('does not render the nonexistent section', () => {
+    render(<AboutUs />);
+    expect(screen.queryByText(/Nonexistent Section/i)).not.toBeInTheDocument();
   });
 
   test('renders service titles', () => {
