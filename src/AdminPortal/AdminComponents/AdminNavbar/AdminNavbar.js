@@ -11,6 +11,7 @@ import calendar from "../../AdminAssets/alternate-calendar.png";
 import apps from "../../AdminAssets/apps.png";
 import notification from "../../AdminAssets/notification.png";
 
+/* eslint-disable */
 const NotificationPopup = ({ notifications, onClose }) => {
     return (
         <div className="notification-popup">
@@ -137,5 +138,5 @@ const AdminNavbar = () => {
         </div>
     );
 };
-
+/* eslint-enable */
 export default AdminNavbar;

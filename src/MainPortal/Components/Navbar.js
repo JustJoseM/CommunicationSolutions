@@ -5,6 +5,7 @@ import { SidebarData } from './SidebarData';
 import { auth } from '../../firebaseConfig';
 import { signOut } from 'firebase/auth';
 import { handleSignOut } from '../Pages/SignIn';
+
 /* eslint-disable */
 function Navbar() {
     const [sidebarOpen, setSidebarOpen] = useState(false);

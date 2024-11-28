@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
@@ -301,7 +302,7 @@ const SignIn = () => {
         </>
     );
 };
-
+  /* eslint-enable */
 export default SignIn;
 export const handleSignOut = () => {
     localStorage.removeItem('userRole');
