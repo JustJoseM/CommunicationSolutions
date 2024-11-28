@@ -45,7 +45,7 @@ function Footer(){
 
                 <div className="sb__footer-below">
                     <div className="sb__footer-copyright">
-                        <p>@{new Date().getFullYear()} CodeInn. All right reserved.</p>
+                        <p>@{new Date().getFullYear()} Team Bit Theory, Sacramento State. This is a school project. None of what is displayed here is for profit.</p>
                     </div>
                     <div className="sb__footer-below-links">
                         <a href="/terms"><div><p>Terms & Conditions</p></div></a>
