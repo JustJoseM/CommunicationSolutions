@@ -119,6 +119,9 @@ const SignIn = () => {
                 return;
             }
     
+            await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
+            setSuccessMessage('Sign-in successful! Welcome back.');
+            
             // Update passwordLastSet and reset failed attempts
             await updateDoc(userRef, {
                 passwordLastSet: new Date(),
