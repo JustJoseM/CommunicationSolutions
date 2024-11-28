@@ -71,7 +71,7 @@
 }
 
 .AdminApp .note{
-    background-color: whitesmoke;
+    background-color: #fef68a;
     border-radius: 10px;
     padding: 1rem;
     min-height: 250px;
@@ -85,4 +85,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.AdminApp .notes_box_title {
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
 }

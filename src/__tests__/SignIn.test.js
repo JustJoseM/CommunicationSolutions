@@ -48,20 +48,22 @@ describe('SignIn Component', () => {
     test('shows success message on sign-up', async () => {
         const mockCreateUser = require('firebase/auth').createUserWithEmailAndPassword;
         mockCreateUser.mockResolvedValue({ user: { uid: '12345' } });
+    
         fireEvent.click(screen.getByText(/Create account/i));
         fireEvent.change(screen.getByPlaceholderText(/Email/i), { target: { value: 'test@example.com' } });
-        fireEvent.change(screen.getByPlaceholderText(/Password/i), { target: { value: 'Test@1234' } });
-        fireEvent.change(screen.getByPlaceholderText(/Confirm Password/i), { target: { value: 'Test@1234' } });
+        fireEvent.change(screen.getAllByPlaceholderText(/Password/i)[0], { target: { value: 'Test@1234' } });
+        fireEvent.change(screen.getAllByPlaceholderText(/Password/i)[1], { target: { value: 'Test@1234' } });
         fireEvent.click(screen.getByText(/Continue/i));
-        await waitFor(() => expect(screen.getByText(/Sign-up successful!/i)).toBeInTheDocument());
+        await waitFor(() => expect(screen.getByText(/Sign-up successful! You can now log in./i)).toBeInTheDocument());
     });
-
+    
     test('shows error message if passwords do not match on sign-up', async () => {
         fireEvent.click(screen.getByText(/Create account/i));
-        fireEvent.change(screen.getByPlaceholderText(/Password/i), { target: { value: 'Test@1234' } });
-        fireEvent.change(screen.getByPlaceholderText(/Confirm Password/i), { target: { value: 'Test@5678' } });
+        fireEvent.change(screen.getByPlaceholderText(/Email/i), { target: { value: 'test@example.com' } });
+        fireEvent.change(screen.getAllByPlaceholderText(/Password/i)[0], { target: { value: 'Test@1234' } });
+        fireEvent.change(screen.getAllByPlaceholderText(/Password/i)[1], { target: { value: 'Test@5678' } });
         fireEvent.click(screen.getByText(/Continue/i));
-        expect(screen.getByText(/Passwords do not match/i)).toBeInTheDocument();
+        await waitFor(() => expect(screen.getByText(/Passwords do not match/i)).toBeInTheDocument());
     });
 
     test('shows success message when password reset email is sent', async () => {
@@ -70,6 +72,6 @@ describe('SignIn Component', () => {
         fireEvent.click(screen.getByText(/Forgot password\?/i));
         fireEvent.change(screen.getByPlaceholderText(/Enter your email/i), { target: { value: 'test@example.com' } });
         fireEvent.click(screen.getByText(/Send Request Email/i));
-        await waitFor(() => expect(screen.getByText(/password reset email will be sent soon/i)).toBeInTheDocument());
+        await waitFor(() => expect(screen.getByText(/Password reset email sent if the account exists./i)).toBeInTheDocument());
     });
 });

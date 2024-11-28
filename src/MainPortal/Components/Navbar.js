@@ -2,13 +2,27 @@ import React, { useState } from 'react';
 import '../PagesCSS/Navbar.css';
 import {Link} from 'react-router-dom';
 import { SidebarData } from './SidebarData';
-import {useremail} from '../Pages/SignIn';
+import { auth } from '../../firebaseConfig';
+import { signOut } from 'firebase/auth';
+import { handleSignOut } from '../Pages/SignIn';
 
 function Navbar() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
   
     const toggleSidebar = () => {
       setSidebarOpen(!sidebarOpen);
+    };
+
+    const handleLogout = async () => {
+      try {
+        await signOut(auth); 
+        handleSignOut();
+        console.log('User signed out');
+        navigate("/signin"); 
+        window.location.reload();  
+      } catch (error) {
+        console.error('Error signing out:', error.message);
+      }
     };
   
     return (
