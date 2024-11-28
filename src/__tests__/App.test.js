@@ -37,16 +37,16 @@ jest.mock('../AdminPortal/AdminComponents/AdminFooter/AdminFooter', () => () => 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: jest.fn(),
-  useLocation: jest.fn(() => ({
-    pathname: "/"
-  }))
+  useLocation: jest.fn(),
 }));
 
 describe('App Routing and Layouts', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('renders the main layout components', () => {
-    render(
-      <App />
-    );
+    render(<App />);
 
     // Expect Navbar, footer, and sidebar to be in the Main Layout
     expect(screen.getByText('Navbar')).toBeInTheDocument();
@@ -56,9 +56,7 @@ describe('App Routing and Layouts', () => {
 
   test('renders the home page', () => {
     useLocation.mockReturnValue({ pathname: "/" });
-    render(
-      <App />
-    );
+    render(<App />);
 
     // Expect home page component
     expect(screen.getByText('Home Page')).toBeInTheDocument();
@@ -66,9 +64,7 @@ describe('App Routing and Layouts', () => {
 
   test('navigates to signin page', () => {
     useLocation.mockReturnValue({ pathname: "/signin" });
-    render(
-      <App />
-    );
+    render(<App />);
     
     // Expect to navigate to signin page
     expect(screen.getByText('Sign In Page')).toBeInTheDocument();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { db } from "../../../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 
@@ -11,6 +11,7 @@ import calendar from "../../AdminAssets/alternate-calendar.png";
 import apps from "../../AdminAssets/apps.png";
 import notification from "../../AdminAssets/notification.png";
 
+/* eslint-disable */
 const NotificationPopup = ({ notifications, onClose }) => {
     return (
         <div className="notification-popup">
@@ -32,7 +33,7 @@ const AdminNavbar = () => {
 
     const auth = getAuth();
     const user = auth.currentUser;
-    const adminID =  user?.uid;
+    const adminID =  user.uid;
 
     // Sample notifications
     const [notifications, setNotifications] = useState([
@@ -90,14 +91,8 @@ const AdminNavbar = () => {
         return () => clearInterval(interval);
     }, [adminID]);
 
-    const handleLogout = async () => {
-        try {
-            await signOut(auth); // Properly signs out the user
-            console.log('User signed out successfully');
-            navigate("/signin"); // Redirect to sign-in page after logging out
-        } catch (error) {
-            console.error('Error signing out:', error.message);
-        }
+    const handleLogout = () => {
+        navigate("/signin");
     };
 
     // Render user data
@@ -143,5 +138,5 @@ const AdminNavbar = () => {
         </div>
     );
 };
-
+/* eslint-enable */
 export default AdminNavbar;

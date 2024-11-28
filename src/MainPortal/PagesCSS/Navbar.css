@@ -28,12 +28,6 @@
     align-items: center;
 }
 
-.MainApp .user-email {
-    margin-top: 5px;
-    font-size: 20px;
-    color: white;
-  }
-
 .MainApp .sb-button {
     padding: 1px 5px;
     background-color: #0f1011;
@@ -98,17 +92,6 @@
 
 .MainApp #active {
     background-color: #575757;
-}
-
-.MainApp .log_out_user {
-    margin-top: 4rem;
-    margin-left: 2rem;
-    background-color: black;
-    color: white;
-    padding: 1rem;
-    font-size: medium;
-    border-radius: 5px;
-    margin-right: 10px;
 }
 
 .MainApp .toggle-btn {

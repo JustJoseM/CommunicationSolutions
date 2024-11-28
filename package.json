@@ -2,6 +2,7 @@
   "name": "reactfirst",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -14,6 +15,7 @@
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.4",
     "firebase": "^10.14.0",
+    "firebase-tools": "^13.27.0",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.46",
     "react": "^18.2.0",

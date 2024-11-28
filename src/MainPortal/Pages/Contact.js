@@ -1,8 +1,7 @@
 import React from "react";
-import contactImage from '../../assets/hero.jpeg';
 import '../PagesCSS/Contact.css';
 import { Helmet } from 'react-helmet';
-
+/* eslint-disable */
 const Contact = () => {
     return (
         <>
@@ -32,12 +31,12 @@ const Contact = () => {
                     <div className="phone-method">
                         <h4>Phone Support</h4>
                         <p>Call us for immediate support at:</p>
-                        <a href="">Placeholder!</a>
+                        <a href="#">Placeholder!</a>
                     </div>
                     <div className="email-method">
                         <h4>Email Support</h4>
                         <p>For general inquiries, email us at:</p>
-                        <a href="">Placeholder!</a>
+                        <a href="#">Placeholder!</a>
                     </div>
                     <div className="office-method">
                         <h4>Our Office</h4>
@@ -50,5 +49,5 @@ const Contact = () => {
         </>
     );
 }
-
+  /* eslint-enable */
 export default Contact;

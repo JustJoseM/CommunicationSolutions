@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    BrowserRouter,
     createBrowserRouter,
     RouterProvider,
     Outlet,

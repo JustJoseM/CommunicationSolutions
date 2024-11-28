@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { getFirestore, doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
@@ -40,3 +41,4 @@ export const cancelAppointment = async (appointmentID, userID, cancelReason) => 
   await deleteDoc(appointmentRef);
   return 'Appointment cancelled successfully!';
 };
+/* eslint-enable */

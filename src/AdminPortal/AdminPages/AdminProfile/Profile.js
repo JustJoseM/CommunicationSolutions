@@ -42,7 +42,7 @@ const ProfileTest = () => {
         };
 
         fetchUserData();
-    }, []);
+    }, [adminId]);
 
     const handleEditProfile = () => {
         navigate('/admin/settings/profile');
