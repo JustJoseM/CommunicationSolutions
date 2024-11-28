@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { SidebarData } from './SidebarData';
 import { auth } from '../../firebaseConfig';
 import { signOut } from 'firebase/auth';
+import { handleSignOut } from '../Pages/SignIn';
 
 const Navbar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -33,6 +34,7 @@ const Navbar = () => {
     const handleLogout = async () => {
       try {
         await signOut(auth); 
+        handleSignOut();
         console.log('User signed out');
         navigate("/signin"); 
         window.location.reload();  
