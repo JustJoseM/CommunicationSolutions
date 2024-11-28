@@ -86,7 +86,10 @@ const SignIn = () => {
             setPasswordFeedback([]);
             setShowLoginForm(true);
         } catch (error) {
-            setErrorMessage(`Error signing up: ${error.message}`);
+            console.error('Error during sign-in:', error);
+    
+            const customErrorMessage = mapFirebaseError(error);
+            setErrorMessage(customErrorMessage);
             setSuccessMessage('');
         }
     };
@@ -99,33 +102,35 @@ const SignIn = () => {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const userRef = doc(db, 'users', userCredential.user.uid);
             const userDoc = await getDoc(userRef);
-            if (!userDoc.exists()) {
-                setErrorMessage('No user data found in Firestore.');
+            const userData = userDoc.data();
+    
+            // Check if the account is locked
+            if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
+                const lockEnd = new Date(userData.lockedUntil.toMillis()).toLocaleString();
+                setErrorMessage(`Your account is locked until ${lockEnd}. Please try again later.`);
                 return;
             }
-
-            const userData = userDoc.data();
+    
+            // Check if the password has expired
+            if (userData.passwordLastSet && isPasswordExpired(userData.passwordLastSet)) {
+                await sendPasswordResetEmail(auth, email);
+                setErrorMessage('Your password has expired. A reset email has been sent.');
+                setSuccessMessage('');
+                return;
+            }
+    
+            // Update passwordLastSet and reset failed attempts
+            await updateDoc(userRef, {
+                passwordLastSet: new Date(),
+                failedAttempts: 0,
+            });
+    
             const role = userData.Role;
-
             localStorage.setItem('userRole', role);
             setUserRole(role);
-
-            if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
-                setErrorMessage('Account is temporarily locked. Please try again later.');
-                return;
-            }
-
-            if (userData.passwordLastSet && isPasswordExpired(userData.passwordLastSet)) {
-                setErrorMessage('Your password has expired. Please reset your password.');
-                await sendPasswordResetEmail(auth, email);
-                setSuccessMessage('Password reset email sent. Please check your inbox.');
-                return;
-            }
-
-            await updateDoc(userRef, { passwordLastSet: new Date(), failedAttempts: 0 });
-            setSuccessMessage('Sign-in successful! Welcome back.');
+            setSuccessMessage('Sign-in successful! Redirecting...');
             setErrorMessage('');
-
+    
             if (role === 'user') {
                 navigate('/home');
                 window.location.reload();
@@ -133,6 +138,8 @@ const SignIn = () => {
                 navigate('/admin');
             }
         } catch (error) {
+            console.error('Error during sign-in:', error);
+    
             const customErrorMessage = mapFirebaseError(error);
             setErrorMessage(customErrorMessage);
             setSuccessMessage('');
@@ -143,10 +150,6 @@ const SignIn = () => {
 
     const handleForgotPassword = async (e) => {
         e.preventDefault();
-        if (!email) {
-            setErrorMessage('Please enter a valid email.');
-            return;
-        }
         
         try {
             setLoading(true);
@@ -155,27 +158,23 @@ const SignIn = () => {
             setErrorMessage('');
             setLoading(false);
         } catch (error) {
-            setErrorMessage(`Error resetting password: ${error.message}`);
+            console.error('Error during sign-up:', error);
+    
+            const customErrorMessage = mapFirebaseError(error);
+            setErrorMessage(customErrorMessage);
+            setSuccessMessage('');
             setLoading(false);
         }
     };
 
-    //Operation to be implemented once signout feature is available
-    const handleSignOut = () => {
-        localStorage.removeItem('userRole');
-        setUserRole(null);
-    };
-
     const mapFirebaseError = (error) => {
         switch (error.code) {
-            case 'auth/user-not-found':
-                return 'No account found with this email. Please sign up.';
-            case 'auth/wrong-password':
-                return 'Incorrect password. Please try again.';
-            case 'auth/too-many-requests':
-                return 'Too many failed attempts. Please try again later or reset your password.';
+            case 'auth/invalid-credential':
+                return 'Email or password was not found. Please try again.';
+            case 'auth/email-already-in-use':
+                return 'This email is already associated with an account. Please sign in.';
             default:
-                return `Error signing in: ${error.message}`;
+                return 'An error occurred. Please try again later.';
         }
     };
 
@@ -302,3 +301,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+export const handleSignOut = () => {
+    localStorage.removeItem('userRole');
+    console.log('User role removed from local storage');
+};
