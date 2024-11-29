@@ -21,7 +21,6 @@ jest.mock('firebase/firestore', () => ({
     updateDoc: jest.fn(),
 }));
 
-// Mock navigate function
 jest.mock('react-router-dom', () => ({
     useNavigate: jest.fn(),
 }));

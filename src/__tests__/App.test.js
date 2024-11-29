@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import App from '../App';
-import Navbar from '../MainPortal/Components/Navbar';
 import SignIn from "../MainPortal/Pages/SignIn";
 
 jest.mock("../MainPortal/Pages/AuthProvider", () => ({
@@ -72,8 +71,6 @@ describe('App Routing and Layouts', () => {
                 <SignIn />
             </MemoryRouter>
         );
-
-        // Debugging step: Output the DOM to see what's rendered
         screen.debug();
 
         // Check if "Sign in" text is present

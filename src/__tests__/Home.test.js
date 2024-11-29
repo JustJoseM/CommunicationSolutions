@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Home from '../MainPortal/Pages/Home';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import Navbar from '../MainPortal/Components/Navbar';
-import { auth } from '../firebaseConfig';
 
 // Mock Firebase imports to prevent initialization during tests
 jest.mock("firebase/app", () => ({
@@ -18,8 +17,8 @@ jest.mock("firebase/auth", () => ({
 jest.mock("../firebaseConfig", () => ({
   auth: {
       onAuthStateChanged: jest.fn((callback) => {
-          callback(null); // Simulate no user signed in
-          return jest.fn(); // Mock the unsubscribe function
+          callback(null);
+          return jest.fn();
       }),
   },
 }));
@@ -92,11 +91,8 @@ describe('Navbar Component', () => {
           </MemoryRouter>
       );
 
-      // Ensure "Communication Solutions" title is present in the Navbar
       const titleLink = screen.getByText(/Communication Solutions/i);
       expect(titleLink).toBeInTheDocument();
-
-      // Simulate clicking the title link
       fireEvent.click(titleLink);
 
       // Verify navigation to the home page
