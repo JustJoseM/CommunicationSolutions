@@ -14,11 +14,14 @@
 .MainApp .nav-left {
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
-.MainApp .title h4 {
+.MainApp .title {
     font-size: 35px;
+    font-weight: bold;
     margin-right: 10px;
+    color: white;
   }
 
 
