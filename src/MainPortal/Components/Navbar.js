@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../PagesCSS/Navbar.css';
-import {Link} from 'react-router-dom';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import { auth } from '../../firebaseConfig';
 import { signOut } from 'firebase/auth';
@@ -9,18 +9,33 @@ import { handleSignOut } from '../Pages/SignIn';
 /* eslint-disable */
 function Navbar() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-  
+    const [userEmail, setUserEmail] = useState(null);
+    const navigate = useNavigate();
+
     const toggleSidebar = () => {
       setSidebarOpen(!sidebarOpen);
     };
 
+    useEffect(() => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          setUserEmail(user.email); 
+        } else {
+         setUserEmail(null); 
+        }
+    });
+
+    // Cleanup subscription
+    return () => unsubscribe();
+  }, []);
+
     const handleLogout = async () => {
       try {
         await signOut(auth); 
-        handleSignOut();
         console.log('User signed out');
+        handleSignOut();
         navigate("/signin"); 
-        window.location.reload();  
+        setTimeout(() => window.location.reload(), 500);  
       } catch (error) {
         console.error('Error signing out:', error.message);
       }
@@ -29,10 +44,10 @@ function Navbar() {
     return (
       <div className="nav">
         <div className="nav-left">
-          <div className="title">
-            <h4>Communication Solutions</h4>
-            <h2>User Signed In:</h2>
-          </div>
+          <NavLink to = "/" className="nav-left">
+            <span className = "title">Communication Solutions</span>
+          </NavLink>
+          {userEmail && <p className="user-email">User: {userEmail}</p>} {/* Display user's email */}
         </div>
         <div className={`nav-right ${sidebarOpen ? 'shift-left' : ''}`}>
           <Link to="/schedule">
@@ -64,6 +79,9 @@ function Navbar() {
                         );
                     })}
                 </ul>
+                {userEmail && (
+                <button className="log_out_user" onClick={handleLogout}>Log Out</button>
+              )}
           </div>
         </div>
       </div>
