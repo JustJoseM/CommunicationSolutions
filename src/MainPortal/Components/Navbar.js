@@ -78,6 +78,9 @@ function Navbar() {
                         );
                     })}
                 </ul>
+                {userEmail && (
+                <button className="log_out_user" onClick={handleLogout}>Log Out</button>
+              )}
           </div>
         </div>
       </div>

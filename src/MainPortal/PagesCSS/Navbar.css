@@ -71,6 +71,17 @@
     width: 270px;
 }
 
+.MainApp .log_out_user {
+        margin-top: 4rem;
+        margin-left: 2rem;
+        background-color: black;
+        color: white;
+        padding: 1rem;
+        font-size: medium;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
 .MainApp .close-btn {
     position: absolute;
     top: 0px;

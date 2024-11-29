@@ -239,7 +239,9 @@ const SignIn = () => {
                                 </button>
                             </p>
                             <p className="form__text__createAcc">
-                                <button type="button" className="form__link" onClick={() => setShowLoginForm(false)}>Create account</button>
+                                <button type="button" className="form__link" onClick={() => setShowLoginForm(false)}>
+                                    Sign up
+                                    </button>
                             </p>
                             {successMessage && <div className="form__message form__message-success" aria-live="polite">{successMessage}</div>}
                             {errorMessage && <div className="form__message form__message-error" aria-live="assertive">{errorMessage}</div>}
