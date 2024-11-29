@@ -240,7 +240,7 @@ const SignIn = () => {
                             </p>
                             <p className="form__text__createAcc">
                                 <button type="button" className="form__link" onClick={() => setShowLoginForm(false)}>
-                                    Sign up
+                                    Create account
                                     </button>
                             </p>
                             {successMessage && <div className="form__message form__message-success" aria-live="polite">{successMessage}</div>}

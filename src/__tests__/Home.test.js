@@ -1,19 +1,28 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from '../MainPortal/Pages/Home';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import Navbar from '../MainPortal/Components/Navbar';
+import { auth } from '../firebaseConfig';
 
 // Mock Firebase imports to prevent initialization during tests
 jest.mock("firebase/app", () => ({
-    initializeApp: jest.fn(),
-  }));
-  
-  jest.mock("firebase/auth", () => ({
-    getAuth: jest.fn(),
-  }));
-  
-  jest.mock("firebase/firestore", () => ({
-    getFirestore: jest.fn(),
-  }));
+  initializeApp: jest.fn(),
+}));
+
+jest.mock("firebase/auth", () => ({
+  getAuth: jest.fn(),
+  signOut: jest.fn(),
+}));
+
+jest.mock("../firebaseConfig", () => ({
+  auth: {
+      onAuthStateChanged: jest.fn((callback) => {
+          callback(null); // Simulate no user signed in
+          return jest.fn(); // Mock the unsubscribe function
+      }),
+  },
+}));
 
 describe('Home Component', () => {
     test('renders home page header correctly', () => {
@@ -69,5 +78,28 @@ describe('Home Component', () => {
 
     // Expect to be redirected to /about
     expect(window.location.pathname).toBe('/about');
+  });
+});
+
+describe('Navbar Component', () => {
+  test('navigates to home page when the title link is clicked from another page', () => {
+      render(
+          <MemoryRouter initialEntries={['/signin']}>
+              <Routes>
+                  <Route path="/signin" element={<Navbar />} />
+                  <Route path="/" element={<Home />} />
+              </Routes>
+          </MemoryRouter>
+      );
+
+      // Ensure "Communication Solutions" title is present in the Navbar
+      const titleLink = screen.getByText(/Communication Solutions/i);
+      expect(titleLink).toBeInTheDocument();
+
+      // Simulate clicking the title link
+      fireEvent.click(titleLink);
+
+      // Verify navigation to the home page
+      expect(screen.getByText(/Create the Dream Business You Want Here/i)).toBeInTheDocument();
   });
 });
