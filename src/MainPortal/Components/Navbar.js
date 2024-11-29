@@ -10,6 +10,7 @@ import { handleSignOut } from '../Pages/SignIn';
 function Navbar() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [userEmail, setUserEmail] = useState(null);
+    const navigate = useNavigate();
 
     const toggleSidebar = () => {
       setSidebarOpen(!sidebarOpen);
@@ -31,10 +32,10 @@ function Navbar() {
     const handleLogout = async () => {
       try {
         await signOut(auth); 
-        handleSignOut();
         console.log('User signed out');
+        handleSignOut();
         navigate("/signin"); 
-        window.location.reload();  
+        setTimeout(() => window.location.reload(), 500);  
       } catch (error) {
         console.error('Error signing out:', error.message);
       }
