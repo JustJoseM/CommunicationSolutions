@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, runTransaction } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, runTransaction, getDocs, collection } from 'firebase/firestore';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '../PagesCSS/SignupLogin.css';
@@ -100,11 +100,25 @@ const SignIn = () => {
         setLoading(true);
     
         try {
+
+            const userQuery = await getDocs(collection(db, 'users')); 
+            let emailExists = false; 
+            let userId; userQuery.forEach((doc) => { 
+                const data = doc.data(); 
+                if (data.email === email) { 
+                    emailExists = true; userId = doc.id; 
+                } 
+            }); 
+            if (!emailExists) { 
+                setErrorMessage('Email not found.'); 
+                return;
+            }
+
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const userRef = doc(db, 'users', userCredential.user.uid);
             const userDoc = await getDoc(userRef);
             const userData = userDoc.data();
-    
+            
             // Check if the account is locked
             if (userData.lockedUntil && userData.lockedUntil.toMillis() > Date.now()) {
                 const lockEnd = new Date(userData.lockedUntil.toMillis()).toLocaleString();
@@ -142,9 +156,31 @@ const SignIn = () => {
             }
         } catch (error) {
             console.error('Error during sign-in:', error);
-    
-            const customErrorMessage = mapFirebaseError(error);
-            setErrorMessage(customErrorMessage);
+
+
+            if(error.code === 'auth/invalid-credential'){
+            const userRef = doc(db, 'users', auth.currentUser?.uid);
+            const userDoc = await getDoc(userRef);
+                if (userDoc.exists()) {
+                    const failedAttempts = userDoc.data().failedAttempts || 0;
+                    if (failedAttempts + 1 >= maxFailedAttempts) {
+                        const lockedUntil = new Date(Date.now() + lockDuration);
+                        await updateDoc(userRef, { lockedUntil, failedAttempts: 0 });
+                        console.log("ssss", failedAttempts);
+                        setErrorMessage('Too many failed attempts. Account locked for 10 minutes.');
+                    } else {
+                        await updateDoc(userRef, { failedAttempts: failedAttempts + 1 });
+                        console.log("dddd", failedAttempts);
+                        setErrorMessage('Error signing in: If you fail more than 3 attempts, the account gets locked for 10 minutes.');
+                    }
+                }
+            }
+
+            else{
+                const customErrorMessage = mapFirebaseError(error);
+                setErrorMessage(customErrorMessage);
+            }
+
             setSuccessMessage('');
         } finally {
             setLoading(false);
@@ -172,10 +208,11 @@ const SignIn = () => {
 
     const mapFirebaseError = (error) => {
         switch (error.code) {
-            case 'auth/invalid-credential':
-                return 'Email or password was incorrect. Please try again.';
+
             case 'auth/email-already-in-use':
                 return 'This email is already associated with an account. Please sign in.';
+            case 'auth/too-many-requests':
+                return 'Server is busy, please try again later.';
             default:
                 return 'An error occurred. Please try again later.';
         }
