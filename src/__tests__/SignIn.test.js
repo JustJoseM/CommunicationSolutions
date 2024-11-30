@@ -44,6 +44,17 @@ describe('SignIn Component', () => {
         expect(screen.getByText(/Reset Password/i)).toBeInTheDocument();
     });
 
+    test('displays the correct error message for invalid account credentials', async () => {
+        const mockError = { code: 'auth/invalid-credential' };
+        const { signInWithEmailAndPassword } = require('firebase/auth');
+        signInWithEmailAndPassword.mockRejectedValue(mockError);
+
+        fireEvent.change(screen.getByPlaceholderText('Enter your email'), {target: { value: 'invalid@example.com' },});
+        fireEvent.change(screen.getByPlaceholderText('Password'), {target: { value: 'wrongpassword' },});
+        fireEvent.click(screen.getByText('Continue'));
+        await waitFor(() => expect(screen.getByText('Email or password was incorrect. Please try again.')).toBeInTheDocument());
+    });
+
     test('shows success message on sign-up', async () => {
         const mockCreateUser = require('firebase/auth').createUserWithEmailAndPassword;
         mockCreateUser.mockResolvedValue({ user: { uid: '12345' } });

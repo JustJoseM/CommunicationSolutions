@@ -173,7 +173,7 @@ const SignIn = () => {
     const mapFirebaseError = (error) => {
         switch (error.code) {
             case 'auth/invalid-credential':
-                return 'Email or password was not found. Please try again.';
+                return 'Email or password was incorrect. Please try again.';
             case 'auth/email-already-in-use':
                 return 'This email is already associated with an account. Please sign in.';
             default:
