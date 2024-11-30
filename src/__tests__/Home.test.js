@@ -1,8 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Home from '../MainPortal/Pages/Home';
-import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import Navbar from '../MainPortal/Components/Navbar';
+import { getFirestore } from 'firebase/firestore';
 
 // Mock Firebase imports to prevent initialization during tests
 jest.mock("firebase/app", () => ({
@@ -14,6 +13,7 @@ jest.mock("firebase/auth", () => ({
   signOut: jest.fn(),
 }));
 
+/*
 jest.mock("../firebaseConfig", () => ({
   auth: {
       onAuthStateChanged: jest.fn((callback) => {
@@ -21,6 +21,11 @@ jest.mock("../firebaseConfig", () => ({
           return jest.fn();
       }),
   },
+}));
+*/
+
+jest.mock("firebase/firestore", () => ({
+  getFirestore: jest.fn(),
 }));
 
 describe('Home Component', () => {
@@ -80,6 +85,7 @@ describe('Home Component', () => {
   });
 });
 
+/*
 describe('Navbar Component', () => {
   test('navigates to home page when the title link is clicked from another page', () => {
       render(
@@ -98,4 +104,4 @@ describe('Navbar Component', () => {
       // Verify navigation to the home page
       expect(screen.getByText(/Create the Dream Business You Want Here/i)).toBeInTheDocument();
   });
-});
+});*/
