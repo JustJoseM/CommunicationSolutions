@@ -1,0 +1,44 @@
+.AdminApp .general-settings-box {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: black;
+    justify-content: space-between;
+}
+
+.AdminApp .general-settings-header-box {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.default-timezone, .date-format,
+.time-format, .language-preference {
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 8px;
+}
+
+.AdminApp .work-hours {
+    margin-left: 10px;
+}
+
+.AdminApp .save-button {
+    background-color: rgba(0, 0, 184, 0.952);
+    width: 130px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.AdminApp .save-button:hover {
+    background-color: rgb(59, 59, 255);
+}

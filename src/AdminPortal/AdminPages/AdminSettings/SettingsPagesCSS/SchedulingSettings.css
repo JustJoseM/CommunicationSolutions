@@ -1,0 +1,68 @@
+.AdminApp .scheduling-settings {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: black;
+    justify-content: space-between;
+}
+
+.AdminApp .scheduling-settings-header {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.AdminApp .general-scheduling-settings {
+    padding-bottom: 20px;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+.AdminApp section {
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.AdminApp label {
+    display: block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.default-apt-select, .cancellation-policy, .default-duration,
+.default-meeting-type, .reminder-time {
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 8px;
+}
+
+.AdminApp input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.AdminApp .apt-notif-prefs {
+    padding-bottom: 20px;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+.AdminApp .save-button {
+    background-color: rgba(0, 0, 184, 0.952);
+    width: 130px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.AdminApp .save-button:hover {
+    background-color: rgb(59, 59, 255);
+}

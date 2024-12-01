@@ -1,0 +1,31 @@
+/* The following CSS is for Admin Page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.AdminApp {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    background-color: #1d1f20;
+    color: #222020;
+    min-height: 100hv;
+    display: flex;
+    flex-direction: column;
+}
+
+.AdminApp .container {
+    display: flex;
+    flex: 1;
+}
+
+.AdminApp .menuContainer {
+    width: 250px;
+    padding: 5px 20px;
+    border-right: 2px solid #f1f1f1;
+}
+
+.AdminApp .contentContainer {
+    width: 100%;
+    padding-bottom: 20px;
+}
