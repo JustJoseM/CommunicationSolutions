@@ -88,5 +88,4 @@ _Placeholders for CSC191_
    - Contact: jjmartinez@csus.edu
 + Seungjin Chae (Development Team)
    - Contact: seungjinchae@csus.edu
-+ Jaime Montanez (Development Team)
-   - Contact: jaimemontanez@csus.edu
+  
