@@ -5,10 +5,9 @@
 
 
 # Introduction 
-Bit Theory is a group formed of Sacramento State University senior CS students. We are currently working on the development of a website that can provide for our client's need of a platform that can properly host and advertise his services so that he may futher his reach on clientel and grow his business. Our members are comprised of individuals with their own unique software development skills which we use accordingly in order to achieve appointed tasks and contribute to the growth of the project. Led by Savannah Birdsong-See, Bit Theory's members are working towards completion of this project within Fall 2024.
+Our application is a website called "Communication Solutions" that serves as a platfrom for business owners to explore the services offered by the company, including coaching and business cosultations. It presents an easy and efficient way for customers to quickly come in contanct with the company, learn about its history, and schedule an appointment to get started with them. Additionally, the platform streamlines, scheduling, consultation tracking, and cliental management helping the company operate.
 
-# Background
-Communication Solutions is a startup company in a consulting industry owned by Issac Jones. The mission is to provbide professional assistance in managing the marketing of other companies specifically specializing supporting startup companies. His years of experience in the filed have given him a deep understanding of how the professional service industry works and what it takes for a company to success. With Communication Solutions, Jones hopes to help grow clients' buisiness by developing their buisiness techniques.
+The website was created to support the company's mission of helping other businesses grow and expand their sucess through guidance and resources. Recognizing that the website is the first step in the door for customers, the goal was to create a user-friendly platform that potenital clients can follow while also showcasing the company's values and efforts. 
 
 # Key Features
 + Key Feature #1
@@ -16,9 +15,10 @@ Communication Solutions is a startup company in a consulting industry owned by I
    - Upon signing in, the user will be sent an email containing a code that they will enter to confirm their identity (authentication).
  
 + Key Feature #2
-   - Scheduling an Appointment: Those who are interested in a consultation can reach out to our client and schedule a phone appointment with him.
-   - A list of available times will be shown when the interested person navigates to page, through the use of a calendar.
-   - The complete functionality will be implemented in CSC 191.
+   - Scheduling an Appointment: Those who are interested in a consultation can reach out to our client and schedule a phone appointment.
+   - A customer will be presented a form where they can fill out the time, date, and any notes they want to keep.
+   - Once an appointment is scheduled, it will appear on the admin side where they can view a list of upcoming meetings. In addition they can cancel or reschedule any of the upcoming meetings.
+   - A customer can also ask to reschedule or cancel an appointment when logged in. 
  
 + Key Feature #3
    - Testimonial Page: Read about other businesses our client has worked with, and how their business has succeeded thanks to his assistance.
@@ -26,32 +26,29 @@ Communication Solutions is a startup company in a consulting industry owned by I
  
 + Key Feature #4
    - Admin portal: The site admin, in this case, our client, can access the Admin portal to cancel or edit appointments as necessary.
-   - To be implemented in CSC 191.
  
 + Key Feature #5
    - User Friendly UI: Whoever is accessing the site can easily navigate to whatever page they need, and gather the information they require.
-   - To be further improved upon in CSC 191.
 
 # Tech Stack
 ### Frontend
-1. ReactJS Framework 
-  - HTML, CSS, JavaScript
+Programming Languages: HTML, CSS, Javascript 
+   - Interactive Development Environment (IDE):
+        Visual Studio Code
+   - Front-end Framework:
+        ReactJS Framework
 
 ### Backend
-1. Flask Framework
-2. Azure Database for MySQL
-   - Cost: $29.99/Month
-
-### API
-1. SuperSaaS
-   - Cost: $9/Month
-
+Programming Languages: Python, JSON
+   - Database:
+        Firebase 
+   - Web Framework:
+        Firebase's web deployment
+   - Authentication:
+        Firebasse's Authentication
+     
 ### Version Control
-1. Github 
-
-### Deployment
-1. Azure App Service
-   - Cost:$13.14/Month
+   - Github
 
 # Prototype 
 https://github.com/JustJoseM/CommunicationSolutions/assets/59710423/bcdb6e9d-f12d-48af-9182-483922540687
