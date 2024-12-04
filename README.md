@@ -33,22 +33,22 @@ The website was created to support the company's mission of helping other busine
 # Tech Stack
 ### Frontend
 Programming Languages: HTML, CSS, Javascript 
-   - Interactive Development Environment (IDE):
-        Visual Studio Code
-   - Front-end Framework:
-        ReactJS Framework
+   * Interactive Development Environment (IDE):
+       - Visual Studio Code
+   * Front-end Framework:
+       - ReactJS Framework
 
 ### Backend
 Programming Languages: Python, JSON
-   - Database:
-        Firebase 
-   - Web Framework:
-        Firebase's web deployment
-   - Authentication:
-        Firebasse's Authentication
+   * Database:
+       - Firebase 
+   * Web Framework:
+       - Firebase's web deployment
+   * Authentication:
+       - Firebasse's Authentication
      
 ### Version Control
-   - Github
+   * Github
 
 # Prototype 
 https://github.com/JustJoseM/CommunicationSolutions/assets/59710423/bcdb6e9d-f12d-48af-9182-483922540687
