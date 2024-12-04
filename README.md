@@ -22,7 +22,6 @@ The website was created to support the company's mission of helping other busine
  
 + Key Feature #3
    - Testimonial Page: Read about other businesses our client has worked with, and how their business has succeeded thanks to his assistance.
-   - Actual testimonials will be acquired from previous clients prior to the final publication of the website.
  
 + Key Feature #4
    - Admin portal: The site admin, in this case, our client, can access the Admin portal to cancel or edit appointments as necessary.
@@ -39,7 +38,7 @@ Programming Languages: HTML, CSS, Javascript
        - ReactJS Framework
 
 ### Backend
-Programming Languages: Python, JSON
+Programming Languages: JSON
    * Database:
        - Firebase 
    * Web Framework:
@@ -66,7 +65,7 @@ _Placeholders for CSC191_
 # Deployment
 _Placeholders for CSC191_
 
-# Developer Insstructions
+# Developer Instructions
 _Placeholders for CSC191_
 
 
