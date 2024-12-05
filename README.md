@@ -95,21 +95,29 @@ https://github.com/user-attachments/assets/b5e3179b-bfac-44d8-92da-ecd0ea86ec8a
       npm install
 ### Running the Project:
 
+   ```
    npm start
+   ```
    
 **Access the App:**
 
-   http://localhost:3000 
+   ```
+   http://localhost:3000
+   ```
    
 ### Testing:
 
+   ```
    npm test
+   ```
    
 ### Deployment Instructions:
 
+   ```
    npm run build
    
    firebase deploy
+   ```
 
 
 # Contact
