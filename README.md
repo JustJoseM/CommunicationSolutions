@@ -31,7 +31,7 @@ The website was created to support the company's mission of helping other busine
    - The Admin portal allows the admin to keep pertinent notes about clients, see all upcoming meetings, and keep track of information such as revenue, client submitted ratings, and number of appointments per month/quarter/year.
  
 + Key Feature #5
-   - User Friendly UI: Whoever is accessing the site can easily navigate to whatever page they need, and gather the required information
+   - User-Friendly UI: Whoever is accessing the site can easily navigate to whatever page they need, and gather the required information
 
 # Tech Stack
 ### Frontend
@@ -64,18 +64,26 @@ ER Diagram:
 
 
 # Testing
-In order run tests on the application, the user would have to install dependencies and then open the terminal for the repository in VScode or any other code editor. Once this step is done, the user can type "npm test" in the console and then enter a command according to the instructions to begin. If the user wants to try testing with a specific test, they can type "npm test (test name of your choice from below)" in the console.
+All tests are stored inside of the directory:
+```
+src/__tests__
+``` 
+
+In order to run tests on the application, the user needs to install the relevant dependencies, then open the terminal for the repository in VScode or any other code editor. Once this step is done, the user can type "npm test" in the console and then enter a command according to the instructions to begin. If the user wants to try testing with a specific test, they can type "npm test (test name of your choice from below)" in the console. For example, to run only the AboutUs test, the user would type:
+```
+npm run test AboutUs.test
+```
 
 Description of Tests:
-   * AboutUs.test - Checks to see if About Us page renders all components successfully.
-   * AdminAppoint.test - Mocks appointment data in firebase and then checks to see if admin appointments page returns the mock data successfully. Also checks to see if functions to rechedule and cancel appointments can run successfully.
-   * AdminHome.test - Checks to see if Admin Home page renders all components successfully.
-   * Contact.test - Checks integrity of links and components within contact page.
-   * Home.test - Mocks firebase imports and then checks home page buttons to see if they function and redirect to the intended page.
-   * NoteList.test - Mocks note compnonent and note data to check to see if the admin note page successfully displays notes. Also checks delete and add note functions for functionality.
-   * ProtectedRoute.test - Creates a mock unauthorized user and authorized user and then tests to see if the appropiate action is returned by the website when data is accessed. Unauthorized users are test on if they are redirected to the signin page when trying to access data restricted from them.
-   * SignIn.test - Mocks firebase functions and then tests the sign up functionality to see if users can successfully create an account. It then proceeds to test for whether invalid data is given the correct error message. Additionality checks integrity of create account and forgot account buttons. 
-   * Testimonial.test - Mocks valid and invalid testimonial data and checks to see if the mock data is successfully shown on testimonial page. Checks carousel functionality when clicking buttons indicating back or forward. Also checks to see if user arrow key input can effect the carousel as intended.
+   * AboutUs.test - Checks to see if the About Us page renders all components successfully.
+   * AdminAppoint.test - Mocks appointment data in Firebase and then checks to see if the admin appointments page returns the mock data successfully. Also checks to see if functions to rechedule and cancel appointments can run successfully.
+   * AdminHome.test - Checks to see if the Admin Home page renders all components successfully.
+   * Contact.test - Checks integrity of links and components within the contact page.
+   * Home.test - Mocks the Firebase imports and then checks home page buttons to see if they function and redirect to the intended page.
+   * NoteList.test - Mocks note component and note data to check to see if the admin note page successfully displays notes. Also checks the 'delete' and 'add' note functions for functionality.
+   * ProtectedRoute.test - Creates a mock unauthorized user and authorized user and then tests to see if the appropriate action is returned by the website when data is accessed. Unauthorized users should be redirected to the sign-in page when trying to access data restricted from them (Admin pages).
+   * SignIn.test - Mocks Firebase functions and then tests the signup functionality to see if users can successfully create an account. It then tests whether invalid data gives the correct error message. Additionally, it checks the integrity of the 'create account' and 'forgot account' buttons. 
+   * Testimonial.test - Mocks valid and invalid testimonial data and checks to see if the mock data is successfully shown on the testimonial page. Checks carousel functionality when clicking buttons indicating back or forward. Also checks to see if user arrow key input can affect the carousel as intended.
      
 # Deployment
 Demo Video (User Side)
