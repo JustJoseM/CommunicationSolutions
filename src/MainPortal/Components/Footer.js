@@ -11,10 +11,10 @@ function Footer(){
                         <a href="/home">
                             <p>Home</p>
                         </a>
-                        <a href="/aboutus">
+                        <a href="/about">
                             <p>About Us</p>
                         </a>
-                        <a href="/clienttestimonials">
+                        <a href="/testimonials">
                             <p>Client Testimonials</p>
                         </a>
                     </div>
