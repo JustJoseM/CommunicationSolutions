@@ -63,6 +63,13 @@ ER Diagram:
 ![CSC 190 (3)](https://github.com/JustJoseM/CommunicationSolutions/assets/93031586/239667fc-b1fa-48bc-a886-930d07e6391e)
 
 Sign In Page:
+<img width="1512" alt="Screenshot 2024-12-05 at 2 38 59 PM" src="https://github.com/user-attachments/assets/e72d71ab-a3b4-438e-a92e-552cbd738504">
+
+Forgot Password:
+<img width="1512" alt="Screenshot 2024-12-05 at 2 40 20 PM" src="https://github.com/user-attachments/assets/432d6545-3154-4bcb-a4ff-6ba8f787b5ef">
+
+Create New Account:
+<img width="1512" alt="Screenshot 2024-12-05 at 2 41 39 PM" src="https://github.com/user-attachments/assets/6e2caf4e-7430-4698-8e16-e6373c896406">
 
 
 
