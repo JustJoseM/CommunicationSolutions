@@ -62,6 +62,9 @@ Mockup:
 ER Diagram:
 ![CSC 190 (3)](https://github.com/JustJoseM/CommunicationSolutions/assets/93031586/239667fc-b1fa-48bc-a886-930d07e6391e)
 
+Sign In Page:
+
+
 
 # Testing
 All tests are stored inside of the directory:
