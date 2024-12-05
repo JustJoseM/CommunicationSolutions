@@ -63,7 +63,9 @@ ER Diagram:
 _Placeholders for CSC191_
 
 # Deployment
-_Placeholders for CSC191_
+Demo Video (User Side)
+https://github.com/user-attachments/assets/b5e3179b-bfac-44d8-92da-ecd0ea86ec8a
+
 
 # Developer Instructions
 ### Prerequisites:
