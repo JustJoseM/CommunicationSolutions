@@ -66,25 +66,43 @@ _Placeholders for CSC191_
 _Placeholders for CSC191_
 
 # Developer Instructions
-Prerequisites:
-   Programming Languages: JavaScript
-   Frameworks: ReactJS
-   Databases: Firestore
-   APIs:
-Project Setup:
-   Clone Repository:
+### Prerequisites:
+
+   **Programming Languages:** JavaScript
+   
+   **Frameworks:** ReactJS
+   
+   **Databases:** Firestore
+   
+   **APIs:**
+   
+### Project Setup:
+
+   **Clone Repository:**
+   
       git clone 
+      
       cd project-repo
-   Install Dependencies:
+      
+   **Install Dependencies:**
+   
       npm install
-Running the Project:
+### Running the Project:
+
    npm start
-Access the App:
+   
+**Access the App:**
+
    http://localhost:3000 
-Testing:
+   
+### Testing:
+
    npm test
-Deployment Instructions:
+   
+### Deployment Instructions:
+
    npm run build
+   
    firebase deploy
 
 
