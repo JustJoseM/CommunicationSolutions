@@ -60,8 +60,19 @@ ER Diagram:
 
 
 # Testing
-_Placeholders for CSC191_
+In order run tests on the application, the user would have to install dependencies and then open the terminal for the repository in VScode or any other code editor. Once this step is done, the user can type "npm test" in the console and then enter a command according to the instructions to begin. If the user wants to try testing with a specific test, they can type "npm test (test name of your choice from below)" in the console.
 
+Description of Tests:
+   * AboutUs.test - Checks to see if About Us page renders all components successfully.
+   * AdminAppoint.test - Mocks appointment data in firebase and then checks to see if admin appointments page returns the mock data successfully. Also checks to see if functions to rechedule and cancel appointments can run successfully.
+   * AdminHome.test - Checks to see if Admin Home page renders all components successfully.
+   * Contact.test - Checks integrity of links and components within contact page.
+   * Home.test - Mocks firebase imports and then checks home page buttons to see if they function and redirect to the intended page.
+   * NoteList.test - Mocks note compnonent and note data to check to see if the admin note page successfully displays notes. Also checks delete and add note functions for functionality.
+   * ProtectedRoute.test - Creates a mock unauthorized user and authorized user and then tests to see if the appropiate action is returned by the website when data is accessed. Unauthorized users are test on if they are redirected to the signin page when trying to access data restricted from them.
+   * SignIn.test - Mocks firebase functions and then tests the sign up functionality to see if users can successfully create an account. It then proceeds to test for whether invalid data is given the correct error message. Additionality checks integrity of create account and forgot account buttons. 
+   * Testimonial.test - Mocks valid and invalid testimonial data and checks to see if the mock data is successfully shown on testimonial page. Checks carousel functionality when clicking buttons indicating back or forward. Also checks to see if user arrow key input can effect the carousel as intended.
+     
 # Deployment
 Demo Video (User Side)
 https://github.com/user-attachments/assets/b5e3179b-bfac-44d8-92da-ecd0ea86ec8a
@@ -99,7 +110,7 @@ https://github.com/user-attachments/assets/b5e3179b-bfac-44d8-92da-ecd0ea86ec8a
    
 ### Testing:
 
-   npm test
+   npm test 
    
 ### Deployment Instructions:
 
