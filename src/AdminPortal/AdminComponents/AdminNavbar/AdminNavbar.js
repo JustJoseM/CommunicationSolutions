@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { getAuth } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { db } from "../../../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 
@@ -33,7 +33,7 @@ const AdminNavbar = () => {
 
     const auth = getAuth();
     const user = auth.currentUser;
-    const adminID =  user.uid;
+    const adminID =  user?.uid;
 
     // Sample notifications
     const [notifications, setNotifications] = useState([
@@ -91,8 +91,14 @@ const AdminNavbar = () => {
         return () => clearInterval(interval);
     }, [adminID]);
 
-    const handleLogout = () => {
-        navigate("/signin");
+    const handleLogout = async () => {
+        try {
+            await signOut(auth); // Properly signs out the user
+            console.log('User signed out successfully');
+            navigate("/signin"); // Redirect to sign-in page after logging out
+        } catch (error) {
+            console.error('Error signing out:', error.message);
+        }
     };
 
     // Render user data

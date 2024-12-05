@@ -37,7 +37,7 @@ const NotificationSettings = () => {
 
   // Function to update notification settings
   const updateNotificationSettings = async () => {
-    const adminID = "admin2";
+    if(!adminID) return;
     const docRef = doc(db, "Admins", adminID, "Settings", "notificationSettings");
 
     try {
