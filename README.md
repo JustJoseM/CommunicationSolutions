@@ -51,7 +51,7 @@ Programming Languages: JSON
    * Github
 
 # Prototype 
-https://communnications-solutions.web.app
+https://github.com/JustJoseM/CommunicationSolutions/assets/59710423/bcdb6e9d-f12d-48af-9182-483922540687
 
 Mockup:
 ![image](https://github.com/JustJoseM/CommunicationSolutions/assets/93031586/ea2c6e3d-92a9-4d82-ba0d-6d5e9b5e1cb7)
